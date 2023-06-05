@@ -25,6 +25,7 @@ module.exports = {
     login: async (req, res) => {
         try {
             const musician = await Musician.findOne({email: req.body.email});
+            console.log(musician)
             if(musician){
                 const passwordMatch = await bcrypt.compare(req.body.password, musician.password)
                 if(passwordMatch){
@@ -46,37 +47,37 @@ module.exports = {
 
     logout: (req,res) => {
         res.clearCookie('userToken').json({message: "You have succesfully logged out"})
-    }
-}
+    },
 
 
-module.exports.allMusicians = (req, res) => {
-    Musician.find()
-        .then(allMusicians => res.json(allMusicians))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }))
-}
+    allMusicians: (req, res) => {
+        Musician.find()
+            .then(allMusicians => res.json(allMusicians))
+            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+},
 
-module.exports.createMusician = (req, res) => {
-    Musician.create(req.body)
-        .then(addNewMusician => res.json({ musician: addNewMusician}))
-        .catch((err) => {res.status(400).json(err)})
-}
+    createMusician: (req, res) => {
+        Musician.create(req.body)
+            .then(addNewMusician => res.json({ musician: addNewMusician}))
+            .catch((err) => {res.status(400).json(err)})
+},
 
-module.exports.oneMusician = (req, res) => {
-    Musician.findOne({ _id: req.params.id })
-        .then(oneMusician => res.json({ musician: oneMusician}))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }))
-}
+    oneMusician: (req, res) => {
+        Musician.findOne({ _id: req.params.id })
+            .then(oneMusician => res.json({ musician: oneMusician}))
+            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+},
 
-module.exports.updateMusician = (req, res) => {
-    Musician.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
-        .then(updatedMusician => res.json({ musician: updatedMusician }))
-        .catch(err => res.status(400).json(err))
-}
+    updateMusician: (req, res) => {
+        Musician.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
+            .then(updatedMusician => res.json({ musician: updatedMusician }))
+            .catch(err => res.status(400).json(err))
+},
         
-module.exports.deleteMusician = (req, res) => {
-    Musician.deleteOne({ _id: req.params.id })
-        .then(result => res.json({ result: result }))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }))
-        }
+    deleteMusician: (req, res) => {
+        Musician.deleteOne({ _id: req.params.id })
+            .then(result => res.json({ result: result }))
+            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+            }
+    }
 

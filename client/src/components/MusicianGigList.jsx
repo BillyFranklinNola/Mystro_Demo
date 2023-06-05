@@ -1,32 +1,21 @@
 import React, {useEffect, useState} from 'react'
-import {useNavigate, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
-import DeleteButton from './DeleteButton'
 
-const AdminGigList = (props) => {
+const MusicianGigList = (props) => {
     const [allGigs, setAllGigs] = useState([])
-    const navigate = useNavigate();
-    useEffect(() => {
+    const [musicianGigs, setMusicianGigs] = useState([])
+
+    useEffect((id) => {
         axios.get('http://localhost:8000/api/gigs/list')
         .then((res)=>{
             console.log(res.data);
             setAllGigs(res.data);
+            setMusicianGigs(allGigs.filter((gig) => gig.musicians._id === id))
         })
         .catch((err)=>{
             console.log(err);
         })}, [])
-        
-    const deleteGig = (id) => {
-        axios.delete(`http://localhost:8000/api/players/deleteGig/${id}`)
-        .then((res)=>{
-            console.log(res);
-            setAllGigs(allGigs.filter((gig) => gig._id !== id))
-            navigate('/AdminDashboard')
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    }
 
 return (
     <div className='col-10 p-3 border border-dark rounded mx-auto p-5'>
@@ -41,7 +30,7 @@ return (
             </thead>
             <tbody>
                 {
-                allGigs.map((gig)=>{
+                musicianGigs.map((gig)=>{
                 return(
                     <tr key={gig._id}>
                         <td className='text-start'>{gig.venue}</td>
@@ -49,8 +38,7 @@ return (
                         <td className='text-start'>{gig.city}, {gig.state}</td>
                         <td>
                             <div className='d-flex justify-content-around mx-auto'>
-                                <Link className='btn btn-primary' to={`/musicians/editMusician/${gig._id}`}>Edit</Link>
-                                <DeleteButton className='btn btn-danger' id={gig._id} successCallback={()=>deleteGig(gig._id)}/>
+                                <Link className='btn btn-primary' to={`/gigs/viewGig/${gig._id}`}>View</Link>
                             </div>
                         </td>
                     </tr>
@@ -62,4 +50,4 @@ return (
     </div>
 )}
 
-export default AdminGigList
+export default MusicianGigList

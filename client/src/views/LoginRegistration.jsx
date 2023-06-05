@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import RegisterForm from '../components/RegisterForm'
+import LoginForm from '../components/LoginForm'
 
 const LoginRegistration = (props) => {
     const [allMusicians, setAllMusicians] = useState([]);
@@ -11,7 +12,7 @@ const LoginRegistration = (props) => {
 
 
     const createMusician = musician => {    
-        axios.post('http://localhost:8000/api/registerMusician', musician, {withCredentials: true})
+        axios.post('http://localhost:8000/api/musicians/register', musician, {withCredentials: true})
                 .then(res=>{
                     console.log(res);
                     setMusician(res.data)
@@ -27,34 +28,23 @@ const LoginRegistration = (props) => {
                         {errorArray.push(errorResponse[key].message)}
                     setErrors(errorArray);
                 });
-    // const [loginInfo, setLoginInfo] = useState({
-    //     email: "",
-    //     password: ""
-    // })
-
-    // const logChangeHandler = (e) => {
-    //     setLoginInfo({
-    //         ...loginInfo, 
-    //         [e.target.name]:e.target.value
-    //     })
-    // }
-
-    // const loginHandler = (e) => {
-    //     e.preventDefault();
-    //     axios.post('http://localhost:8000/api/login', loginInfo, {withCredentials: true})
-    //     .then(res => {
-    //         console.log(res)
-    //         navigate('/MusicianDashboard')
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
+    }
+    const loginMusician = loginInfo => {
+        axios.post('http://localhost:8000/api/musicians/login', loginInfo, {withCredentials: true})
+        .then(res => {
+            console.log(res)
+            navigate('/MusicianDashboard')
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
 return (
-    <div>
+    <div className='d-flex'>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
         <RegisterForm onSubmitProp={createMusician} initialFirstName="" initialLastName="" initialEmail="" initialInstrument="" initialPassword="" initialConfirmPassword=""/>
+        <LoginForm onSubmitProp={loginMusician} loginEmail="" loginPassword=""/>
     </div>
     )
 }   
