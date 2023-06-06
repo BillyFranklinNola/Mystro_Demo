@@ -19,7 +19,6 @@ const CreateGig = (props) => {
                     navigate('/AdminDashboard')
                 })
                 .catch(err=>{
-                    console.log("hello")
                     console.log(err)
                     const errorResponse = err.response.data.message;
                     const errorArray = [];

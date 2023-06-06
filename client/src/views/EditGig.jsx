@@ -10,8 +10,6 @@ const EditGig = (props) => {
     const [errors, setErrors] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
-
-
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/gigs/oneGig/${id}`)
         .then((res)=>{

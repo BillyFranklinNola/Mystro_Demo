@@ -20,8 +20,6 @@ const GigForm = (props) => {
     })
     const [errors, setErrors] = useState({})
     const [allMusicians, setAllMusicians] = useState([])
-    const musiciansOnGig = []
-
 
         useEffect(() => {
             axios.get('http://localhost:8000/api/musicians/list')
@@ -34,14 +32,34 @@ const GigForm = (props) => {
             })}, [])
 
     const changeHandler = (e) => {
-        if (e.target.type === 'checkbox'){
-            musiciansOnGig.push({e})
+        if (e.target.type == "checkbox"){
+            console.log(e.target.id)
+            const musicianId = e.target.id;
+            if (e.target.checked) {
+                setGig(prevGig => {
+                    const updatedMusicians = [...prevGig.musicians, musicianId];
+                    console.log(gig.musicians)
+                    return {
+                        ...prevGig,
+                        musicians: updatedMusicians
+                    };
+                });
+            } else {
+                setGig(prevGig => {
+                    const updatedMusicians = prevGig.musicians.filter(musician => musician !== musicianId);
+                    console.log(updatedMusicians)
+                    return{
+                        ...prevGig,
+                        musicians: updatedMusicians,
+                    };
+                });
+            }
+        } else {
+            setGig({...gig, [e.target.name]:e.target.value})
         }
-        console.log(musiciansOnGig)
-        setGig({...gig, [e.target.name]:e.target.value})
         console.log(gig)
     }
-
+    
     const onSubmitHandler = (e) => {
         e.preventDefault();
         onSubmitProp(gig)

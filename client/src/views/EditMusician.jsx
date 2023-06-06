@@ -7,7 +7,7 @@ const EditMusician = (props) => {
     const [musician, setMusician] = useState(props);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
-    const{id} = useParams()
+    const{id} = useParams();
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/musicians/oneMusician/${id}`)

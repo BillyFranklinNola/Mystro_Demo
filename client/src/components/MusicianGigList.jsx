@@ -11,7 +11,7 @@ const MusicianGigList = (props) => {
         .then((res)=>{
             console.log(res.data);
             setAllGigs(res.data);
-            setMusicianGigs(allGigs.filter((gig) => gig.musicians._id === id))
+            setMusicianGigs(allGigs.filter(gig => gig.musicians._id === id))
         })
         .catch((err)=>{
             console.log(err);
