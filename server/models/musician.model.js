@@ -32,6 +32,11 @@ const MusicianSchema = new mongoose.Schema({
         required:[true, "Password is required"],
         minLength:[8, "Password must be 8 or more characters"],
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
+
 }, {timestamps: true});
 
 MusicianSchema.virtual("confirmPassword")

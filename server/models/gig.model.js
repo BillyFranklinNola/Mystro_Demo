@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const {isEmail} = require('validator');
 
 const GigSchema = new mongoose.Schema({
     venue: {
@@ -47,14 +46,14 @@ const GigSchema = new mongoose.Schema({
         required:[true, "End time is required"],
     },
     musicians: {
-        type: String,
-        required:[true, "End time is required"],
+        type: Array,
+        required:[true, "You must select at least one musician"],
     },
     charts:  {
-        type: Buffer
+        type: String,
     },
     timeline:  {
-        type: Buffer
+        type: String,
     }
 }, {timestamps: true});
 

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 const EditMusicianForm = (props) => {
-    const {initialFirstName, initialLastName, initialEmail, initialInstrument, initialPassword , initialConfirmPassword, onSubmitProp} = props;
+    const {initialFirstName, initialLastName, initialEmail, initialInstrument, onSubmitProp} = props;
     const [musician, setMusician] = useState({
         firstName: initialFirstName,
         lastName: initialLastName,
@@ -21,7 +21,7 @@ const EditMusicianForm = (props) => {
     }
 
     return (
-        <div className="col-4 bg-light mx-auto p-3 border border-dark rounded m-5">
+        <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
             <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
                     <label htmlFor='firstName'>First Name:</label>

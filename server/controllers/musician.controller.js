@@ -2,6 +2,7 @@ const Musician = require('../models/musician.model');
 const secret = process.env.SECRET_KEY;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const genAuthToken = require('../config/genAuthToken');
 
 module.exports = {
     register: async (req,res) => {
@@ -11,8 +12,9 @@ module.exports = {
                 res.status(400).json({message: "That email already exists, please login"});
             }else{
                 const newMusician = await Musician.create(req.body);
-                const musicianToken = jwt.sign({_id: newMusician.id, email: newMusician.email}, secret, {expiresIn: '1d'});
-                console.log(musicianToken)
+                console.log(newMusician.id)
+                const token = jwt.sign({id: newMusician.id}, secret, {expiresIn: '1d'});
+                console.log(token)
                 res.json({message: "success", musician: newMusician})
             }
         }
@@ -24,13 +26,13 @@ module.exports = {
 
     login: async (req, res) => {
         try {
-            const musician = await Musician.findOne({email: req.body.email});
-            console.log(musician)
+            let musician = await Musician.findOne({email: req.body.email});
             if(musician){
                 const passwordMatch = await bcrypt.compare(req.body.password, musician.password)
                 if(passwordMatch){
-                    const musicianToken = jwt.sign({_id: musician.id, email: musician.email}, secret, {expiresIn: '2h'})
-                    res.cookie('musicianToken', musicianToken, {httpOnly:true}).json({message: "success", musician: musician});
+                    const token = jwt.sign({id: musician._id}, secret, {expiresIn: '2h'})
+                    console.log(token)
+                    res.cookie('token', token, {httpOnly:true}).json({message: "success", musician: musician});
                 }
                 else{
                     res.status(400).json({message: "Invalid email or password"})
@@ -46,7 +48,7 @@ module.exports = {
     },
 
     logout: (req,res) => {
-        res.clearCookie('userToken').json({message: "You have succesfully logged out"})
+        res.clearCookie('token').json({message: "You have succesfully logged out"})
     },
 
 
@@ -54,12 +56,6 @@ module.exports = {
         Musician.find()
             .then(allMusicians => res.json(allMusicians))
             .catch(err => res.json({ message: 'Something went wrong', error: err }))
-},
-
-    createMusician: (req, res) => {
-        Musician.create(req.body)
-            .then(addNewMusician => res.json({ musician: addNewMusician}))
-            .catch((err) => {res.status(400).json(err)})
 },
 
     oneMusician: (req, res) => {
@@ -78,6 +74,25 @@ module.exports = {
         Musician.deleteOne({ _id: req.params.id })
             .then(result => res.json({ result: result }))
             .catch(err => res.json({ message: 'Something went wrong', error: err }))
-            }
-    }
+},
 
+    loggedInMusician: (req, res) => {
+        const token = req.cookies.token;
+        console.log(token)
+        if (!token) {
+        return res.status(401).json({ message: 'No token found' });
+        } try {
+            const decodedJWT = jwt.verify(token, secret);
+            const musicianId = decodedJWT._id;
+            Musician.findById(musicianId)
+                .then((musician) => {
+            if (!musician) {
+            return res.status(404).json({ message: 'Musician not found' });
+        }
+        res.json({ musician });
+        })
+        .catch((err) => res.status(500).json({ message: 'Internal server error' }));
+    } catch (err) {
+        res.status(401).json({ message: 'Invalid token' });
+    }
+}}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import GigForm from '../components/GigForm'
+import NavBar from '../components/NavBar'
 
 const EditGig = (props) => {
     const navigate = useNavigate();
@@ -41,12 +42,30 @@ const EditGig = (props) => {
 }
 
 return (
-    <div>
+    <div style={{
+        background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+    }}>
+        <NavBar/>
+        <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>
+        <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
         {
-        loaded &&<GigForm onSubmitProp={updateGig} initialVenue={gig.venue} initialDate={gig.date} initialStreetAddress={gig.streetAddress} initialCity={gig.city} initialState={gig.state}  initialZipCode={gig.zipCode} initialSetUpBy={gig.setUpBy} initialstartTime={gig.startTime} initialEndTime={gig.endTime}  initialMusicians={gig.musicians} initialCharts={gig.charts} initialTimeline={gig.timeline}/>
+        loaded &&<GigForm 
+            onSubmitProp={updateGig}
+            initialVenue={gig.venue}
+            initialDate={gig.date}
+            initialStreetAddress={gig.streetAddress}
+            initialCity={gig.city}
+            initialState={gig.state}
+            initialZipCode={gig.zipCode}
+            initialSetUpBy={gig.setUpBy}
+            initialStartTime={gig.startTime}
+            initialEndTime={gig.endTime}
+            initialMusicians={gig.musicians}
+            />
         }
         </div>
+    </div>
     )
 }   
 

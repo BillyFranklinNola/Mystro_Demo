@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 const GigForm = (props) => {
-    const {initialVenue, initialDate, initialstreetAddress, initialCity, initialState , initialZipCode, initialSetUpBy, initialStartTime, initialEndTime, initialMusicians, initialCharts, initialTimline, onSubmitProp} = props;
+    const {initialVenue, initialDate, initialStreetAddress, initialCity, initialState , initialZipCode, initialSetUpBy, initialStartTime, initialEndTime, initialMusicians, initialCharts, initialTimeline, onSubmitProp} = props;
     const [gig, setGig] = useState({
         venue: initialVenue,
         date: initialDate,
-        streetAddress: initialstreetAddress,
+        streetAddress: initialStreetAddress,
         city: initialCity,
         state: initialState,
         zipCode: initialZipCode,
@@ -15,58 +15,84 @@ const GigForm = (props) => {
         endTime: initialEndTime,
         musicians: initialMusicians,
         charts: initialCharts,
-        timeline: initialTimline
+        timeline: initialTimeline
 
     })
     const [errors, setErrors] = useState({})
     const [allMusicians, setAllMusicians] = useState([])
+    const [chartsFile, setChartsFile] = useState('')
+    const [timelineFile, setTimelineFile] = useState('')
+    const [image, setImage] = useState('')
 
+    
         useEffect(() => {
             axios.get('http://localhost:8000/api/musicians/list')
             .then((res)=>{
-                console.log(res.data);
                 setAllMusicians(res.data);
             })
             .catch((err)=>{
                 console.log(err);
             })}, [])
 
-    const changeHandler = (e) => {
-        if (e.target.type == "checkbox"){
-            console.log(e.target.id)
-            const musicianId = e.target.id;
-            if (e.target.checked) {
-                setGig(prevGig => {
-                    const updatedMusicians = [...prevGig.musicians, musicianId];
-                    console.log(gig.musicians)
-                    return {
-                        ...prevGig,
-                        musicians: updatedMusicians
-                    };
-                });
-            } else {
-                setGig(prevGig => {
-                    const updatedMusicians = prevGig.musicians.filter(musician => musician !== musicianId);
-                    console.log(updatedMusicians)
-                    return{
-                        ...prevGig,
-                        musicians: updatedMusicians,
-                    };
-                });
+    function previewFile(timelineFile){
+        const reader = new FileReader();
+        reader.readAsDataURL(timelineFile);
+
+        reader.onloadend = () => {
+            console.log(image);
+            setImage(reader.result);
+        };
+    }
+        
+
+    const changeHandler = async (e) => {
+        try{
+            if (e.target.type === "checkbox"){
+                const musicianId = e.target.id;
+                try {
+                    const res = await axios.get(
+                        `http://localhost:8000/api/musicians/oneMusician/${musicianId}`
+                        );
+                    const musicianData = res.data;
+
+            setGig((prevGig) => {
+                const updatedMusicians = [...prevGig.musicians, musicianData];
+                return {
+                    ...prevGig,
+                    musicians: updatedMusicians
+                };
+            }, console.log(gig));
+        } catch (err) {         
+            console.log(err);
+        }
+    } else if (e.target.type === "file") {
+        const file = e.target.files[0];
+        const fieldName = e.target.name;            
+            if (fieldName === "charts") {
+                setChartsFile(file);
+            } else if (fieldName === "timeline") {
+                setTimelineFile(file);
+                previewFile(file);
             }
         } else {
-            setGig({...gig, [e.target.name]:e.target.value})
-        }
-        console.log(gig)
+        setGig((prevGig) => ({
+            ...prevGig,
+            [e.target.name]: e.target.value
+            
+        }));
     }
-    
+    } catch (err) {
+        console.log(err);
+    }console.log(gig);
+    };
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
         onSubmitProp(gig)
     }
 
     return (
-        <div className="col-4 bg-light mx-auto p-3 border border-dark rounded m-5">
+        <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
             <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
                     <label htmlFor='venue'>Venue:</label>
@@ -92,6 +118,15 @@ const GigForm = (props) => {
                     {
                         errors.streetAddress?
                         <p>{errors.streetAddress.message}</p>:
+                        null
+                    }
+                </div>
+                <div className='form-group m-3'>
+                    <label htmlFor='city'>City:</label>
+                    <input type="text" name="city" id="city" className="form-control" value={gig.city} onChange = {changeHandler}/>
+                    {
+                        errors.city?
+                        <p>{errors.city.message}</p>:
                         null
                     }
                 </div>
@@ -210,7 +245,7 @@ const GigForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='charts'>Charts:</label>
-                    <input type="file" name="charts" id="charts" multiple className="form-control" value={gig.charts} onChange = {changeHandler}/>
+                    <input type="file" name="charts" id="charts" multiple className="form-control" onChange = {changeHandler}/>
                     {
                         errors.charts?
                         <p>{errors.charts.message}</p>:
@@ -218,13 +253,14 @@ const GigForm = (props) => {
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='timeline'>Charts:</label>
-                    <input type="file" name="timeline" id="timeline" className="form-control" value={gig.timeline} onChange = {changeHandler}/>
+                    <label htmlFor='timeline'>Timeline:</label>
+                    <input type="file" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.timeline?
                         <p>{errors.timeline.message}</p>:
                         null
                     }
+                    <img src={image} alt="Preview of uploaded file." />
                 </div>
                 <button input type="submit" className='btn btn-warning'>Submit</button>
             </form>

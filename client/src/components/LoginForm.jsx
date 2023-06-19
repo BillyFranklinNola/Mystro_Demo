@@ -18,7 +18,7 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div className="col-4 bg-light mx-auto p-3 border border-dark rounded m-5">
+        <div className="bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
             <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
                     <label htmlFor='email'>Email:</label>
@@ -31,7 +31,7 @@ const LoginForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='password'>Password:</label>
-                    <input type="text" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
+                    <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
                     {
                         errors.password?
                         <p>{errors.password.message}</p>:
