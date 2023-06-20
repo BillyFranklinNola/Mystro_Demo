@@ -44,17 +44,17 @@ return (
         <NavBar/>
         <div className='d-flex mt-5'>
         </div>
-        <div className='d-flex justify-content-around'>
+        <div className='d-flex justify-content-around p-5'>
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-            <div>
+            <div className='col ms-5'>
                 <h2 className="text-warning mx-auto">Login:</h2>
                 <LoginForm onSubmitProp={loginMusician} loginEmail="" loginPassword=""/>
             </div>
-            <div>
-            <h2 className="text-warning mx-auto align-items-center">OR</h2>
+            <div className='col'>
+                <h2 className="text-warning mx-auto align-self-center">OR</h2>
             </div>
-            <div>
-                <h2 className="text-warning mx-auto">Register:</h2>
+            <div className='col me-5'>
+                <h2 className="offset-md text-warning mx-auto">Register:</h2>
                 <RegisterForm initialFirstName="" initialLastName="" initialEmail="" initialInstrument="" initialPassword="" initialConfirmPassword=""/>
             </div>
         </div>

@@ -19,12 +19,13 @@ const NavBar = (props) => {
     }
     
     return (
-        <div className="navbar navbar-expand-xxl bg-secondary bg-gradient d-flex justify-content-between p-4 rounded border border-3 border-black">
+        <div className="navbar navbar-expand-xxl bg-secondary bg-gradient d-flex justify-content-between p-4  border border-2 border-black">
             <a className="navbar-brand text-warning fs-2">
                 NOLA Live Productions
             </a>
             <div>
-                <Link className="btn btn-warning ms-3" to='/AdminDashboard'>Dashboard</Link>
+                <Link className="btn btn-warning ms-3" to='/AdminDashboard'>Admin Dashboard</Link>
+                <Link className="btn btn-warning ms-3" to='/MusicianDashboard'>Musician Dashboard</Link>
                 <div className="btn btn-warning ms-3" onClick={logoutHandler}>
                     Logout
                 </div>

@@ -79,7 +79,7 @@ return (
                         <MapOfGig gig={gig} setGig={setGig} gigLattitude={gigLattitude} setGigLattitude={setGigLattitude} gigLongitude={gigLongitude} setGigLongitude={setGigLongitude}/>
                     </div>
                     <div className="border border-3 border-secondary rounded p-2 text-center text-white"> 
-                        <p>
+                        <p className="mt-3">
                             {gig.venue}
                         </p>
                         <p>
@@ -90,9 +90,9 @@ return (
                         </p>
                     </div>
                 </div>
-                <div className="col-3 border border-3 border-secondary rounded p-2">
+                <div className="col-3 border border-3 border-secondary rounded p-3">
                     <div className="border border-3 border-secondary rounded p-2 text-white">
-                        <p>
+                        <p className="mt-3">
                             Set up by: {setUpBy}
                         </p>
                         <p>
@@ -102,8 +102,14 @@ return (
                             End: {endTime}
                         </p>                
                     </div>
-                    <div>
-                        <Link to={`/gigs/charts/${id}`} className="btn btn-warning w-100">Charts</Link>
+                    <div className="border border-3 border-secondary rounded p-3 text-white text-center mt-3">
+                        <h3>Notes</h3>
+                        <p>No Elevator</p>
+                        <p>Valerie - Amy Winehouse</p>
+                        <p>Uptown Funk - Bruno Mars</p>
+                    </div>
+                    <div className="mt-3">
+                        {/* <Link to={`/gigs/charts/${id}`} className="btn btn-warning w-100">Charts</Link> */}
                         <Link to={`/gigs/timeline/${id}`} className="btn btn-warning w-100 mt-3">Timline</Link>
                     </div>
                 </div>

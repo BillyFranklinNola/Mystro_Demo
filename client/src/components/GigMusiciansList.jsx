@@ -17,12 +17,12 @@ const GigMusiciansList = (props) => {
         })}, [])
 
 return(
-    <div className='p-2 border border-3 border-secondary rounded'>
+    <div className='p-3 border border-3 border-secondary rounded'>
         <table className='table table-striped border border-3 border-secondary rounded mx-auto text-white'>
             <thead>
                 <tr>
-                    <th scope='col' className='col-4 text-start'>Musician</th>
-                    <th scope='col' className='text-start'>Instrument</th>
+                    <th scope='col' className='col-6 text-start'>Musician</th>
+                    <th scope='col' className='col-6 text-start'>Instrument</th>
                 </tr>
             </thead>
             <tbody>

@@ -11,7 +11,6 @@ import AdminDashboard from './views/AdminDashboard';
 import GigView from './views/GigView';
 import MusicianDashboard from './views/MusicianDashboard';
 import TimelineView from './views/TimelineView';
-import { register, reset } from './slices/authSlice';
 
 
 function App() {

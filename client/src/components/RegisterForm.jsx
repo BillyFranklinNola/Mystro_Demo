@@ -49,6 +49,7 @@ const RegisterForm = (props) => {
         } else {
             const musicianData = { firstName, lastName, email, instrument, password, confirmPassword }
             dispatch(register(musicianData))
+            navigate('/MusicianDashboard')  
         // onSubmitProp(musicianData)
     }
     if (isLoading) {

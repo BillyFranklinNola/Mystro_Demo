@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { Cloudinary } from "cloudinary-core";
+import NavBar from "../components/NavBar";
+
 
 const TimelineView = (props) => {
     const {id} = useParams();
@@ -20,22 +21,26 @@ const TimelineView = (props) => {
         })
         }, [])
 
-        console.log(gig.timeline);
+    // const cld = new Cloudinary({
+    //     cloud: {
+    //         cloud_name: "dyl4kpmie", 
+    //         secure: true
+    //     }
+    // });  
 
-    const cld = new Cloudinary({
-        cloud: {
-            cloud_name: "dyl4kpmie", 
-            secure: true
-        }
-    });  
-
-    const fetchImage = cld.image()
+    // const fetchImage = cld.image()
 
     return (
-        <div style={{
-            background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
-        }}>
-
+        <div>
+            <NavBar/>
+            <div className="p-5" style={{
+                background: 'radial-gradient(circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+            }}>
+                <div className="w-50 mx-auto">
+                    <h2 className="text-warning mb-5">Full Timline</h2>
+                    <img src={require('../assets/Sample_Timeline.png')} alt="Image of full timelinr" className="img-fluid border border-dark border-3"/>
+                </div>
+            </div>
         </div>
     );
 }
