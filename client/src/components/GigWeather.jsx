@@ -35,7 +35,7 @@ const GigWeather = (props) => {
 
     return (
         <div className="border border-3 border-secondary rounded text-white p-3">
-            <h3 className="mb-3">Gig Forecast</h3>
+            <h3 className="mb-3 mt-2">Gig Forecast</h3>
             <p>High: {gigWeather.tempmax}º</p>
             <p>Low: {gigWeather.tempmin}º</p>
             <p>Humidity: {gigWeather.humidity}%</p>

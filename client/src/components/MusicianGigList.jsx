@@ -41,7 +41,7 @@ return (
                         <th scope='col' className='col-4 text-start text-white'>Venue</th>
                         <th scope='col' className='text-start text-white'>Date</th>
                         <th scope='col' className='text-start text-white'>Location</th>
-                        <th scope='col'>Actions</th>
+                        <th scope='col' className='text-white'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
