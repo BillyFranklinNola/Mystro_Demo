@@ -243,7 +243,7 @@ const GigForm = (props) => {
                         null
                     }
                 </div>
-                {/* <div className='form-group m-3'>
+                <div className='form-group m-3'>
                     <label htmlFor='charts'>Charts:</label>
                     <input type="file" name="charts" id="charts" multiple className="form-control" onChange = {changeHandler}/>
                     {
@@ -262,7 +262,7 @@ const GigForm = (props) => {
                     }
                     <img src={image} alt="Preview of uploaded file." />
                 </div>
-                <button input type="submit" className='btn btn-warning'>Submit</button> */}
+                <button input type="submit" className='btn btn-warning'>Submit</button>
             </form>
         </div>
     )

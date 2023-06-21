@@ -15,68 +15,69 @@ const CreateGig = (props) => {
     const [chartsFile, setChartsFile] = useState(null);
     const [timelineFile, setTimelineFile] = useState(null);
 
-    const createGig = async (gig) => {
-        try {
-            const formData = new FormData();
-                formData.append('venue', gig.venue);
-                formData.append('date', gig.date);
-                formData.append('streetAddress', gig.streetAddress);
-                formData.append('city', gig.city);
-                formData.append('state', gig.state);
-                formData.append('zipCode', gig.zipCode);
-                formData.append('setUpBy', gig.setUpBy);
-                formData.append('startTime', gig.startTime);
-                formData.append('endTime', gig.endTime);
-                formData.append('musicians', gig.musicians);
-            if (chartsFile) {
-                formData.append('charts', chartsFile);
-        }
-        if (timelineFile) {
-            formData.append('timeline', timelineFile);
-        }
-        const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, setHeaders());
-        setGig(res.data);
-        console.log(res.data);
-        setAllGigs([...allGigs, res.data]);
-        navigate('/AdminDashboard');
-        } catch (err) {
-        console.log(err);
-        const errorResponse = err.response.data.message;
-        const errorArray = [];
-        for (const key of Object.keys(errorResponse)) {
-            errorArray.push(errorResponse[key].message);
-        }
-        setErrors(errorArray);
-        }
-    };
+    // const createGig = async (gig) => {
+    //     try {
+    //         const formData = new FormData();
+    //             formData.append('venue', gig.venue);
+    //             formData.append('date', gig.date);
+    //             formData.append('streetAddress', gig.streetAddress);
+    //             formData.append('city', gig.city);
+    //             formData.append('state', gig.state);
+    //             formData.append('zipCode', gig.zipCode);
+    //             formData.append('setUpBy', gig.setUpBy);
+    //             formData.append('startTime', gig.startTime);
+    //             formData.append('endTime', gig.endTime);
+    //             formData.append('musicians', gig.musicians);
+    //         if (chartsFile) {
+    //             formData.append('charts', chartsFile);
+    //     }
+    //     if (timelineFile) {
+    //         formData.append('timeline', timelineFile);
+    //     }
+    //     const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, setHeaders());
+    //     setGig(res.data);
+    //     console.log(res.data);
+    //     setAllGigs([...allGigs, res.data]);
+    //     navigate('/AdminDashboard');
+    //     } catch (err) {
+    //     console.log(err);
+    //     const errorResponse = err.response.data.message;
+    //     const errorArray = [];
+    //     for (const key of Object.keys(errorResponse)) {
+    //         errorArray.push(errorResponse[key].message);
+    //     }
+    //     setErrors(errorArray);
+    //     }
+    // };
     
-    // const createGig = async (gig) => {    
-    //     try{
-    //         if(chartsFile){
-    //             const chartsResult = await axios.post('http://localhost:8000/api/fileUpload', {chartsFile: chartsFile});
-    //             gig.charts = chartsResult.data.public_id;
-    //             setChartsFile(chartsResult.data.public_id);
+    const createGig = async (gig) => {    
+        try{
+            // if(chartsFile){
+            //     const chartsResult = await axios.post('http://localhost:8000/api/fileUpload', {chartsFile: chartsFile});
+            //     gig.charts = chartsResult.data.public_id;
+            //     setChartsFile(chartsResult.data.public_id);
 
-    //         }
-    //         if(timelineFile){
-    //             const timelineResult = await axios.post('http://localhost:8000/api/fileUpload', {timelineFile: timelineFile});
-    //             gig.timeline = timelineResult.data.public_id;
-    //             setTimelineFile(timelineResult.data.public_id);
-    //         }
+            // }
+            // if(timelineFile){
+            //     const timelineResult = await axios.post('http://localhost:8000/api/fileUpload', {timelineFile: timelineFile});
+            //     gig.timeline = timelineResult.data.public_id;
+            //     setTimelineFile(timelineResult.data.public_id);
+            // }
 
-    //         const res = await axios.post('http://localhost:8000/api/gigs/createGig', gig, setHeaders())
-    //             console.log(res);
-    //             setGig(res.data)
-    //             setAllGigs([...allGigs, res.data]);
-    //             navigate('/AdminDashboard')
-    //         } catch (err) {
-    //             console.log(err)
-    //             const errorResponse = err.response.data.message;
-    //             const errorArray = [];
-    //             for (const key of Object.keys(errorResponse)) 
-    //                 {errorArray.push(errorResponse[key].message)}
-    //             setErrors(errorArray);
-    //         };
+            const res = await axios.post('http://localhost:8000/api/gigs/createGig', gig)
+                console.log(res);
+                setGig(res.data)
+                setAllGigs([...allGigs, res.data]);
+                navigate('/AdminDashboard')
+            } catch (err) {
+                console.log(err)
+                const errorResponse = err.response.data.message;
+                const errorArray = [];
+                for (const key of Object.keys(errorResponse)) 
+                    {errorArray.push(errorResponse[key].message)}
+                setErrors(errorArray);
+            }
+        };
 
 return (
     <div style={{

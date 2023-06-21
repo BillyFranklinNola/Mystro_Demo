@@ -6,26 +6,22 @@ const cloudinary = require('../middleware/cloudinary');
 
 module.exports = app => {
     app.get('/api/gigs/gigList', GigController.allGigs);
-    app.post('/api/gigs/createGig', upload.fields([
-        { name: 'charts', maxCount: 2 },
-        { name: 'timeline', maxCount: 2 }, 
-    ]), async (req, res) => {
+    app.post('/api/gigs/createGig', GigController.createGig),  async (req, res) => {
         const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians } = req.body;
-        const charts = req.files['charts'];
-        const timeline = req.files['timeline'];
-        console.log(req.files);
+        // const charts = req.files['charts'];
+        // const timeline = req.files['timeline'];
         try {
-        const uploadedCharts = await cloudinary.uploader.upload(charts.path, {
-            upload_preset: 'Nola_Live',
-        });
+        // const uploadedCharts = await cloudinary.uploader.upload(charts.path, {
+        //     upload_preset: 'Nola_Live',
+        // });
 
-        const uploadedTimeline = await cloudinary.uploader.upload(timeline.path, {
-            upload_preset: 'Nola_Live', 
-            allowed_formats: ['jpg', 'png', 'jpeg'],
-        });
+        // const uploadedTimeline = await cloudinary.uploader.upload(timeline.path, {
+        //     upload_preset: 'Nola_Live', 
+        //     allowed_formats: ['jpg', 'png', 'jpeg'],
+        // });
     
-        const chartsUrl = uploadedCharts.secure_url;
-        const timelineUrl = uploadedTimeline.secure_url;
+        // const chartsUrl = uploadedCharts.secure_url;
+        // const timelineUrl = uploadedTimeline.secure_url;
 
         const newGig = {
             venue,
@@ -38,8 +34,8 @@ module.exports = app => {
             startTime,
             endTime,
             musicians,
-            charts: chartsUrl,
-            timeline: timelineUrl,
+            charts,
+            timeline,
         };
     
         const createdGig = await GigController.createGig(newGig);
@@ -49,7 +45,7 @@ module.exports = app => {
         console.log(err);
         res.status(500).json({ error: 'Internal server error' });
         }
-    });
+    };
     app.get('/api/gigs/oneGig/:id', GigController.oneGig);
     app.put('/api/gigs/editGig/:id', GigController.updateGig);
     app.delete('/api/gigs/deleteGig/:id', GigController.deleteGig);    
