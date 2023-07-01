@@ -35,7 +35,7 @@ const NavBar = (props) => {
                 
     
     return (
-        <div className="navbar navbar-expand-xxl bg-secondary bg-gradient d-flex justify-content-between p-4  border border-2 border-black">
+        <div className="navbar navbar-expand-xxl bg-secondary bg-gradient d-flex justify-content-between p-4 rounded border border-2 border-black mx-3">
             <a className="navbar-brand text-warning fs-2">
                 NOLA Live Productions
             </a>

@@ -45,25 +45,26 @@ return (
     <div style={{
         background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
     }}>
-        <NavBar/>
-        <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>
-        <div>
-        {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-        {
-        loaded &&<GigForm 
-            onSubmitProp={updateGig}
-            initialVenue={gig.venue}
-            initialDate={gig.date}
-            initialStreetAddress={gig.streetAddress}
-            initialCity={gig.city}
-            initialState={gig.state}
-            initialZipCode={gig.zipCode}
-            initialSetUpBy={gig.setUpBy}
-            initialStartTime={gig.startTime}
-            initialEndTime={gig.endTime}
-            initialMusicians={gig.musicians}
-            />
-        }
+        <div className='pt-3'>
+            <NavBar/>
+            <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>
+            <div>
+                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
+                {
+                loaded && <GigForm 
+                    onSubmitProp={updateGig}
+                    initialVenue={gig.venue}
+                    initialDate={gig.date}
+                    initialStreetAddress={gig.streetAddress}
+                    initialCity={gig.city}
+                    initialState={gig.state}
+                    initialZipCode={gig.zipCode}
+                    initialSetUpBy={gig.setUpBy}
+                    initialStartTime={gig.startTime}
+                    initialEndTime={gig.endTime}
+                    initialMusicians={gig.musicians} />
+                }
+            </div>
         </div>
     </div>
     )

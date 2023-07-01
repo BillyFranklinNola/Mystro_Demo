@@ -72,7 +72,7 @@ const GigForm = (props) => {
                 setChartsFile(file);
             } else if (fieldName === "timeline") {
                 setTimelineFile(file);
-                previewFile(file);
+                // previewFile(file);
             }
         } else {
         setGig((prevGig) => ({

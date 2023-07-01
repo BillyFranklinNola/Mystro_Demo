@@ -11,7 +11,6 @@ const EditMusician = (props) => {
     const{id} = useParams();
     const [loaded, setLoaded] = useState(false);
 
-
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/musicians/oneMusician/${id}`)
         .then((res)=>{
@@ -45,16 +44,23 @@ return (
     <div style={{
         background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
     }}>
-        <NavBar/>
-        <h2 className="text-warning mx-auto mt-5">Edit Musician:</h2>
-        <div>
-        {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-        {
-        loaded &&<EditMusicianForm onSubmitProp={updateMusician} initialFirstName={musician.firstName} initialLastName={musician.lastName} initialEmail={musician.email} initialInstrument={musician.instrument} initialSongList=""/>
-        }           
+        <div className='pt-3'>
+            <NavBar/>
+            <h2 className="text-warning mx-auto mt-5">Edit Musician:</h2>
+            <div>
+                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
+                {
+                loaded &&<EditMusicianForm
+                    onSubmitProp={updateMusician}
+                    initialFirstName={musician.firstName}
+                    initialLastName={musician.lastName}
+                    initialEmail={musician.email}
+                    initialInstrument={musician.instrument}
+                    initialSongList=""/>
+                }           
+            </div>
         </div>
-    </div>
-    )
+    </div>)
 }   
 
 export default EditMusician
