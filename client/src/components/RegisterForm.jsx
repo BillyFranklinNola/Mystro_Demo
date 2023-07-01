@@ -7,7 +7,15 @@ import { reset } from '../slices/authSlice';
 
 
 const RegisterForm = (props) => {
-    const {initialFirstName, initialLastName, initialEmail, initialInstrument, initialPassword , initialConfirmPassword} = props;
+    const {
+        initialFirstName,
+        initialLastName, 
+        initialEmail, 
+        initialInstrument, 
+        initialPassword , 
+        initialConfirmPassword} 
+        = props;
+
     const [musicianData, setMusicianData] = useState({
         firstName: initialFirstName,
         lastName: initialLastName,
@@ -33,7 +41,6 @@ const RegisterForm = (props) => {
         if (isSuccess || musician) {
             navigate('/')
         }
-
         dispatch (reset())
     }, [musician, isError, isSuccess, message, navigate, dispatch])
 

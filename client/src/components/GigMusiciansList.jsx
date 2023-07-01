@@ -27,18 +27,17 @@ return(
             </thead>
             <tbody>
                 {
-                gigMusicians.map((i)=>{
+                gigMusicians.map((gig)=>{
                 return(
-                        <tr key={i.musician._id}>
-                            <td className='text-start text-white'>{i.musician.firstName} {i.musician.lastName}</td>
-                            <td className='text-start text-white'>{i.musician.instrument}</td>
+                        <tr key={gig.musician._id}>
+                            <td className='text-start text-white'>{gig.musician.firstName} {gig.musician.lastName}</td>
+                            <td className='text-start text-white'>{gig.musician.instrument}</td>
                     </tr>
                     )
                     })}
             </tbody>
         </table>
     </div>
-)
-}
+)}
 
 export default GigMusiciansList

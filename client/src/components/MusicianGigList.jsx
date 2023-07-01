@@ -8,10 +8,6 @@ const MusicianGigList = (props) => {
     const [allGigs, setAllGigs] = useState([])
     const [musicianGigs, setMusicianGigs] = useState([])
     const {id} = useParams()
-    const [loggedInMusician, setLoggedInMusician] = useState({})
-    const token = Cookies.get('token');
-
-    console.log(token)
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/gigs/gigList')

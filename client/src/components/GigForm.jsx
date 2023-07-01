@@ -24,15 +24,14 @@ const GigForm = (props) => {
     const [timelineFile, setTimelineFile] = useState('')
     const [image, setImage] = useState('')
 
-    
-        useEffect(() => {
-            axios.get('http://localhost:8000/api/musicians/list')
-            .then((res)=>{
-                setAllMusicians(res.data);
-            })
-            .catch((err)=>{
-                console.log(err);
-            })}, [])
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/musicians/list')
+        .then((res)=>{
+            setAllMusicians(res.data);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })}, [])
 
     // function previewFile(timelineFile){
     //     const reader = new FileReader();

@@ -15,7 +15,6 @@ import {useSelector} from 'react-redux';
 import AdminRoute from './components/AdminRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 
-
 function App() {
 
   const [allMusicians, setAllMusicians] = useState([])
@@ -38,7 +37,11 @@ function App() {
               path='/AdminDashboard' 
               element={
                 <AdminRoute>
-                  <AdminDashboard allMusicians={allMusicians} setAllMusicians={setAllMusicians} allGigs={allGigs} setAllGigs={setAllGigs}/>
+                  <AdminDashboard
+                    allMusicians={allMusicians} 
+                    setAllMusicians={setAllMusicians} 
+                    allGigs={allGigs} 
+                    setAllGigs={setAllGigs}/>
                 </AdminRoute>
               }/>
           <Route 
@@ -59,7 +62,11 @@ function App() {
               path='/gigs/viewGig/:id' 
               element={
                 <ProtectedRoute>
-                  <GigView gig={gig} setGig={setGig} gigMusicians={gigMusicians} setGigMusicians={setGigMusicians}/>
+                  <GigView 
+                    gig={gig} 
+                    setGig={setGig} 
+                    gigMusicians={gigMusicians} 
+                    setGigMusicians={setGigMusicians}/>
                 </ProtectedRoute>
               }/>
           <Route 
@@ -73,7 +80,9 @@ function App() {
               path='/musicians/editMusician/:id' 
               element={
                 <AdminRoute>
-                  <EditMusician musician={musician} setMusician={setMusician}/>
+                  <EditMusician 
+                    musician={musician} 
+                    setMusician={setMusician}/>
                 </AdminRoute>
               }/>
           <Route 

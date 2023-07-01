@@ -6,11 +6,7 @@ import LoginForm from '../components/LoginForm'
 import NavBar from '../components/NavBar'
 
 const LoginRegistration = (props) => {
-    const [allMusicians, setAllMusicians] = useState([]);
-    const [musician, setMusician] = useState(props);
     const [errors, setErrors] = useState([]);
-    const navigate = useNavigate();
-
 
     // const createMusician = musician => {    
     //     axios.post('http://localhost:8000/api/musicians/register', musician, {withCredentials: true})
@@ -47,11 +43,19 @@ return (
                 {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 <div className='ms-5'>
                     <h2 className="text-warning mx-auto">Login:</h2>
-                    <LoginForm loginEmail="" loginPassword=""/>
+                    <LoginForm 
+                        loginEmail="" 
+                        loginPassword=""/>
                 </div>
                 <div className='me-5'>
                     <h2 className="offset-md text-warning mx-auto">Register:</h2>
-                    <RegisterForm initialFirstName="" initialLastName="" initialEmail="" initialInstrument="" initialPassword="" initialConfirmPassword=""/>
+                    <RegisterForm 
+                        initialFirstName="" 
+                        initialLastName="" 
+                        initialEmail="" 
+                        initialInstrument="" 
+                        initialPassword="" 
+                        initialConfirmPassword=""/>
                 </div>
             </div>
         </div>

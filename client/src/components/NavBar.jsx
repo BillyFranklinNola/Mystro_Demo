@@ -9,18 +9,6 @@ const NavBar = (props) => {
     const dispatch = useDispatch();
     const {musician} = useSelector((state) => state.auth);
 
-    // const logoutHandler = (e) => {
-    //     e.preventDefault();
-    //     axios.post('http://localhost:8000/api/musicians/logout', {}, {withCredentials: true})
-    //     .then(res => {
-    //         console.log(res)
-    //         navigate('/')
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
-    // }
-
     const logoutHandler = () => {
         try {
             axios.post('http://localhost:8000/api/musicians/logout', {}, {withCredentials: true});
@@ -32,8 +20,6 @@ const NavBar = (props) => {
             }
     }
 
-                
-    
     return (
         <div className="navbar navbar-expand-xxl bg-secondary bg-gradient d-flex justify-content-between p-4 rounded border border-2 border-black mx-3">
             <a className="navbar-brand text-warning fs-2">

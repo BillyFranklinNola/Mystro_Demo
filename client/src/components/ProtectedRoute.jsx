@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 const ProtectedRoute = ({ children }) => {
     const loggedInMusician = useSelector((state) => state.auth.musician);
     console.log(loggedInMusician);
-    return (loggedInMusician) ? children : <Navigate to="/unauthorized"/>
+    return (loggedInMusician) ? children : <Navigate to="/"/>
 }
 
 export default ProtectedRoute;

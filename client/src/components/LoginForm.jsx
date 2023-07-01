@@ -14,21 +14,15 @@ const LoginForm = (props) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const [errors, setErrors] = useState({})
-
     const {email, password} = loginInfo;
-
     const {musician, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
 
     useEffect(() => {
         if (isError) {
             toast.error(message)
         }
-        if (isSuccess || musician) {
-            navigate('/MusicianDashboard')
-        }
-
+        if (isSuccess || musician) 
         dispatch (reset())
     }, [musician, isError, isSuccess, message, navigate, dispatch])
 
@@ -41,14 +35,12 @@ const LoginForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        
         const loginInfo = { email, password }
         dispatch(login(loginInfo))
-        console.log(loginInfo)
-        // onSubmitProp(loginInfo)
-    }
-    if (isLoading) {
-        return <h1>Loading...</h1>
+        navigate('/AdminDashboard')
+        if (isLoading) {
+            return <h1>Loading...</h1>
+        }
     }
 
     return (
@@ -72,7 +64,6 @@ const LoginForm = (props) => {
                         null
                     }
                 </div>
-                
                 <button input type="submit" className='btn btn-warning'>Submit</button>
             </form>
         </div>

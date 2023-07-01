@@ -34,8 +34,7 @@ const MapOfGig = (props) => {
             <GoogleMap
                 zoom={10} 
                 center={{lat: gigLattitude, lng: gigLongitude }} 
-                mapContainerClassName="map-container"
-            >
+                mapContainerClassName="map-container">
             <Marker position={{lat: gigLattitude, lng: gigLongitude }}/>
             </GoogleMap>
         </div>

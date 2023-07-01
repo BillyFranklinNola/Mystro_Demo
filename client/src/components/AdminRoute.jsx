@@ -4,17 +4,13 @@ import { useSelector } from 'react-redux';
 
 const AdminRoute = ({ children }) => {
     const loggedInMusician = useSelector((state) => state.auth.musician);
-    console.log(loggedInMusician);
+    console.log(loggedInMusician.musician.isAdmin);
 
-    const isAdmin = () => {
-        if (loggedInMusician) {
-            return loggedInMusician.isAdmin;
-        } else {
-            return false;
-        }
-    }
-    console.log(isAdmin);
-    return (loggedInMusician && isAdmin) ? children : <Navigate to="/unauthorized"/>
+    return (loggedInMusician && loggedInMusician.musician.isAdmin) ? (
+        children
+    ) : (
+        <Navigate to="/MusicianDashboard"/>
+    )
 }
 
 export default AdminRoute;

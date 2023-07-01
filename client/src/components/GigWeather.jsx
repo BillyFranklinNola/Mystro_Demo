@@ -19,8 +19,6 @@ const GigWeather = (props) => {
                 console.log(err);
         })}, []);
 
-
-
     useEffect(() => {
         axios.get(
             `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${gig.city}/${gig.date}/${gig.date}?unitGroup=us&include=days&key=BQY89VYXBUYJF8D9H678L8LQX&contentType=json`
