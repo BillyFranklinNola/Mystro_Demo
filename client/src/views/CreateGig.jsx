@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import GigForm from '../components/GigForm'
-import { setHeaders } from '../slices/setHeaders'
 import NavBar from '../components/NavBar'
 
 
@@ -14,41 +13,6 @@ const CreateGig = (props) => {
     const navigate = useNavigate();
     const [chartsFile, setChartsFile] = useState(null);
     const [timelineFile, setTimelineFile] = useState(null);
-
-    // const createGig = async (gig) => {
-    //     try {
-    //         const formData = new FormData();
-    //             formData.append('venue', gig.venue);
-    //             formData.append('date', gig.date);
-    //             formData.append('streetAddress', gig.streetAddress);
-    //             formData.append('city', gig.city);
-    //             formData.append('state', gig.state);
-    //             formData.append('zipCode', gig.zipCode);
-    //             formData.append('setUpBy', gig.setUpBy);
-    //             formData.append('startTime', gig.startTime);
-    //             formData.append('endTime', gig.endTime);
-    //             formData.append('musicians', gig.musicians);
-    //         if (chartsFile) {
-    //             formData.append('charts', chartsFile);
-    //     }
-    //     if (timelineFile) {
-    //         formData.append('timeline', timelineFile);
-    //     }
-    //     const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, setHeaders());
-    //     setGig(res.data);
-    //     console.log(res.data);
-    //     setAllGigs([...allGigs, res.data]);
-    //     navigate('/AdminDashboard');
-    //     } catch (err) {
-    //     console.log(err);
-    //     const errorResponse = err.response.data.message;
-    //     const errorArray = [];
-    //     for (const key of Object.keys(errorResponse)) {
-    //         errorArray.push(errorResponse[key].message);
-    //     }
-    //     setErrors(errorArray);
-    //     }
-    // };
     
     const createGig = async (gig) => {    
         try{

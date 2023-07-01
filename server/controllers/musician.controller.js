@@ -2,7 +2,6 @@ const Musician = require('../models/musician.model');
 const secret = process.env.SECRET_KEY;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const genAuthToken = require('../config/genAuthToken');
 
 module.exports = {
     register: async (req,res) => {

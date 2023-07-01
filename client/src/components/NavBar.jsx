@@ -1,22 +1,38 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-const { Link } = require("react-router-dom");
+import {useSelector, useDispatch} from 'react-redux';
+import {logout, reducer, reset} from '../slices/authSlice';
 
 const NavBar = (props) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const {musician} = useSelector((state) => state.auth);
 
-    const logoutHandler = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:8000/api/musicians/logout', {}, {withCredentials: true})
-        .then(res => {
-            console.log(res)
-            navigate('/')
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    // const logoutHandler = (e) => {
+    //     e.preventDefault();
+    //     axios.post('http://localhost:8000/api/musicians/logout', {}, {withCredentials: true})
+    //     .then(res => {
+    //         console.log(res)
+    //         navigate('/')
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // }
+
+    const logoutHandler = () => {
+        try {
+            axios.post('http://localhost:8000/api/musicians/logout', {}, {withCredentials: true});
+            dispatch(logout());
+            dispatch(reset());
+            navigate('/');
+        } catch (err) {
+            console.error('Error logging out', err);
+            }
     }
+
+                
     
     return (
         <div className="navbar navbar-expand-xxl bg-secondary bg-gradient d-flex justify-content-between p-4  border border-2 border-black">

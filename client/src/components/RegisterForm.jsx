@@ -35,7 +35,6 @@ const RegisterForm = (props) => {
         }
 
         dispatch (reset())
-
     }, [musician, isError, isSuccess, message, navigate, dispatch])
 
     const changeHandler = (e) => {

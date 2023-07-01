@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
-import { setHeaders } from '../slices/setHeaders'
 import Cookies from 'js-cookie';
 
 
@@ -15,7 +14,7 @@ const MusicianGigList = (props) => {
     console.log(token)
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/gigs/gigList', {withCredentials: true, ...setHeaders(token)})
+        axios.get('http://localhost:8000/api/gigs/gigList')
         .then((res)=>{
             setAllGigs(res.data);
         })

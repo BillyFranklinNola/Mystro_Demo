@@ -26,16 +26,16 @@ const LoginRegistration = (props) => {
     //                 setErrors(errorResponse);
     //             });
     // }
-    const loginMusician = loginInfo => {
-        axios.post('http://localhost:8000/api/musicians/login', loginInfo, {withCredentials: true})
-        .then(res => {
-            console.log(res)
-            navigate('/MusicianDashboard')
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
+    // const loginMusician = loginInfo => {
+    //     axios.post('http://localhost:8000/api/musicians/login', loginInfo, {withCredentials: true})
+    //     .then(res => {
+    //         console.log(res)
+    //         navigate('/MusicianDashboard')
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // }
 
 return (
     <div style={{
@@ -48,7 +48,7 @@ return (
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
             <div className='col ms-5'>
                 <h2 className="text-warning mx-auto">Login:</h2>
-                <LoginForm onSubmitProp={loginMusician} loginEmail="" loginPassword=""/>
+                <LoginForm loginEmail="" loginPassword=""/>
             </div>
             <div className='col'>
                 <h2 className="text-warning mx-auto align-self-center">OR</h2>

@@ -34,15 +34,15 @@ const GigForm = (props) => {
                 console.log(err);
             })}, [])
 
-    function previewFile(timelineFile){
-        const reader = new FileReader();
-        reader.readAsDataURL(timelineFile);
+    // function previewFile(timelineFile){
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(timelineFile);
 
-        reader.onloadend = () => {
-            console.log(image);
-            setImage(reader.result);
-        };
-    }
+    //     reader.onloadend = () => {
+    //         console.log(image);
+    //         setImage(reader.result);
+    //     };
+    // }
         
 
     const changeHandler = async (e) => {
