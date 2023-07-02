@@ -230,9 +230,14 @@ const GigForm = (props) => {
                     <p>Musicians:</p>
                     {
                         allMusicians.map((musician,idx) => (
-                                <div className='form-group' key={idx}>
-                                    <label htmlFor={musician.id}>{musician.firstName} {musician.lastName}</label>
-                                    <input type="checkbox" className="form-checkbox-input" name={musician.id} id={musician._id} onChange = {changeHandler}/>
+                                <div className='form-check text-start' key={idx}>
+                                    <label htmlFor={musician.id} className='form-check-label ms-1'>{musician.firstName} {musician.lastName}</label>
+                                    <input 
+                                        type="checkbox" 
+                                        className="form-check-input" 
+                                        name={musician.id} id={musician._id} 
+                                        checked={initialMusicians.some((m) => m.musician_id === musician._id)}
+                                        onChange = {changeHandler}/>
                                 </div>
                         ))
                     }

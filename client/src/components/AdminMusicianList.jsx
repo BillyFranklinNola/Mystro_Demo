@@ -49,7 +49,7 @@ return (
                             <td className='text-start text-white'>{musician.instrument}</td>
                             <td>
                                 <div className='d-flex justify-content-around mx-auto'>
-                                    <Link className='btn btn-warning' to={`/musicians/editMusician/${musician._id}`}>Edit</Link>
+                                    <Link className='btn btn-warning me-1' to={`/musicians/editMusician/${musician._id}`}>Edit</Link>
                                     <MusicianDeleteButton className='btn btn-secondary' id={musician._id} successCallback={()=>deleteMusician(musician._id)}/>
                                 </div>
                             </td>

@@ -49,8 +49,8 @@ return (
                         <td className='text-start text-white'>{gig.city}, {gig.state}</td>
                         <td>
                             <div className='d-flex justify-content-around mx-auto'>
-                                <Link className='btn btn-warning' to={`/gigs/viewGig/${gig._id}`}>View</Link>
-                                <Link className='btn btn-warning' to={`/gigs/editGig/${gig._id}`}>Edit</Link>
+                                <Link className='btn btn-warning me-1' to={`/gigs/viewGig/${gig._id}`}>View</Link>
+                                <Link className='btn btn-warning me-1' to={`/gigs/editGig/${gig._id}`}>Edit</Link>
                                 <GigDeleteButton className='btn btn-dark' id={gig._id} successCallback={()=>deleteGig(gig._id)}/>
                                 
                             </div>

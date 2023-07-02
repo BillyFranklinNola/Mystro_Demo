@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useState} from 'react';
-import {BrowserRouter, Routes, Route, useNavigate, Navigate} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoginRegistration from './views/LoginRegistration';
@@ -11,7 +11,6 @@ import AdminDashboard from './views/AdminDashboard';
 import GigView from './views/GigView';
 import MusicianDashboard from './views/MusicianDashboard';
 import TimelineView from './views/TimelineView';
-import {useSelector} from 'react-redux';
 import AdminRoute from './components/AdminRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -25,7 +24,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App" style={{fontFamily: 'Rowdies'}}>
       <BrowserRouter>
         <Routes>
           <Route 
