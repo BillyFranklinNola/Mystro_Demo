@@ -90,6 +90,8 @@ const GigForm = (props) => {
         onSubmitProp(gig)
     }
 
+    console.log(gig.musicians.length)
+
     return (
         <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
             <form className='mx-auto' onSubmit={onSubmitHandler}>
@@ -236,7 +238,7 @@ const GigForm = (props) => {
                                         type="checkbox" 
                                         className="form-check-input" 
                                         name={musician.id} id={musician._id} 
-                                        checked={initialMusicians.some((m) => m.musician_id === musician._id)}
+                                        checked={gig.musicians.length > 0 ? gig.musicians.some((m) => m.musician._id === musician._id):false}
                                         onChange = {changeHandler}/>
                                 </div>
                         ))

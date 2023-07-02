@@ -73,7 +73,7 @@ return (
                 <h2 className="text-warning mt-3 mb-3 ms-4">{gig.venue} - {gig.city},{gig.state} </h2>
                 <h2 className="text-warning mt-3 mb-3 me-4">{dayOfWeek}, {gigDate}</h2>
             </div>
-            <div className="border border-3 border-secondary rounded m-1 mt-2 p-3">
+            <div className="border border-3 border-secondary rounded m-3 mt-1 p-3">
                 <div className="d-flex justify-content-between">
                     <div className="col-4">
                         <div className="border border-3 border-secondary rounded mb-3 p-3">
