@@ -33,15 +33,14 @@ const GigForm = (props) => {
             console.log(err);
         })}, [])
 
-    // function previewFile(timelineFile){
-    //     const reader = new FileReader();
-    //     reader.readAsDataURL(timelineFile);
-
-    //     reader.onloadend = () => {
-    //         console.log(image);
-    //         setImage(reader.result);
-    //     };
-    // }
+    function previewFile(timelineFile){
+        const reader = new FileReader();
+        reader.readAsDataURL(timelineFile);
+        reader.onloadend = () => {
+            console.log(image);
+            setImage(reader.result);
+        };
+    }
         
 
     const changeHandler = async (e) => {
@@ -71,7 +70,7 @@ const GigForm = (props) => {
                 setChartsFile(file);
             } else if (fieldName === "timeline") {
                 setTimelineFile(file);
-                // previewFile(file);
+                previewFile(file);
             }
         } else {
         setGig((prevGig) => ({
@@ -266,7 +265,7 @@ const GigForm = (props) => {
                         <p>{errors.timeline.message}</p>:
                         null
                     }
-                    <img src={image} alt="Preview of uploaded file." />
+                    <img src={image} className='h-75 w-75 mt-4 border border-3 rounded' alt="Preview of uploaded file." />
                 </div>
                 <button input type="submit" className='btn btn-warning'>Submit</button>
             </form>
