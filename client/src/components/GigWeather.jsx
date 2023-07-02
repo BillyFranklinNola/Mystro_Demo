@@ -19,17 +19,21 @@ const GigWeather = (props) => {
                 console.log(err);
         })}, []);
 
-    useEffect(() => {
-        axios.get(
-            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${gig.city}/${gig.date}/${gig.date}?unitGroup=us&include=days&key=BQY89VYXBUYJF8D9H678L8LQX&contentType=json`
-            )
-        .then((res)=>{
+    useEffect(() =>  {
+        async function gigForecast() {
+            try {
+            const res = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${gig.city}/${gig.date}/${gig.date}?unitGroup=us&include=days&key=BQY89VYXBUYJF8D9H678L8LQX&contentType=json`)
             console.log(res.data.days[0])
             setGigWeather(res.data.days[0]);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })}, [gig]);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        gigForecast();
+    }, [gig]);
+        
+
+        
 
     return (
         <div className="border border-3 border-secondary rounded text-white p-3">
