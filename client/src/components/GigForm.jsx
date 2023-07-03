@@ -47,49 +47,56 @@ const GigForm = (props) => {
         try{
             if (e.target.type === "checkbox"){
                 const musicianId = e.target.id;
-                try {
-                    const res = await axios.get(
-                        `http://localhost:8000/api/musicians/oneMusician/${musicianId}`
+                console.log(musicianId);
+                console.log(gig.musicians);
+                const musicianExists = gig.musicians.some((m) => m.musician._id === musicianId);
+                if (musicianExists) {
+                    setGig((prevGig) => ({
+                        ...prevGig,
+                        musicians: prevGig.musicians.filter((m) => m.musician._id !== musicianId)
+                    }));
+                } else { 
+                    try {
+                        const res = await axios.get(
+                            `http://localhost:8000/api/musicians/oneMusician/${musicianId}`
                         );
-                    const musicianData = res.data;
+                        const musicianData = res.data;
 
-            setGig((prevGig) => {
-                const updatedMusicians = [...prevGig.musicians, musicianData];
-                return {
+                        setGig((prevGig) => ({
+                                ...prevGig,
+                                musicians: [...prevGig.musicians, musicianData],
+                            }));
+                    } catch (err) {         
+                        console.log(err);
+                    }
+                }
+            } else if (e.target.type === "file") {
+                const file = e.target.files[0];
+                const fieldName = e.target.name;            
+                    if (fieldName === "charts") {
+                        setChartsFile(file);
+                    } else if (fieldName === "timeline") {
+                        setTimelineFile(file);
+                        previewFile(file);
+                    }
+                } else {
+                setGig((prevGig) => ({
                     ...prevGig,
-                    musicians: updatedMusicians
-                };
-            }, console.log(gig));
-        } catch (err) {         
-            console.log(err);
-        }
-    } else if (e.target.type === "file") {
-        const file = e.target.files[0];
-        const fieldName = e.target.name;            
-            if (fieldName === "charts") {
-                setChartsFile(file);
-            } else if (fieldName === "timeline") {
-                setTimelineFile(file);
-                previewFile(file);
+                    [e.target.name]: e.target.value
+                    
+                }));
             }
-        } else {
-        setGig((prevGig) => ({
-            ...prevGig,
-            [e.target.name]: e.target.value
-            
-        }));
-    }
-    } catch (err) {
-        console.log(err);
-    }console.log(gig);
-    };
+            } catch (err) {
+                console.log(err);
+            }console.log(gig);
+            };
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        onSubmitProp(gig)
-    }
+            const onSubmitHandler = (e) => {
+                e.preventDefault();
+                onSubmitProp(gig)
+            }
 
-    console.log(gig.musicians.length)
+            console.log(gig.musicians.length)
 
     return (
         <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
