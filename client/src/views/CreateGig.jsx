@@ -9,22 +9,11 @@ const CreateGig = (props) => {
     const [gig, setGig] = useState(props);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
-    const [chartsFile, setChartsFile] = useState(null);
-    const [timelineFile, setTimelineFile] = useState(null);
     
-    const createGig = async (gig) => {    
+    const createGig = async (gig) => {   
+        console.log(gig) 
         try{
-            // if(chartsFile){
-            //     const chartsResult = await axios.post('http://localhost:8000/api/fileUpload', {chartsFile: chartsFile});
-            //     gig.charts = chartsResult.data.public_id;
-            //     setChartsFile(chartsResult.data.public_id);
-
-            // }
-            // if(timelineFile){
-            //     const timelineResult = await axios.post('http://localhost:8000/api/fileUpload', {timelineFile: timelineFile});
-            //     gig.timeline = timelineResult.data.public_id;
-            //     setTimelineFile(timelineResult.data.public_id);
-            // }
+            
             const res = await axios.post('http://localhost:8000/api/gigs/createGig', gig)
                 console.log(res);
                 setGig(res.data)
@@ -60,7 +49,7 @@ return (
                     initialSetUpBy="" 
                     initialStartTime="" 
                     initialEndTime=""  
-                    initialMusicians="" 
+                    initialMusicians={[]} 
                     initialCharts="" 
                     initialTimeline=""/>
             </div>

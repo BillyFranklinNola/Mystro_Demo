@@ -20,8 +20,6 @@ const GigForm = (props) => {
     })
     const [errors, setErrors] = useState({})
     const [allMusicians, setAllMusicians] = useState([])
-    const [chartsFile, setChartsFile] = useState('')
-    const [timelineFile, setTimelineFile] = useState('')
     const [image, setImage] = useState('')
 
     useEffect(() => {
@@ -47,7 +45,6 @@ const GigForm = (props) => {
         try{
             if (e.target.type === "checkbox"){
                 const musicianId = e.target.id;
-                console.log(musicianId);
                 console.log(gig.musicians);
                 const musicianExists = gig.musicians.some((m) => m.musician._id === musicianId);
                 if (musicianExists) {
@@ -74,9 +71,11 @@ const GigForm = (props) => {
                 const file = e.target.files[0];
                 const fieldName = e.target.name;            
                     if (fieldName === "charts") {
-                        setChartsFile(file);
+                        setGig({...gig, charts: file});
+                        previewFile(file);
+
                     } else if (fieldName === "timeline") {
-                        setTimelineFile(file);
+                        setGig({...gig, timeline: file});
                         previewFile(file);
                     }
                 } else {
@@ -100,7 +99,7 @@ const GigForm = (props) => {
 
     return (
         <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler}>
+            <form className='mx-auto' onSubmit={onSubmitHandler} encType='multipart/form-data'>
                 <div className='form-group m-3'>
                     <label htmlFor='venue'>Venue:</label>
                     <input type="text" name="venue" id="venue" className="form-control" value={gig.venue} onChange = {changeHandler}/>
@@ -257,7 +256,7 @@ const GigForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='charts'>Charts:</label>
-                    <input type="file" name="charts" id="charts" multiple className="form-control" onChange = {changeHandler}/>
+                    <input type="file" accept=".png, .jpg, .jpeg, .zip, .html" name="charts" id="charts" multiple className="form-control" onChange = {changeHandler}/>
                     {
                         errors.charts?
                         <p>{errors.charts.message}</p>:
@@ -266,7 +265,7 @@ const GigForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='timeline'>Timeline:</label>
-                    <input type="file" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
+                    <input type="file" accept=".png, .jpg, .jpeg" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.timeline?
                         <p>{errors.timeline.message}</p>:
