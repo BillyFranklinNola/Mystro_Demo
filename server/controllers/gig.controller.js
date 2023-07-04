@@ -8,10 +8,14 @@ module.exports = {
             .catch(err => res.json({ message: 'Something went wrong', error: err }))
 },
 
-    createGig: (req, res) => {
-        Gig.create(req.body)
-            .then(addNewGig => res.json({ gig: addNewGig}))
-            .catch((err) => {res.status(400).json(err)})
+createGig: async (req, res) => {
+    try {
+        const addNewGig = await Gig.create(req);
+        res.status(201).json({ gig: addNewGig });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 },
 
     oneGig: (req, res) => {

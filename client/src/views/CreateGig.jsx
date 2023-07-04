@@ -12,9 +12,29 @@ const CreateGig = (props) => {
     
     const createGig = async (gig) => {   
         console.log(gig) 
+        console.log(gig.musicians)
+        const formData = new FormData();
+        formData.append('venue', gig.venue);
+        formData.append('date', gig.date);
+        formData.append('streetAddress', gig.streetAddress);
+        formData.append('city', gig.city);
+        formData.append('state', gig.state);
+        formData.append('zipCode', gig.zipCode);
+        formData.append('setUpBy', gig.setUpBy);
+        formData.append('startTime', gig.startTime);
+        formData.append('endTime', gig.endTime);
+        gig.musicians.forEach((musician, index) => {
+            formData.append(`musicians[${index}]`, musician);
+        });
+        formData.append('charts', gig.charts);
+        formData.append('timeline', gig.timeline);
         try{
             
-            const res = await axios.post('http://localhost:8000/api/gigs/createGig', gig)
+            const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                    }
+                    });
                 console.log(res);
                 setGig(res.data)
                 setAllGigs([...allGigs, res.data]);

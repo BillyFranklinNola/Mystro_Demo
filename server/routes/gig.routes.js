@@ -6,11 +6,11 @@ const {upload} = require('../middleware/fileUpload');
 module.exports = app => {
     app.get('/api/gigs/gigList', GigController.allGigs);
     app.post('/api/gigs/createGig', upload.single('timeline'),  async (req, res) => {
-        const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians, charts} = req.body;
-        console.log(req.body.timeline);
-        const timeline = req.file ? req.file.filename : null
-        console.log(timeline);
         try {
+        const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians, charts} = req.body;
+        console.log(req.body, "gig.routes.js 10");
+        const timeline = req.file? req.file.filename : '';
+        console.log(timeline, "gig.routes.js 13");
             const newGig = {
                 venue,
                 date,
@@ -25,9 +25,10 @@ module.exports = app => {
                 charts,
                 timeline,
             };
-        
-            const createdGig = GigController.createGig(newGig);
-            res.status(201).json(createdGig);
+
+            console.log(newGig, "gig.routes.js 29");
+            const createdGig = await GigController.createGig(newGig, res);
+            console.log(createdGig, "gig.routes.js 31");
         } catch (err) {
             console.log(err);
             res.status(500).json({ error: 'Internal server error' });
