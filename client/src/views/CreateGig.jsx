@@ -13,6 +13,7 @@ const CreateGig = (props) => {
     const createGig = async (gig) => {   
         console.log(gig) 
         console.log(gig.musicians)
+        console.log(gig.charts)
         const formData = new FormData();
         formData.append('venue', gig.venue);
         formData.append('date', gig.date);
@@ -28,9 +29,14 @@ const CreateGig = (props) => {
         });
         formData.append('charts', gig.charts);
         formData.append('timeline', gig.timeline);
+
+        console.log(Object.fromEntries(formData));
+
+
         try{
-            
-            const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, {
+
+            const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, {charts: gig.charts}, 
+            {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                     }
@@ -70,7 +76,7 @@ return (
                     initialStartTime="" 
                     initialEndTime=""  
                     initialMusicians={[]} 
-                    initialCharts="" 
+                    initialCharts={[]}
                     initialTimeline=""/>
             </div>
         </div>

@@ -31,7 +31,7 @@ const GigForm = (props) => {
             console.log(err);
         })}, [])
 
-    function previewFile(timelineFile){
+    function previewFile(timelineFile) {
         const reader = new FileReader();
         reader.readAsDataURL(timelineFile);
         reader.onloadend = () => {
@@ -39,6 +39,16 @@ const GigForm = (props) => {
             setImage(reader.result);
         };
     }
+
+    // function listFiles(chartsFiles) {
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(chartsFiles);
+    //     reader.onloadend = () => {
+    //         console.log(reader.result);
+    //     };
+    // }
+
+
         
 
     const changeHandler = async (e) => {
@@ -69,11 +79,11 @@ const GigForm = (props) => {
                 }
             } else if (e.target.type === "file") {
                 const file = e.target.files[0];
+                const files = e.target.files;
                 const fieldName = e.target.name;            
                     if (fieldName === "charts") {
-                        setGig({...gig, charts: file});
-                        previewFile(file);
-
+                        const chartsArray = Array.from(files);
+                        setGig({...gig, charts: chartsArray});
                     } else if (fieldName === "timeline") {
                         setGig({...gig, timeline: file});
                         previewFile(file);
@@ -92,6 +102,7 @@ const GigForm = (props) => {
 
             const onSubmitHandler = (e) => {
                 e.preventDefault();
+                console.log(gig);
                 onSubmitProp(gig)
             }
 
@@ -262,10 +273,17 @@ const GigForm = (props) => {
                         <p>{errors.charts.message}</p>:
                         null
                     }
+                    <div className='border border-3 rounded w-50 mx-auto mt-3'>
+                        {
+                            gig.charts.map((file,idx) => (
+                                <p key={idx} className='mt-3'>{file.name}</p>
+                            ))
+                        }
+                    </div>
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='timeline'>Timeline:</label>
-                    <input type="file" accept=".png, .jpg, .jpeg" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
+                    <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.timeline?
                         <p>{errors.timeline.message}</p>:
