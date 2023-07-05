@@ -14,7 +14,7 @@ module.exports = app => {
         const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = req.body;
         console.log(req.body, "gig.routes.js 10");
         const timeline = req.file? req.file.filename : '';
-        const charts = req.files? req.files.map(file => file.filename) : [];
+        const charts = req.files? req.files.filename : '';
         console.log(timeline, "gig.routes.js 13");
         console.log(charts, "gig.routes.js 14");
             const newGig = {
