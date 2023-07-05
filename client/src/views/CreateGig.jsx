@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
+import { toast } from 'react-toastify';
 
 const CreateGig = (props) => {
     const [allGigs, setAllGigs] = useState([]);
@@ -29,12 +30,8 @@ const CreateGig = (props) => {
         });
         formData.append('charts', gig.charts);
         formData.append('timeline', gig.timeline);
-
         console.log(Object.fromEntries(formData));
-
-
         try{
-
             const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, {charts: gig.charts}, 
             {
                 headers: {
@@ -46,13 +43,15 @@ const CreateGig = (props) => {
                 setAllGigs([...allGigs, res.data]);
                 navigate('/AdminDashboard')
             } catch (err) {
-                console.log(err)
-                const errorResponse = err.response.data.message;
+                console.log(err.response.data.error)
+                const errorResponse = err.response.data.error;
                 const errorArray = [];
-                for (const key of Object.keys(errorResponse)) 
+                for (const key of Object.keys(errorResponse)) {
                     {errorArray.push(errorResponse[key].message)}
-                setErrors(errorArray);
+                    toast.error(errorResponse[key].message)
             }
+            setErrors(errorArray);
+        }
     };
 
 return (

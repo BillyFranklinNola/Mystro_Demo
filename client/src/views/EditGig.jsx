@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
+import { toast } from 'react-toastify'
 
 const EditGig = (props) => {
     const navigate = useNavigate();
@@ -34,11 +35,13 @@ const EditGig = (props) => {
             navigate(`/AdminDashboard`)
         })
         .catch(err=>{
-            console.log(err.response.data.errors);
-            const errorResponse = err.response.data.errors;
+            console.log(err.response.data.error);
+            const errorResponse = err.response.data.error;
             const errorArray = [];
-            for (const key of Object.keys(errorResponse)) 
+            for (const key of Object.keys(errorResponse)) {
                 {errorArray.push(errorResponse[key].message)}
+                toast.error(errorResponse[key].message)
+            }
             setErrors(errorArray);
         });
 }

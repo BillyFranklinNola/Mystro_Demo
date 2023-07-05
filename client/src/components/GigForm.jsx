@@ -82,8 +82,7 @@ const GigForm = (props) => {
                 const files = e.target.files;
                 const fieldName = e.target.name;            
                     if (fieldName === "charts") {
-                        const chartsArray = Array.from(files);
-                        setGig({...gig, charts: chartsArray});
+                        setGig({...gig, charts: files});
                     } else if (fieldName === "timeline") {
                         setGig({...gig, timeline: file});
                         previewFile(file);
@@ -274,11 +273,11 @@ const GigForm = (props) => {
                         null
                     }
                     <div className='border border-3 rounded w-50 mx-auto mt-3'>
-                        {
+                        {/* {
                             gig.charts.map((file,idx) => (
                                 <p key={idx} className='mt-3'>{file.name}</p>
                             ))
-                        }
+                        } */}
                     </div>
                 </div>
                 <div className='form-group m-3'>
