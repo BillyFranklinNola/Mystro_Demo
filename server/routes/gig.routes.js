@@ -4,13 +4,19 @@ const {upload} = require('../middleware/fileUpload');
 
 
 module.exports = app => {
+    const multipleUploads = upload.fields([ 
+        { name: 'charts', maxCount: 10 },
+        { name: 'timeline', maxCount: 1 }
+    ])
     app.get('/api/gigs/gigList', GigController.allGigs);
-    app.post('/api/gigs/createGig', upload.single('timeline'),  async (req, res) => {
+    app.post('/api/gigs/createGig', multipleUploads, async (req, res) => {
         try {
-        const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians, charts} = req.body;
+        const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = req.body;
         console.log(req.body, "gig.routes.js 10");
         const timeline = req.file? req.file.filename : '';
+        const charts = req.files? req.files.map(file => file.filename) : [];
         console.log(timeline, "gig.routes.js 13");
+        console.log(charts, "gig.routes.js 14");
             const newGig = {
                 venue,
                 date,

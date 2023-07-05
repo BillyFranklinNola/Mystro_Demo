@@ -50,7 +50,7 @@ const GigSchema = new mongoose.Schema({
         required:[true, "You must select at least one musician"],
     },
     charts:  {
-        type: String,
+        type: Array,
     },
     timeline:  {
         type: String,

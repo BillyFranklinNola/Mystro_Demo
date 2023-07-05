@@ -11,7 +11,13 @@ const storage = multer.diskStorage({
         }
 });
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg'){
+    if (file.mimetype === 'image/jpeg' 
+        || file.mimetype === 'image/png' 
+        || file.mimetype === 'image/jpg' 
+        || file.mimetype === 'application/pdf'
+        || file.mimetype === 'application/zip'
+        || file.mimetype === 'text/html'
+    ) {
         console.log('destination:', file);
         cb(null, true);
     } else {
@@ -23,7 +29,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
     storage: storage,
     fileFilter: fileFilter,
-    limits: { fileSize: 1000000}
+    limits: { fileSize: 10000000 }
 });
 
 module.exports = {upload};
