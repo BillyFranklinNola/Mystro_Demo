@@ -2,7 +2,22 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 const GigForm = (props) => {
-    const {initialVenue, initialDate, initialStreetAddress, initialCity, initialState , initialZipCode, initialSetUpBy, initialStartTime, initialEndTime, initialMusicians, initialCharts, initialTimeline, onSubmitProp} = props;
+    const {
+        initialVenue, 
+        initialDate, 
+        initialStreetAddress, 
+        initialCity, 
+        initialState , 
+        initialZipCode, 
+        initialSetUpBy, 
+        initialStartTime, 
+        initialEndTime, 
+        initialMusicians, 
+        initialCharts, 
+        initialTimeline, 
+        onSubmitProp
+    } = props;
+    
     const [gig, setGig] = useState({
         venue: initialVenue,
         date: initialDate,
@@ -16,8 +31,8 @@ const GigForm = (props) => {
         musicians: initialMusicians,
         charts: initialCharts,
         timeline: initialTimeline
-
     })
+
     const [errors, setErrors] = useState({})
     const [allMusicians, setAllMusicians] = useState([])
     const [image, setImage] = useState('')
@@ -48,9 +63,6 @@ const GigForm = (props) => {
     //     };
     // }
 
-
-        
-
     const changeHandler = async (e) => {
         try{
             if (e.target.type === "checkbox"){
@@ -68,7 +80,6 @@ const GigForm = (props) => {
                             `http://localhost:8000/api/musicians/oneMusician/${musicianId}`
                         );
                         const musicianData = res.data;
-
                         setGig((prevGig) => ({
                                 ...prevGig,
                                 musicians: [...prevGig.musicians, musicianData],
@@ -91,12 +102,12 @@ const GigForm = (props) => {
                 setGig((prevGig) => ({
                     ...prevGig,
                     [e.target.name]: e.target.value
-                    
                 }));
             }
             } catch (err) {
                 console.log(err);
-            }console.log(gig);
+                }
+            console.log(gig)
             };
 
             const onSubmitHandler = (e) => {
@@ -109,42 +120,42 @@ const GigForm = (props) => {
 
     return (
         <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler} encType='multipart/form-data'>
+            <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
                     <label htmlFor='venue'>Venue:</label>
                     <input type="text" name="venue" id="venue" className="form-control" value={gig.venue} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.venue?
                         <p>{errors.venue.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='date'>Date:</label>
                     <input type="date" name="date" id="date" className="form-control" value={gig.date} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.date?
                         <p>{errors.date.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='streetAddress'>Address:</label>
                     <input type="text" name="streetAddress" id="streetAddress" className="form-control" value={gig.streetAddress} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.streetAddress?
                         <p>{errors.streetAddress.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='city'>City:</label>
                     <input type="text" name="city" id="city" className="form-control" value={gig.city} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.city?
                         <p>{errors.city.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='state'>State:</label>
@@ -201,68 +212,68 @@ const GigForm = (props) => {
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select>
-                    {
+                    {/* {
                         errors.state?
                         <p>{errors.state.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='zipCode'>Zip Code:</label>
                     <input type="text" name="zipCode" id="zipCode" className="form-control" value={gig.zipCode} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.zipCode?
                         <p>{errors.zipCode.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='setUpBy'>Set Up By:</label>
                     <input type="time" name="setUpBy" id="setUpBy" className="form-control" value={gig.setUpBy} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.setUpBy?
                         <p>{errors.setUpBy.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='startTime'>Start Time:</label>
                     <input type="time" name="startTime" id="startTime" className="form-control" value={gig.startTime} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.startTime?
                         <p>{errors.startTime.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='endTime'>End Time:</label>
                     <input type="time" name="endTime" id="endTime" className="form-control" value={gig.endTime} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.endTime?
                         <p>{errors.endTime.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <p>Musicians:</p>
                     {
-                        allMusicians.map((musician,idx) => (
-                                <div className='form-check text-start' key={idx}>
-                                    <label htmlFor={musician.id} className='form-check-label ms-1'>{musician.firstName} {musician.lastName}</label>
-                                    <input 
-                                        type="checkbox" 
-                                        className="form-check-input" 
-                                        name={musician.id} id={musician._id} 
-                                        checked={gig.musicians.length > 0 ? gig.musicians.some((m) => m.musician._id === musician._id):false}
-                                        onChange = {changeHandler}/>
-                                </div>
+                    allMusicians.map((musician,idx) => (
+                            <div className='form-check text-start' key={idx}>
+                                <label htmlFor={musician.id} className='form-check-label ms-1'>{musician.firstName} {musician.lastName}</label>
+                                <input 
+                                    type="checkbox" 
+                                    className="form-check-input" 
+                                    name={musician.id} id={musician._id} 
+                                    checked={gig.musicians.length > 0 ? gig.musicians.some((m) => m.musician._id === musician._id):false}
+                                    onChange = {changeHandler}/>
+                            </div>
                         ))
                     }
-                    {
+                    {/* {
                         errors.musicians?
                         <p>{errors.musicians.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='charts'>Charts:</label>
@@ -283,11 +294,11 @@ const GigForm = (props) => {
                 <div className='form-group m-3'>
                     <label htmlFor='timeline'>Timeline:</label>
                     <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.timeline?
                         <p>{errors.timeline.message}</p>:
                         null
-                    }
+                    } */}
                     <img src={image} className='h-75 w-75 mt-4 border border-3 rounded' alt="Preview of uploaded file." />
                 </div>
                 <button input type="submit" className='btn btn-warning'>Submit</button>

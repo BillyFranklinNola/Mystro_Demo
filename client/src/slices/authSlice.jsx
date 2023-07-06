@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import authService from './authService';
+import { toast } from 'react-toastify';
 
 const musician = JSON.parse(localStorage.getItem('musician'));
 
@@ -8,32 +9,44 @@ const initialState = {
     isError: false,
     isSuccess: false,
     isLoading: false,
-    message: ''
+    message: '',
+    errors: {}
 }
 
-export const register = createAsyncThunk(
-    'auth/register', 
-    async (musician, thunkAPI) => {
+export const register = createAsyncThunk('auth/register', async (musician, thunkAPI) => {
         try {
-            return await authService.register(musician)
+            const response = await authService.register(musician);
+            toast.success('Registration Successful');
+            return response;
         } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue(message)
+            const errorResposne = (error.response && error.response.data.err.errors)
+            console.log(error.response);
+            console.log(error.response.data.err.errors);
+            const errorFields = Object.keys(errorResposne);
+            const errors = {};
+            console.log(errorFields);
+            errorFields.forEach(field => {
+                errors[field] = errorResposne[field].message;
+            });
+            return thunkAPI.rejectWithValue(errors);
         }
     })
 
 export const logout = createAsyncThunk('auth/logout', async () => {
     await authService.logout();
+    toast.success('Logout Successful');
 })
 
-export const login = createAsyncThunk(
-    'auth/login', 
-    async (musician, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (musician, thunkAPI) => {
         try {
-            return await authService.login(musician)
+            const response = await authService.login(musician);
+            toast.success('Login Successful');
+            return response
         } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue(message)
+            const errorResponse = (error.response && error.response.data.message)
+            console.log(error.response);
+            console.log(error.response.data.message);
+            return thunkAPI.rejectWithValue(errorResponse)
         }
     })
 
@@ -46,6 +59,7 @@ export const authSlice = createSlice({
             state.isSuccess = false;
             state.isLoading = false;
             state.message = '';
+            state.errors = {};
         }
     },
     extraReducers: (builder) => {
@@ -61,8 +75,14 @@ export const authSlice = createSlice({
         .addCase(register.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
-            state.message = action.payload;
-            state.musician = null;
+            state.musician = action.payload || {};
+
+            if (action.payload && typeof action.payload === 'object') {
+                console.log(action.payload);
+                Object.entries(action.payload).forEach(([fieldName, errorMessage]) => {
+                state.errors[fieldName] = errorMessage;
+                });
+            }
         })
         .addCase(login.pending, (state) => {
             state.isLoading = true;

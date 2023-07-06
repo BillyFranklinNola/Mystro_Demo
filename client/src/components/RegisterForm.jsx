@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register } from '../slices/authSlice';
-import { reset } from '../slices/authSlice';
-
 
 const RegisterForm = (props) => {
     const {
@@ -27,41 +25,63 @@ const RegisterForm = (props) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
-    const [errors, setErrors] = useState({})
+    const {errors} = useSelector((state) => state.auth)
+    const {firstName,
+        lastName,
+        email, 
+        instrument, 
+        password, 
+        confirmPassword
+    } = musicianData;
 
-    const {firstName, lastName, email, instrument, password, confirmPassword} = musicianData;
-
-    const {musician, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+    const {musician, 
+        isLoading, 
+        isSuccess, 
+        message
+    } = useSelector((state) => state.auth)
 
     useEffect(() => {
-        if (isError) {
-            toast.error(message)
+        if (isSuccess && musician) {
+            navigate('/MusicianDashboard')
         }
-        if (isSuccess || musician) {
-            navigate('/')
+        if (errors) {
+            Object.keys(errors).map((key) => {
+                toast.error(errors[key])
+            })
         }
-        dispatch (reset())
-    }, [musician, isError, isSuccess, message, navigate, dispatch])
+    }, [musician, errors, isSuccess, message, navigate, dispatch])
 
     const changeHandler = (e) => {
-        setMusicianData((prevState) => ({...prevState, [e.target.name]:e.target.value}))
+        setMusicianData((prevState) => ({
+            ...prevState, 
+            [e.target.name]:e.target.value
+        }))
+        console.log(musicianData)
     }
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            toast.error("Passwords don't match")
-        } else {
-            const musicianData = { firstName, lastName, email, instrument, password, confirmPassword }
-            dispatch(register(musicianData))
-            navigate('/MusicianDashboard')  
-        // onSubmitProp(musicianData)
+        const musicianData = {
+            firstName, 
+            lastName, 
+            email, 
+            instrument, 
+            password, 
+            confirmPassword 
+        }
+        const response = await dispatch(register(musicianData))
+        console.log(response)
+        console.log(response.payload)
+        if (response.payload) {
+        } else if (response.payload) {
+            const {errors} = response.payload
+            Object.keys(errors).forEach((key) => {
+                toast.error(errors[key])
+            })}
     }
     if (isLoading) {
         return <h1>Loading...</h1>
     }
-}
 
 
     return (
@@ -70,56 +90,56 @@ const RegisterForm = (props) => {
                 <div className='form-group m-3'>
                     <label htmlFor='firstName'>First Name:</label>
                     <input type="text" name="firstName" id="firstName" className="form-control" value={musicianData.firstName} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.firstName?
                         <p>{errors.firstName.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='lastName'>Last Name:</label>
                     <input type="text" name="lastName" id="lastName" className="form-control" value={musicianData.lastName} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.lastName?
                         <p>{errors.lastName.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='email'>Email:</label>
                     <input type="text" name="email" id="email" className="form-control" value={musicianData.email} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.email?
                         <p>{errors.email.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='instrument'>Instrument:</label>
                     <input type="text" name="instrument" id="instrument" className="form-control" value={musicianData.instrument} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.instrument?
                         <p>{errors.instrument.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='password'>Password:</label>
                     <input type="password" name="password" id="password" className="form-control" value={musicianData.password} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.password?
                         <p>{errors.password.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='confirmPassword'>Confirm Password:</label>
                     <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={musicianData.confirmPassword} onChange = {changeHandler}/>
-                    {
+                    {/* {
                         errors.confirmPassword?
                         <p>{errors.confirmPassword.message}</p>:
                         null
-                    }
+                    } */}
                 </div>
                 <button input type="submit" className='btn btn-warning'>Submit</button>
             </form>

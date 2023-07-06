@@ -17,7 +17,6 @@ const AdminDashboard = () => {
     }
 
 return (
-    // <div style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', height: '100vh'}}>
     <div style={{
         background: 'radial-gradient( circle farthest-corner at 10% 20%, rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
     }}>   

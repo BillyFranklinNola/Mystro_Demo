@@ -27,29 +27,32 @@ const CreateGig = (props) => {
         formData.append('endTime', gig.endTime);
         gig.musicians.forEach((musician, index) => {
             formData.append(`musicians[${index}]`, musician);
-        });
-        formData.append('charts', gig.charts);
+        });  
+        const chartsArray = Array.from(gig.charts);
+        console.log(chartsArray);
+        formData.append('charts', chartsArray);
         formData.append('timeline', gig.timeline);
         console.log(Object.fromEntries(formData));
         try{
             const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, {charts: gig.charts}, 
             {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                    }
-                    });
-                console.log(res);
-                setGig(res.data)
-                setAllGigs([...allGigs, res.data]);
-                navigate('/AdminDashboard')
-            } catch (err) {
-                console.log(err.response.data.error)
-                const errorResponse = err.response.data.error;
-                const errorArray = [];
-                for (const key of Object.keys(errorResponse)) {
-                    {errorArray.push(errorResponse[key].message)}
-                    toast.error(errorResponse[key].message)
-            }
+            headers: {
+                'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log(res);
+            setGig(res.data)
+            setAllGigs([...allGigs, res.data]);
+            navigate('/AdminDashboard')
+        } catch (err) {
+            console.log(err.response.data.error.errors)
+            console.log(err.response)
+            const errorResponse = err.response.data.error.errors;
+            const errorArray = [];
+            for (const key of Object.keys(errorResponse)) {
+                {errorArray.push(errorResponse[key].message)}
+                toast.error(errorResponse[key].message)
+        }
             setErrors(errorArray);
         }
     };

@@ -6,7 +6,6 @@ import LoginForm from '../components/LoginForm'
 import NavBar from '../components/NavBar'
 
 const LoginRegistration = (props) => {
-    const [errors, setErrors] = useState([]);
 
     // const createMusician = musician => {    
     //     axios.post('http://localhost:8000/api/musicians/register', musician, {withCredentials: true})
@@ -40,7 +39,6 @@ return (
         <div className='pt-3'>
             <NavBar/>
             <div className='d-flex justify-content-evenly p-5 mt-5'>
-                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 <div className='ms-5'>
                     <h2 className="text-warning mx-auto">Login:</h2>
                     <LoginForm 
