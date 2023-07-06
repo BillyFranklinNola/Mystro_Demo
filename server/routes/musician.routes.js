@@ -7,7 +7,7 @@ module.exports = app => {
     app.post('/api/musicians/login', MusicianController.login)
     app.post('/api/musicians/logout', MusicianController.logout)
     app.get('/api/musicians/oneMusician/:id', MusicianController.oneMusician);
-    app.put('/api/musicians/editMusician/:id', MusicianController.updateMusician);
+    app.patch('/api/musicians/editMusician/:id', MusicianController.updateMusician);
     app.delete('/api/musicians/deleteMusician/:id', MusicianController.deleteMusician);
     app.get('/api/musicians/loggedInMusician', MusicianController.loggedInMusician);
 }

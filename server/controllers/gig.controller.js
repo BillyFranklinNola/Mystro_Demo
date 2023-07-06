@@ -5,7 +5,7 @@ module.exports = {
     allGigs: (req, res) => {
         Gig.find()
             .then(allGigs => res.json(allGigs))
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+            .catch(err => res.json({ message: 'Could not retrieve All Gigs', error: err }))
 },
 
 createGig: async (req, res) => {
@@ -14,14 +14,14 @@ createGig: async (req, res) => {
         res.status(201).json({ gig: addNewGig });
     } catch (err) {
         console.log(err);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(400).json({ message: 'Could not create Gig', error: err });
     }
 },
 
     oneGig: (req, res) => {
         Gig.findOne({ _id: req.params.id })
             .then(oneGig => res.json({ gig: oneGig}))
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+            .catch(err => res.json({ message: 'Could not retrieve Gig', error: err }))
 },
 
     updateGig: (req, res) => {
@@ -33,6 +33,6 @@ createGig: async (req, res) => {
     deleteGig: (req, res) => {
         Gig.deleteOne({ _id: req.params.id })
             .then(result => res.json({ result: result }))
-            .catch(err => res.json({ message: 'Something went wrong', error: err }))
+            .catch(err => res.json({ message: 'Could not delete Gig', error: err}))
             }
 }
