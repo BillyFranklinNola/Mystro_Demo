@@ -5,16 +5,28 @@ const {upload} = require('../middleware/fileUpload');
 
 module.exports = app => {
     app.get('/api/gigs/gigList', GigController.allGigs);
-    app.post('/api/gigs/createGig', upload.array('charts'), upload.single('timeline'), async (req, res) => {
+    app.post('/api/gigs/createGig', upload.single('timeline'), upload.single('iRealCharts'), upload.single('pdfCharts'), async (req, res) => {
         try {
-            const { venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = req.body;
-            console.log(req.body, "gig.routes.js 15");
-            console.log(req.files, "gig.routes.js 16");
-            console.log(req.file, "gig.routes.js 17");
+            const { 
+                venue, 
+                date, 
+                streetAddress, 
+                city, 
+                state, 
+                zipCode, 
+                setUpBy, 
+                startTime, 
+                endTime, 
+                musicians
+            } = req.body;
+            console.log(req.body, "gig.routes.js 11");
             const timeline = req.file? req.file.filename : '';
-            const charts = req.files? req.files.filename : '';
+            const iRealCharts = req.file? req.file.filename : '';
+            const pdfCharts = req.file? req.file.filename : '';
             console.log(timeline, "gig.routes.js 19");
-            console.log(charts, "gig.routes.js 20");
+            console.log(iRealCharts, "gig.routes.js 20");
+            console.log(pdfCharts, "gig.routes.js 20");
+
             const newGig = {
                 venue,
                 date,
@@ -26,7 +38,8 @@ module.exports = app => {
                 startTime,
                 endTime,
                 musicians,
-                charts,
+                iRealCharts,
+                pdfCharts,
                 timeline,
             };
 

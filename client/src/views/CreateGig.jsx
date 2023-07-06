@@ -28,11 +28,11 @@ const CreateGig = (props) => {
         gig.musicians.forEach((musician, index) => {
             formData.append(`musicians[${index}]`, musician);
         });  
-        const chartsArray = Array.from(gig.charts);
-        console.log(chartsArray);
-        formData.append('charts', chartsArray);
+        formData.append('iRealCharts', gig.iRealCharts);
+        formData.append('pdfCharts', gig.pdfCharts);
         formData.append('timeline', gig.timeline);
         console.log(Object.fromEntries(formData));
+        
         try{
             const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, {charts: gig.charts}, 
             {

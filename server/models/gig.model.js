@@ -49,7 +49,10 @@ const GigSchema = new mongoose.Schema({
         type: Array,
         required:[true, "You must select at least one musician"],
     },
-    charts:  {
+    iRealCharts:  {
+        type: String,
+    },
+    pdfCharts:  {
         type: String,
     },
     timeline:  {

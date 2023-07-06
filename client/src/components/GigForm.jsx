@@ -13,7 +13,8 @@ const GigForm = (props) => {
         initialStartTime, 
         initialEndTime, 
         initialMusicians, 
-        initialCharts, 
+        initialIRealCharts, 
+        initialPdfCharts,
         initialTimeline, 
         onSubmitProp
     } = props;
@@ -29,7 +30,8 @@ const GigForm = (props) => {
         startTime: initialStartTime,
         endTime: initialEndTime,
         musicians: initialMusicians,
-        charts: initialCharts,
+        iRealCharts: initialIRealCharts,
+        pdfCharts: initialPdfCharts,
         timeline: initialTimeline
     })
 
@@ -90,10 +92,11 @@ const GigForm = (props) => {
                 }
             } else if (e.target.type === "file") {
                 const file = e.target.files[0];
-                const files = e.target.files;
                 const fieldName = e.target.name;            
-                    if (fieldName === "charts") {
-                        setGig({...gig, charts: files});
+                    if (fieldName === "iRealCharts") {
+                        setGig({...gig, iRealCharts: file});
+                    } else if (fieldName === "pdfCharts") {
+                        setGig({...gig, pdfCharts: file});
                     } else if (fieldName === "timeline") {
                         setGig({...gig, timeline: file});
                         previewFile(file);
@@ -276,13 +279,29 @@ const GigForm = (props) => {
                     } */}
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='charts'>Charts:</label>
-                    <input type="file" accept=".png, .jpg, .jpeg, .zip, .html" name="charts" id="charts" multiple className="form-control" onChange = {changeHandler}/>
-                    {
+                    <label htmlFor='iRealCharts'>iRealpro Charts:</label>
+                    <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control" value=".html format only..." onChange = {changeHandler}/>
+                    {/* {
                         errors.charts?
                         <p>{errors.charts.message}</p>:
                         null
-                    }
+                    } */}
+                    <div className='border border-3 rounded w-50 mx-auto mt-3'>
+                        {/* {
+                            gig.charts.map((file,idx) => (
+                                <p key={idx} className='mt-3'>{file.name}</p>
+                            ))
+                        } */}
+                    </div>
+                </div>
+                <div className='form-group m-3'>
+                    <label htmlFor='pdfCharts'>PDF Charts:</label>
+                    <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control" value=".zip format only..." onChange = {changeHandler}/>
+                    {/* {
+                        errors.charts?
+                        <p>{errors.charts.message}</p>:
+                        null
+                    } */}
                     <div className='border border-3 rounded w-50 mx-auto mt-3'>
                         {/* {
                             gig.charts.map((file,idx) => (
