@@ -56,6 +56,7 @@ module.exports = app => {
             res.status(500).json({ error: 'Internal server error' });
         }
     });
+    app.get('/api/gigs/download/:fileName', GigController.downloadGigCharts);
     app.get('/api/gigs/oneGig/:id', GigController.oneGig);
     app.put('/api/gigs/editGig/:id', GigController.updateGig);
     app.delete('/api/gigs/deleteGig/:id', GigController.deleteGig);    
