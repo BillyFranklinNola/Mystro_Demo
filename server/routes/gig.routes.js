@@ -26,12 +26,12 @@ module.exports = app => {
                 musicians
             } = req.body;
             console.log(req.body, "gig.routes.js 11");
-            const timeline = req.file? req.file.filename : '';
-            const iRealCharts = req.file? req.file.filename : '';
-            const pdfCharts = req.file? req.file.filename : '';
+            const timeline = req.files.timeline[0].filename;
+            const iRealCharts = req.files.iRealCharts[0].filename;
+            const pdfCharts = req.files.pdfCharts[0].filename;
             console.log(timeline, "gig.routes.js 19");
             console.log(iRealCharts, "gig.routes.js 20");
-            console.log(pdfCharts, "gig.routes.js 20");
+            console.log(pdfCharts, "gig.routes.js 21");
 
             const newGig = {
                 venue,
@@ -51,7 +51,6 @@ module.exports = app => {
 
             console.log(newGig, "gig.routes.js 29");
             const createdGig = await GigController.createGig(newGig, res);
-            console.log(createdGig, "gig.routes.js 31");
         } catch (err) {
             console.log(err);
             res.status(500).json({ error: 'Internal server error' });

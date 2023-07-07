@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
         }
 });
 const fileFilter = (req, file, cb) => {
-    const allowedFileTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf', 'application/zip', 'text/html'];
+    const allowedFileTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf', 'application/x-zip', 'application/x-zip-compressed', 'application/zip', 'text/html'];
     if (allowedFileTypes.includes(file.mimetype)) {
         console.log('destination:', file);
         cb(null, true);
