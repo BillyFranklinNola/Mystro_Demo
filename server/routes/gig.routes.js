@@ -5,7 +5,13 @@ const {upload} = require('../middleware/fileUpload');
 
 module.exports = app => {
     app.get('/api/gigs/gigList', GigController.allGigs);
-    app.post('/api/gigs/createGig', upload.single('timeline'), upload.single('iRealCharts'), upload.single('pdfCharts'), async (req, res) => {
+    app.post('/api/gigs/createGig', 
+    upload.fields([
+        {name: 'iRealCharts', maxCount: 1}, 
+        {name: 'pdfCharts', maxCount: 1},
+        {name: 'timeline', maxCount: 1}
+    ]),
+    async (req, res) => {
         try {
             const { 
                 venue, 

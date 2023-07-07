@@ -280,7 +280,7 @@ const GigForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='iRealCharts'>iRealpro Charts:</label>
-                    <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control" value=".html format only..." onChange = {changeHandler}/>
+                    <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control" onChange = {changeHandler}/>
                     {/* {
                         errors.charts?
                         <p>{errors.charts.message}</p>:
@@ -296,7 +296,7 @@ const GigForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='pdfCharts'>PDF Charts:</label>
-                    <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control" value=".zip format only..." onChange = {changeHandler}/>
+                    <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control" onChange = {changeHandler}/>
                     {/* {
                         errors.charts?
                         <p>{errors.charts.message}</p>:
