@@ -5,7 +5,8 @@ const {upload} = require('../middleware/fileUpload');
 
 module.exports = app => {
     app.get('/api/gigs/gigList', GigController.allGigs);
-    app.post('/api/gigs/createGig', 
+    app.post('/api/gigs/createGig', GigController.createGig);
+    app.patch('/api/gigs/createGigCharts/:id',
     upload.fields([
         {name: 'iRealCharts', maxCount: 1}, 
         {name: 'pdfCharts', maxCount: 1},
@@ -13,44 +14,22 @@ module.exports = app => {
     ]),
     async (req, res) => {
         try {
-            const { 
-                venue, 
-                date, 
-                streetAddress, 
-                city, 
-                state, 
-                zipCode, 
-                setUpBy, 
-                startTime, 
-                endTime, 
-                musicians
-            } = req.body;
-            console.log(req.body, "gig.routes.js 11");
-            const timeline = req.files.timeline[0].filename;
-            const iRealCharts = req.files.iRealCharts[0].filename;
-            const pdfCharts = req.files.pdfCharts[0].filename;
-            console.log(timeline, "gig.routes.js 19");
-            console.log(iRealCharts, "gig.routes.js 20");
-            console.log(pdfCharts, "gig.routes.js 21");
-
-            const newGig = {
-                venue,
-                date,
-                streetAddress,
-                city,
-                state,
-                zipCode,
-                setUpBy,
-                startTime,
-                endTime,
-                musicians,
+            const gigId = req.params.id;
+            const timeline = req.files.timeline? req.files.timeline[0].filename : '';
+            const iRealCharts = req.files.iRealCharts? req.files.iRealCharts[0].filename: '';
+            const pdfCharts = req.files.pdfCharts? req.files.pdfCharts[0].filename: '';
+            console.log(timeline, "gig.routes.js 71");
+            console.log(iRealCharts, "gig.routes.js 72");
+            console.log(pdfCharts, "gig.routes.js 73");
+            const gigCharts = {
                 iRealCharts,
                 pdfCharts,
                 timeline,
+                gigId
             };
 
-            console.log(newGig, "gig.routes.js 29");
-            const createdGig = await GigController.createGig(newGig, res);
+            console.log(gigCharts, "gig.routes.js 29");
+            GigController.createGigCharts(gigCharts, res);
         } catch (err) {
             console.log(err);
             res.status(500).json({ error: 'Internal server error' });
