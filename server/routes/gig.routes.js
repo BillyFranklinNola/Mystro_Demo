@@ -6,7 +6,7 @@ const {upload} = require('../middleware/fileUpload');
 module.exports = app => {
     app.get('/api/gigs/gigList', GigController.allGigs);
     app.post('/api/gigs/createGig', GigController.createGig);
-    app.patch('/api/gigs/createGigCharts/:id',
+    app.put('/api/gigs/createGigCharts/:id',
     upload.fields([
         {name: 'iRealCharts', maxCount: 1}, 
         {name: 'pdfCharts', maxCount: 1},

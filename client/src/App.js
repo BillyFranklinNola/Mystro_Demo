@@ -13,6 +13,7 @@ import MusicianDashboard from './views/MusicianDashboard';
 import TimelineView from './views/TimelineView';
 import AdminRoute from './components/AdminRoute';
 import ProtectedRoute from './components/ProtectedRoute';
+import ChartsView from './views/ChartsView';
 
 function App() {
 
@@ -87,7 +88,17 @@ function App() {
           <Route 
               path='/gigs/timeline/:id' 
               element={
-                <TimelineView/>}/>
+                <ProtectedRoute>
+                  <TimelineView/>
+                </ProtectedRoute>
+              }/>
+          <Route
+              path='/gigs/charts/:id'
+              element={
+              <ProtectedRoute>
+                <ChartsView/>
+              </ProtectedRoute>
+              }/>
         </Routes>
       </BrowserRouter>
       <ToastContainer/>

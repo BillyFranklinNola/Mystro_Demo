@@ -5,43 +5,36 @@ import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify';
 
-const CreateGig = (props) => {
-    const [allGigs, setAllGigs] = useState([]);
-    const [gig, setGig] = useState(props);
+const CreateGig = () => {
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
+    const [gig, setGig] = useState({});
+    const [allGigs, setAllGigs] = useState([]);
     
-    const createGig = async (gig) => {   
-        console.log(gig) 
-        console.log(gig.musicians)
-        const formData = new FormData();
-        formData.append('venue', gig.venue);
-        formData.append('date', gig.date);
-        formData.append('streetAddress', gig.streetAddress);
-        formData.append('city', gig.city);
-        formData.append('state', gig.state);
-        formData.append('zipCode', gig.zipCode);
-        formData.append('setUpBy', gig.setUpBy);
-        formData.append('startTime', gig.startTime);
-        formData.append('endTime', gig.endTime);
-        gig.musicians.forEach((musician, index) => {
-            formData.append(`musicians[${index}]`, musician);
-        });  
-        formData.append('iRealCharts', gig.iRealCharts);
-        formData.append('pdfCharts', gig.pdfCharts);
-        formData.append('timeline', gig.timeline);
-        console.log(Object.fromEntries(formData));
+    const newGig = async (gig) => {   
+        console.log(gig)
+        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians};
+        try {
+            console.log(gig)
+            const newGig = await axios.post('http://localhost:8000/api/gigs/createGig', gigData)
+            console.log(newGig)
 
-        try{
-            const res = await axios.post('http://localhost:8000/api/gigs/createGig', formData, 
-            {
-            headers: {
-                'Content-Type': 'multipart/form-data'
+            const formData = new FormData();
+            console.log(gig.iRealCharts)
+            formData.append('iRealCharts', gig.iRealCharts);
+            formData.append('pdfCharts', gig.pdfCharts);
+            formData.append('timeline', gig.timeline);
+            formData.append('gigId', newGig.data._id);
+
+            axios.patch(`http://localhost:8000/api/gigs/createGigCharts/${newGig.data._id}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(res);
-            setGig(res.data)
-            setAllGigs([...allGigs, res.data]);
+            console.log(newGig)
+            setGig(newGig.data)
+            setAllGigs([...allGigs, newGig.data]);
             navigate('/AdminDashboard')
         } catch (err) {
             console.log(err.response.data.error.errors)
@@ -66,7 +59,7 @@ return (
             <div>
                 {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 <GigForm
-                    onSubmitProp={createGig} 
+                    onSubmitProp={newGig} 
                     initialVenue="" 
                     initialDate="" 
                     initialStreetAddress="" 

@@ -104,7 +104,7 @@ return (
                             <p>Uptown Funk - Bruno Mars</p>
                         </div>
                         <div className="mt-3">
-                            <Link to={`/gigs/viewGig/${id}`} className="btn btn-warning w-100">Charts</Link>
+                            <Link to={`/gigs/charts/${id}`} className="btn btn-warning w-100">Charts</Link>
                             <Link to={`/gigs/timeline/${id}`} className="btn btn-warning w-100 mt-3">Timline</Link>
                         </div>
                     </div>
