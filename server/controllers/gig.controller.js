@@ -9,13 +9,17 @@ module.exports = {
     },
 
     createGig: async (req, res) => {
-        try {
-            const addNewGig = await Gig.create(req);
-            res.status(201).json({ gig: addNewGig });
-        } catch (err) {
-            console.log(err);
-            res.status(400).json({ message: 'Could not create Gig', error: err });
-        }
+        Gig.create(req.body)
+        .then(newGig => res.status(201).json(newGig))
+        .catch(err => res.status(400).json({ message: 'Could not create Gig', error: err }));
+    },
+
+    createGigCharts: async (req, res) => {
+        console.log(req, "gig.controller.js 18");
+        console.log(req.gigId, "gig.controller.js 19");
+        Gig.findOneAndUpdate({ _id: req.gigId }, req, { new: true, runValidators: true })
+            .then(updatedGig => res.json({ gig: updatedGig }))
+            .catch(err => res.status(400).json(err))
     },
 
     oneGig: (req, res) => {
