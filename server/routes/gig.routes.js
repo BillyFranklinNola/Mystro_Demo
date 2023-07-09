@@ -14,10 +14,22 @@ module.exports = app => {
     ]),
     async (req, res) => {
         try {
-            const gigId = req.params.id;
-            const timeline = req.files.timeline? req.files.timeline[0].filename : '';
-            const iRealCharts = req.files.iRealCharts? req.files.iRealCharts[0].filename: '';
-            const pdfCharts = req.files.pdfCharts? req.files.pdfCharts[0].filename: '';
+                    const gigId = req.params.id;
+        let timeline = '';
+        let iRealCharts = '';
+        let pdfCharts = '';
+
+        if (req.files) {
+            if (req.files.timeline) {
+                timeline = req.files.timeline[0].filename;
+            }
+            if (req.files.iRealCharts) {
+                iRealCharts = req.files.iRealCharts[0].filename;
+            }
+            if (req.files.pdfCharts) {
+                pdfCharts = req.files.pdfCharts[0].filename;
+            }
+        }
             console.log(timeline, "gig.routes.js 71");
             console.log(iRealCharts, "gig.routes.js 72");
             console.log(pdfCharts, "gig.routes.js 73");
@@ -60,7 +72,6 @@ module.exports = app => {
                 timeline,
                 gigId
             };
-
             console.log(gigCharts, "gig.routes.js 29");
             GigController.createGigCharts(gigCharts, res);
         } catch (err) {
