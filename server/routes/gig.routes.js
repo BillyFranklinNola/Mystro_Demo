@@ -14,10 +14,12 @@ module.exports = app => {
     ]),
     async (req, res) => {
         try {
-                    const gigId = req.params.id;
+        const gigId = req.params.id;
         let timeline = '';
         let iRealCharts = '';
         let pdfCharts = '';
+
+        console.log(req.files)
 
         if (req.files) {
             if (req.files.timeline) {
