@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const GigForm = (props) => {
     const {
@@ -57,13 +58,13 @@ const GigForm = (props) => {
         };
     }
 
-    // function listFiles(chartsFiles) {
-    //     const reader = new FileReader();
-    //     reader.readAsDataURL(chartsFiles);
-    //     reader.onloadend = () => {
-    //         console.log(reader.result);
-    //     };
-    // }
+    function listFiles(chartsFiles) {
+        const reader = new FileReader();
+        reader.readAsDataURL(chartsFiles);
+        reader.onloadend = () => {
+            console.log(reader.result);
+        };
+    }
 
     const changeHandler = async (e) => {
         try{
@@ -281,46 +282,28 @@ const GigForm = (props) => {
                 <div className='form-group m-3'>
                     <label htmlFor='iRealCharts'>iRealpro Charts:</label>
                     <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control" onChange = {changeHandler}/>
-                    {/* {
-                        errors.charts?
-                        <p>{errors.charts.message}</p>:
-                        null
-                    } */}
-                    <div className='border border-3 rounded w-50 mx-auto mt-3'>
-                        {/* {
-                            gig.charts.map((file,idx) => (
-                                <p key={idx} className='mt-3'>{file.name}</p>
-                            ))
-                        } */}
-                    </div>
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='pdfCharts'>PDF Charts:</label>
                     <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control" onChange = {changeHandler}/>
-                    {/* {
-                        errors.charts?
-                        <p>{errors.charts.message}</p>:
-                        null
-                    } */}
-                    <div className='border border-3 rounded w-50 mx-auto mt-3'>
-                        {/* {
-                            gig.charts.map((file,idx) => (
-                                <p key={idx} className='mt-3'>{file.name}</p>
-                            ))
-                        } */}
-                    </div>
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='timeline'>Timeline:</label>
                     <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
-                    {/* {
-                        errors.timeline?
-                        <p>{errors.timeline.message}</p>:
-                        null
-                    } */}
-                    <img src={image} className='h-75 w-75 mt-4 border border-3 rounded' alt="Preview of uploaded file." />
+                    {
+                    image === '' ? 
+                    null : 
+                    <img src={image} className='h-75 w-75 mt-4 border border-3 rounded p-3' alt="Preview of uploaded file." />
+                    }
                 </div>
-                <button input type="submit" className='btn btn-warning'>Submit</button>
+                <div>
+                    {
+                    gig.timeline === '' ?
+                    null :
+                    <Link to={`/gigs/timeline/${gig.id}`} className='btn btn-warning mt-3'>View Existing Timeline</Link>
+                    }
+                </div>
+                <button input type="submit" className='btn btn-warning mt-4'>Submit</button>
             </form>
         </div>
     )

@@ -28,8 +28,8 @@ const MusicianGigList = (props) => {
     }, [allGigs, id]);
 
 return (
-    <div className='p-5'>
-        <div className='p-3 border border-3 border-secondary rounded mx-auto p-5'>
+    <div className='container-fluid p-5'>
+        <div className='table-responsive p-3 border border-3 border-secondary rounded mx-auto p-5'>
             <table className='table table-striped border border-secondary rounded'>
                 <thead>
                     <tr>

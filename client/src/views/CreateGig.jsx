@@ -6,28 +6,25 @@ import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify';
 
 const CreateGig = () => {
-    const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const [gig, setGig] = useState({});
     const [allGigs, setAllGigs] = useState([]);
-    
+    const [errors, setErrors] = useState([]);
+
     const newGig = async (gig) => {   
         console.log(gig)
         const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = gig;
         const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians};
         try {
-            console.log(gig)
             const newGig = await axios.post('http://localhost:8000/api/gigs/createGig', gigData)
             console.log(newGig)
-
             const formData = new FormData();
-            console.log(gig.iRealCharts)
             formData.append('iRealCharts', gig.iRealCharts);
             formData.append('pdfCharts', gig.pdfCharts);
             formData.append('timeline', gig.timeline);
             formData.append('gigId', newGig.data._id);
 
-            axios.patch(`http://localhost:8000/api/gigs/createGigCharts/${newGig.data._id}`, formData, {
+            axios.put(`http://localhost:8000/api/gigs/gigCharts/${newGig.data._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

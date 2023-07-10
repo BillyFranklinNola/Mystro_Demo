@@ -22,26 +22,22 @@ return (
     }}>   
         <div className='pt-3'>
             <NavBar/>
-            <div className='d-flex'>
-                <div>
-                </div>
-                <div className='col-5'>
-                </div>
-            </div>
-            <div className='d-flex justify-content-around p-5'>
-                <div className='col-6'>
-                    <h2 className="text-warning mx-auto mt-5 mb-5">All Gigs:</h2>
-                    <AdminGigList 
-                        setAllGigs={allGigs} 
-                        gigDeleteHandler={gigDeleteHandler}/>
-                    <Link className='btn btn-warning mt-3' to ='/gigs/createGig'>Create New Gig</Link>
-                </div>
-                <div className='col-5'>
-                    <h2 className="text-warning mx-auto mt-5 mb-5">All Musicians:</h2>
-                    <AdminMusicianList 
-                        setAllMusicians={allMusicians} 
-                        musicianDeleteHandler={musicianDeleteHandler}/>
-                    <Link className='btn btn-warning mt-3' to ='/'>Register New Musician</Link>
+            <div className='container'>
+                <div className='row p-5'>
+                    <div className='col-sm-6'>
+                        <h2 className="text-warning mx-auto mt-5 mb-5">All Gigs:</h2>
+                        <AdminGigList 
+                            setAllGigs={allGigs} 
+                            gigDeleteHandler={gigDeleteHandler}/>
+                        <Link className='btn btn-warning mt-3' to ='/gigs/createGig'>Create New Gig</Link>
+                    </div>
+                    <div className='col-sm-6'>
+                        <h2 className="text-warning mx-auto mt-5 mb-5">All Musicians:</h2>
+                        <AdminMusicianList 
+                            setAllMusicians={allMusicians} 
+                            musicianDeleteHandler={musicianDeleteHandler}/>
+                        <Link className='btn btn-warning mt-3' to ='/'>Register New Musician</Link>
+                    </div>
                 </div>
             </div>
         </div>

@@ -5,14 +5,13 @@ import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify'
 
-const EditGig = (props) => {
+const EditGig = () => {
     const navigate = useNavigate();
     const {id} = useParams();
-    const [gig, setGig] = useState(props);
-    const [errors, setErrors] = useState([]);
+    const [gig, setGig] = useState({});
+    const [allGigs, setAllGigs] = useState([]);
     const [loaded, setLoaded] = useState(false);
-
-    console.log(gig);
+    const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/gigs/oneGig/${id}`)
@@ -27,15 +26,33 @@ const EditGig = (props) => {
         })
         }, [])
 
-    const updateGig = gig => {
-        axios.put(`http://localhost:8000/api/gigs/editGig/${id}`, 
-        gig)
-        .then(res=>{
-            console.log(res);
-            navigate(`/AdminDashboard`)
-        })
-        .catch(err=>{
-            console.log(err.response.data.error);
+    const updateGig = async (gig) => {
+        console.log(gig)
+        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians};
+        try {
+            const updatedGig = await axios.put(`http://localhost:8000/api/gigs/editGig/${id}`, gigData) 
+            console.log(updatedGig)
+            const formData = new FormData();
+            formData.append('iRealCharts', gig.iRealCharts);
+            formData.append('pdfCharts', gig.pdfCharts);
+            formData.append('timeline', gig.timeline);
+            formData.append('gigId', updatedGig.data.gig._id);
+            console.log(updatedGig.data.gig._id)
+            
+
+            axios.put(`http://localhost:8000/api/gigs/gigCharts/${updatedGig.data.gig._id}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log(updatedGig)
+            setGig(updatedGig.data)
+            setAllGigs([...allGigs, updatedGig.data]);
+            navigate('/AdminDashboard')
+        } catch (err) {      
+            console.log(err.response.data.error.errors);
+            console.log(err.response);
             const errorResponse = err.response.data.error;
             const errorArray = [];
             for (const key of Object.keys(errorResponse)) {
@@ -43,7 +60,7 @@ const EditGig = (props) => {
                 toast.error(errorResponse[key].message)
             }
             setErrors(errorArray);
-        });
+        };
 }
 
 return (
@@ -67,7 +84,11 @@ return (
                     initialSetUpBy={gig.setUpBy}
                     initialStartTime={gig.startTime}
                     initialEndTime={gig.endTime}
-                    initialMusicians={gig.musicians} />
+                    initialMusicians={gig.musicians} 
+                    initialIRealCharts={gig.iRealCharts}
+                    initialPdfCharts={gig.pdfCharts}
+                    initialTimeline={gig.timeline}
+                    />
                 }
             </div>
         </div>
