@@ -27,10 +27,10 @@ const NavBar = () => {
                         NOLA Live Productions
                     </a>
                 </div>
-                <div className="d-flex mt-3 mt-sm-0">
-                    <Link className="btn btn-warning ms-auto me-2" to='/AdminDashboard'>Admin Dashboard</Link>
-                    <Link className="btn btn-warning me-2" to='/MusicianDashboard'>Musician Dashboard</Link>
-                    <div className="btn btn-warning" onClick={logoutHandler}>
+                <div className="d-flex flex-column flex-sm-row mt-3 mt-sm-0">
+                    <Link className="btn btn-warning me-sm-2" to='/AdminDashboard'>Admin Dashboard</Link>
+                    <Link className="btn btn-warning me-sm-2 mt-2 mt-sm-0" to='/MusicianDashboard'>Musician Dashboard</Link>
+                    <div className="btn btn-warning mt-2 mt-sm-0" onClick={logoutHandler}>
                         Logout
                     </div>
                 </div>

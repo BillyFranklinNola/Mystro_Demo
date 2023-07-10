@@ -31,17 +31,17 @@ const TimelineView = (props) => {
     // const fetchImage = cld.image()
 
     return (
-        <div className="pt-3">
-            <NavBar/>
-            <div className="p-5" style={{
+            <div className="pt-3" style={{
                 background: 'radial-gradient(circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
             }}>
-                <div className="w-50 mx-auto">
-                    <h2 className="text-warning mb-5">Full Timline</h2>
-                    <img src={require('../assets/Sample_Timeline.png')} alt="Image of full timelinr" className="img-fluid border border-dark border-3"/>
+                <NavBar/>
+                <div className="container-fluid">
+                    <div className="w-50 mx-auto">
+                        <h2 className="text-warning mb-5 mt-5">Full Timline</h2>
+                        <img src={require('../assets/Sample_Timeline.png')} alt="Image of full timelinr" className="img-fluid border border-dark border-3"/>
+                    </div>
                 </div>
             </div>
-        </div>
     );
 }
 

@@ -36,14 +36,16 @@ const ChartsView = () => {
             background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
         }} className="py-3">
             <NavBar/>
-            <h2 className="text-white my-5">Click to Download:</h2>
             <div>
-                <div className="mx-3 border border-3 border-secondary rounded d-flex p-3 align-items-center">
-                    <div className="col">
-                        <img src={iRealLogo} className="w-50 h-auto" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
-                    </div>
-                    <div className="col">
-                        <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
+            <h2 className="text-white my-5">Click to Download:</h2>
+                <div className="container-fluid d-flex flex-column flex-sm-row align-items-center">
+                    <div className="d-flex align-items-center mx-3 mb-5 p-3">
+                        <div className="col">
+                            <img src={iRealLogo} className="w-50 h-auto" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
+                        </div>
+                        <div className="col">
+                            <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
+                        </div>
                     </div>
                 </div>
             </div>
