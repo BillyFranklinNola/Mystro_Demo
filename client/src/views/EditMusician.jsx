@@ -47,15 +47,17 @@ return (
     }}>
         <div className='pt-3'>
             <NavBar/>
-            <h2 className="text-warning mx-auto mt-5">Edit Musician:</h2>
-            <div>
-                <EditMusicianForm
-                    onSubmitProp={updateMusician}
-                    initialFirstName={musician.firstName}
-                    initialLastName={musician.lastName}
-                    initialEmail={musician.email}
-                    initialInstrument={musician.instrument}
-                    initialSongList=""/>
+            <div className='container-fluid'>
+                <h2 className="text-warning mx-auto mt-5">Edit Musician:</h2>
+                <div>
+                    <EditMusicianForm
+                        onSubmitProp={updateMusician}
+                        initialFirstName={musician.firstName}
+                        initialLastName={musician.lastName}
+                        initialEmail={musician.email}
+                        initialInstrument={musician.instrument}
+                        initialSongList=""/>
+                </div>
             </div>
         </div>
     </div>)

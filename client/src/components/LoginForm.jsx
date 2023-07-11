@@ -55,28 +55,20 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div className="bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler}>
-                <div className='form-group m-3'>
-                    <label htmlFor='email'>Email:</label>
-                    <input type="text" name="email" id="email" className="form-control" onChange = {logChangeHandler}/>
-                    {/* {
-                        errors.email?
-                        <p>{errors.email.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='password'>Password:</label>
-                    <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
-                    {/* {
-                        errors.password?
-                        <p>{errors.password.message}</p>:
-                        null
-                    } */}
-                </div>
-                <button type="submit" className='btn btn-warning'>Submit</button>
-            </form>
+        <div className='container-fluid'>
+            <div className="bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
+                <form className='mx-auto' onSubmit={onSubmitHandler}>
+                    <div className='form-group m-3'>
+                        <label htmlFor='email'>Email:</label>
+                        <input type="text" name="email" id="email" className="form-control" onChange = {logChangeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='password'>Password:</label>
+                        <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
+                    </div>
+                    <button type="submit" className='btn btn-warning'>Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

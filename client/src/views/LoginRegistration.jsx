@@ -38,22 +38,24 @@ return (
     }}> 
         <div className='pt-3'>
             <NavBar/>
-            <div className='d-flex justify-content-evenly p-5 mt-5'>
-                <div className='ms-5'>
-                    <h2 className="text-warning mx-auto">Login:</h2>
-                    <LoginForm 
-                        loginEmail="" 
-                        loginPassword=""/>
-                </div>
-                <div className='me-5'>
-                    <h2 className="offset-md text-warning mx-auto">Register:</h2>
-                    <RegisterForm 
-                        initialFirstName="" 
-                        initialLastName="" 
-                        initialEmail="" 
-                        initialInstrument="" 
-                        initialPassword="" 
-                        initialConfirmPassword=""/>
+            <div className='container'>
+                <div className='row p-5'>
+                    <div className='col-sm-6'>
+                        <h2 className="text-warning mx-auto">Login:</h2>
+                        <LoginForm 
+                            loginEmail="" 
+                            loginPassword=""/>
+                    </div>
+                    <div className='col-sm-6'>
+                        <h2 className="offset-md text-warning mx-auto">Register:</h2>
+                        <RegisterForm 
+                            initialFirstName="" 
+                            initialLastName="" 
+                            initialEmail="" 
+                            initialInstrument="" 
+                            initialPassword="" 
+                            initialConfirmPassword=""/>
+                    </div>
                 </div>
             </div>
         </div>

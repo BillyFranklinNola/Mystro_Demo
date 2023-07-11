@@ -69,27 +69,29 @@ return (
     }}>
         <div className='pt-3'>
             <NavBar/>
-            <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>
-            <div>
-                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-                {
-                loaded && <GigForm 
-                    onSubmitProp={updateGig}
-                    initialVenue={gig.venue}
-                    initialDate={gig.date}
-                    initialStreetAddress={gig.streetAddress}
-                    initialCity={gig.city}
-                    initialState={gig.state}
-                    initialZipCode={gig.zipCode}
-                    initialSetUpBy={gig.setUpBy}
-                    initialStartTime={gig.startTime}
-                    initialEndTime={gig.endTime}
-                    initialMusicians={gig.musicians} 
-                    initialIRealCharts={gig.iRealCharts}
-                    initialPdfCharts={gig.pdfCharts}
-                    initialTimeline={gig.timeline}
-                    />
-                }
+            <div className='container-fluid'>
+                <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>
+                <div>
+                    {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
+                    {
+                    loaded && <GigForm 
+                        onSubmitProp={updateGig}
+                        initialVenue={gig.venue}
+                        initialDate={gig.date}
+                        initialStreetAddress={gig.streetAddress}
+                        initialCity={gig.city}
+                        initialState={gig.state}
+                        initialZipCode={gig.zipCode}
+                        initialSetUpBy={gig.setUpBy}
+                        initialStartTime={gig.startTime}
+                        initialEndTime={gig.endTime}
+                        initialMusicians={gig.musicians} 
+                        initialIRealCharts={gig.iRealCharts}
+                        initialPdfCharts={gig.pdfCharts}
+                        initialTimeline={gig.timeline}
+                        />
+                    }
+                </div>
             </div>
         </div>
     </div>

@@ -17,12 +17,12 @@ const GigMusiciansList = (props) => {
         })}, [])
 
 return(
-    <div className='p-3 border border-3 border-secondary rounded'>
-        <table className='table table-striped border border-3 border-secondary rounded mx-auto text-white'>
+    <div className='table-responsive'>
+        <table className='table table-striped border border-3 border-secondary rounded text-white'>
             <thead>
                 <tr>
-                    <th scope='col' className='col-6 text-start'>Musician</th>
-                    <th scope='col' className='col-6 text-start'>Instrument</th>
+                    <th scope='col' className='col-6 text-center text-lg-start'>Musician</th>
+                    <th scope='col' className='col-6 text-center text-lg-start'>Instrument</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +30,8 @@ return(
                 gigMusicians.map((gig)=>{
                 return(
                         <tr key={gig.musician._id}>
-                            <td className='text-start text-white'>{gig.musician.firstName} {gig.musician.lastName}</td>
-                            <td className='text-start text-white'>{gig.musician.instrument}</td>
+                            <td className='text-center text-lg-start text-white'>{gig.musician.firstName} {gig.musician.lastName}</td>
+                            <td className='text-center text-lg-start text-white'>{gig.musician.instrument}</td>
                     </tr>
                     )
                     })}

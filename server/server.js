@@ -15,6 +15,7 @@ app.use(cookieParser())
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use(express.static('server/public'));
 
 require('./routes/musician.routes')(app);
 require('./routes/gig.routes')(app);

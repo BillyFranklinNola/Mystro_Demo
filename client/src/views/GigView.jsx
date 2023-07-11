@@ -69,13 +69,10 @@ return (
     }}>
         <div className="pt-3">
             <NavBar/>
-            <div className="d-flex justify-content-between">
-                <h2 className="text-warning mt-3 mb-3 ms-4">{gig.venue} - {gig.city},{gig.state} </h2>
-                <h2 className="text-warning mt-3 mb-3 me-4">{dayOfWeek}, {gigDate}</h2>
-            </div>
-            <div className="border border-3 border-secondary rounded m-3 mt-1 p-3">
-                <div className="d-flex justify-content-between">
-                    <div className="col-4">
+            <div className="container-fluid">
+                <h2 className="text-warning my-4">{gig.venue} - {gig.city},{gig.state} </h2>
+                <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
+                    <div className="col-10 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
                         <div className="border border-3 border-secondary rounded mb-3 p-3">
                             <MapOfGig
                                 gig={gig} 
@@ -91,8 +88,9 @@ return (
                             <p>{gig.city}, {gig.state} {gig.zipCode}</p>
                         </div>
                     </div>
-                    <div className="col-3 border border-3 border-secondary rounded p-3">
+                    <div className="col-10 col-lg-3 mx-auto mx-lg-0 mb-3 mb-lg-0">
                         <div className="border border-3 border-secondary rounded p-2 text-white">
+                            <h6 className="text-warning mt-3">{dayOfWeek}, {gigDate}</h6>
                             <p className="mt-3">Set up by: {setUpBy}</p>
                             <p>Start: {startTime}</p>
                             <p>End: {endTime}</p>                
@@ -103,12 +101,12 @@ return (
                             <p>Valerie - Amy Winehouse</p>
                             <p>Uptown Funk - Bruno Mars</p>
                         </div>
-                        <div className="mt-3">
+                        <div className="d-flex flex-row flex-lg-column my-3 mt-lg-3">
                             <Link to={`/gigs/charts/${id}`} className="btn btn-warning w-100">Charts</Link>
-                            <Link to={`/gigs/timeline/${id}`} className="btn btn-warning w-100 mt-3">Timline</Link>
+                            <Link to={`/gigs/timeline/${id}`} className="btn btn-warning w-100 ms-2 ms-lg-0 mt-lg-3">Timline</Link>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-10 col-lg-3 mx-auto mx-lg-0 mb-3 mb-lg-0">
                         <GigMusiciansList gigMusicians={gigMusicians} setGigMusicians={setGigMusicians} id={id}/> 
                         <div className="mt-3">
                             <GigWeather

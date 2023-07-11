@@ -36,7 +36,6 @@ const GigForm = (props) => {
         timeline: initialTimeline
     })
 
-    const [errors, setErrors] = useState({})
     const [allMusicians, setAllMusicians] = useState([])
     const [image, setImage] = useState('')
 
@@ -58,13 +57,13 @@ const GigForm = (props) => {
         };
     }
 
-    function listFiles(chartsFiles) {
-        const reader = new FileReader();
-        reader.readAsDataURL(chartsFiles);
-        reader.onloadend = () => {
-            console.log(reader.result);
-        };
-    }
+    // function listFiles(chartsFiles) {
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(chartsFiles);
+    //     reader.onloadend = () => {
+    //         console.log(reader.result);
+    //     };
+    // }
 
     const changeHandler = async (e) => {
         try{
@@ -123,188 +122,145 @@ const GigForm = (props) => {
             console.log(gig.musicians.length)
 
     return (
-        <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler}>
-                <div className='form-group m-3'>
-                    <label htmlFor='venue'>Venue:</label>
-                    <input type="text" name="venue" id="venue" className="form-control" value={gig.venue} onChange = {changeHandler}/>
-                    {/* {
-                        errors.venue?
-                        <p>{errors.venue.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='date'>Date:</label>
-                    <input type="date" name="date" id="date" className="form-control" value={gig.date} onChange = {changeHandler}/>
-                    {/* {
-                        errors.date?
-                        <p>{errors.date.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='streetAddress'>Address:</label>
-                    <input type="text" name="streetAddress" id="streetAddress" className="form-control" value={gig.streetAddress} onChange = {changeHandler}/>
-                    {/* {
-                        errors.streetAddress?
-                        <p>{errors.streetAddress.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='city'>City:</label>
-                    <input type="text" name="city" id="city" className="form-control" value={gig.city} onChange = {changeHandler}/>
-                    {/* {
-                        errors.city?
-                        <p>{errors.city.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='state'>State:</label>
-                    <select name="state" id="state" className="form-control" value={gig.state} onChange = {changeHandler}>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                    </select>
-                    {/* {
-                        errors.state?
-                        <p>{errors.state.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='zipCode'>Zip Code:</label>
-                    <input type="text" name="zipCode" id="zipCode" className="form-control" value={gig.zipCode} onChange = {changeHandler}/>
-                    {/* {
-                        errors.zipCode?
-                        <p>{errors.zipCode.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='setUpBy'>Set Up By:</label>
-                    <input type="time" name="setUpBy" id="setUpBy" className="form-control" value={gig.setUpBy} onChange = {changeHandler}/>
-                    {/* {
-                        errors.setUpBy?
-                        <p>{errors.setUpBy.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='startTime'>Start Time:</label>
-                    <input type="time" name="startTime" id="startTime" className="form-control" value={gig.startTime} onChange = {changeHandler}/>
-                    {/* {
-                        errors.startTime?
-                        <p>{errors.startTime.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='endTime'>End Time:</label>
-                    <input type="time" name="endTime" id="endTime" className="form-control" value={gig.endTime} onChange = {changeHandler}/>
-                    {/* {
-                        errors.endTime?
-                        <p>{errors.endTime.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <p>Musicians:</p>
-                    {
-                    allMusicians.map((musician,idx) => (
-                            <div className='form-check text-start' key={idx}>
-                                <label htmlFor={musician.id} className='form-check-label ms-1'>{musician.firstName} {musician.lastName}</label>
-                                <input 
-                                    type="checkbox" 
-                                    className="form-check-input" 
-                                    name={musician.id} id={musician._id} 
-                                    checked={gig.musicians.length > 0 ? gig.musicians.some((m) => m.musician._id === musician._id):false}
-                                    onChange = {changeHandler}/>
-                            </div>
-                        ))
-                    }
-                    {/* {
-                        errors.musicians?
-                        <p>{errors.musicians.message}</p>:
-                        null
-                    } */}
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='iRealCharts'>iRealpro Charts:</label>
-                    <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control" onChange = {changeHandler}/>
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='pdfCharts'>PDF Charts:</label>
-                    <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control" onChange = {changeHandler}/>
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='timeline'>Timeline:</label>
-                    <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
-                    {
-                    image === '' ? 
-                    null : 
-                    <img src={image} className='h-75 w-75 mt-4 border border-3 rounded p-3' alt="Preview of uploaded file." />
-                    }
-                </div>
-                <div>
-                    {
-                    gig.timeline === '' ?
-                    null :
-                    <Link to={`/gigs/timeline/${gig.id}`} className='btn btn-warning mt-3'>View Existing Timeline</Link>
-                    }
-                </div>
-                <button input type="submit" className='btn btn-warning mt-4'>Submit</button>
-            </form>
+        <div className="container-fluid">
+            <div className="col-10 col-md-8 col-lg-5 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
+                <form className='mx-auto' onSubmit={onSubmitHandler}>
+                    <div className='form-group m-3'>
+                        <label htmlFor='venue'>Venue:</label>
+                        <input type="text" name="venue" id="venue" className="form-control" value={gig.venue} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='date'>Date:</label>
+                        <input type="date" name="date" id="date" className="form-control" value={gig.date} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='streetAddress'>Address:</label>
+                        <input type="text" name="streetAddress" id="streetAddress" className="form-control" value={gig.streetAddress} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='city'>City:</label>
+                        <input type="text" name="city" id="city" className="form-control" value={gig.city} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='state'>State:</label>
+                        <select name="state" id="state" className="form-control" value={gig.state} onChange = {changeHandler}>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='zipCode'>Zip Code:</label>
+                        <input type="text" name="zipCode" id="zipCode" className="form-control" value={gig.zipCode} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='setUpBy'>Set Up By:</label>
+                        <input type="time" name="setUpBy" id="setUpBy" className="form-control" value={gig.setUpBy} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='startTime'>Start Time:</label>
+                        <input type="time" name="startTime" id="startTime" className="form-control" value={gig.startTime} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='endTime'>End Time:</label>
+                        <input type="time" name="endTime" id="endTime" className="form-control" value={gig.endTime} onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <p>Musicians:</p>
+                        {
+                        allMusicians.map((musician,idx) => (
+                                <div className='form-check text-start' key={idx}>
+                                    <label htmlFor={musician.id} className='form-check-label ms-1'>{musician.firstName} {musician.lastName}</label>
+                                    <input 
+                                        type="checkbox" 
+                                        className="form-check-input" 
+                                        name={musician.id} id={musician._id} 
+                                        checked={gig.musicians.length > 0 ? gig.musicians.some((m) => m.musician._id === musician._id):false}
+                                        onChange = {changeHandler}/>
+                                </div>
+                            ))
+                        }
+                        {/* {
+                            errors.musicians?
+                            <p>{errors.musicians.message}</p>:
+                            null
+                        } */}
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='iRealCharts'>iRealpro Charts:</label>
+                        <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control" onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='pdfCharts'>PDF Charts:</label>
+                        <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control" onChange = {changeHandler}/>
+                    </div>
+                    <div className='form-group m-3'>
+                        <label htmlFor='timeline'>Timeline:</label>
+                        <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control" onChange = {changeHandler}/>
+                        {
+                        image === '' ? 
+                        null : 
+                        <img src={image} className='h-75 w-75 mt-4 border border-3 rounded p-3' alt="Preview of uploaded file." />
+                        }
+                    </div>
+                    <div>
+                        {
+                        gig.timeline === '' ?
+                        null :
+                        <Link to={`/gigs/timeline/${gig.id}`} className='btn btn-warning mt-3'>View Existing Timeline</Link>
+                        }
+                    </div>
+                    <button input type="submit" className='btn btn-warning mt-4'>Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

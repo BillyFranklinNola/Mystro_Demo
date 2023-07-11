@@ -52,24 +52,26 @@ return (
     }}>
         <div className='pt-3'>
             <NavBar/>
-            <h2 className="text-warning mx-auto mt-5">Create a new gig:</h2>
-            <div>
-                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-                <GigForm
-                    onSubmitProp={newGig} 
-                    initialVenue="" 
-                    initialDate="" 
-                    initialStreetAddress="" 
-                    initialCity="" 
-                    initialState=""  
-                    initialZipCode="" 
-                    initialSetUpBy="" 
-                    initialStartTime="" 
-                    initialEndTime=""  
-                    initialMusicians={[]}
-                    initialIRealCharts="" 
-                    initialPdfCharts=""
-                    initialTimeline=""/>
+            <div className='container-fluid'>
+                <h2 className="text-warning mx-auto mt-5">Create a new gig:</h2>
+                <div>
+                    {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
+                    <GigForm
+                        onSubmitProp={newGig} 
+                        initialVenue="" 
+                        initialDate="" 
+                        initialStreetAddress="" 
+                        initialCity="" 
+                        initialState=""  
+                        initialZipCode="" 
+                        initialSetUpBy="" 
+                        initialStartTime="" 
+                        initialEndTime=""  
+                        initialMusicians={[]}
+                        initialIRealCharts="" 
+                        initialPdfCharts=""
+                        initialTimeline=""/>
+                </div>
             </div>
         </div>
     </div>
