@@ -21,6 +21,8 @@ const TimelineView = (props) => {
         })
         }, [id])
 
+    console.log(gig.timeline);
+
     return (
         <div className="pt-3 h-100" style={{
             background: 'radial-gradient(circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
@@ -30,7 +32,7 @@ const TimelineView = (props) => {
             <div className="container">
                 <div className="w-50 mx-auto">
                     {
-                    timelineFile ?
+                    gig.timeline != '' ?
                     <div>
                         <h2 className="text-warning mb-5 mt-5">Full Timline</h2>
                         <img src={`http://localhost:8000/uploads/${gig.timeline}`} alt="Image of full timeline" className="img-fluid border border-dark border-3"/>
