@@ -34,18 +34,32 @@ const ChartsView = () => {
     return (
         <div style={{
             background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+            minHeight: "100vh",
         }} className="py-3">
             <NavBar/>
             <div>
+            {
+                gig.iRealCharts !== "" || gig.pdfCharts !== "" ?
             <h2 className="text-white my-5">Click to Download:</h2>
-                <div className="container-fluid d-flex flex-column flex-sm-row align-items-center">
-                    <div className="d-flex align-items-center mx-3 mb-5 p-3">
-                        <div className="col">
-                            <img src={iRealLogo} className="w-50 h-auto" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
-                        </div>
-                        <div className="col">
-                            <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
-                        </div>
+            :
+            null
+            }    
+                <div className="container-fluid d-flex flex-column flex-sm-row align-items-center mx-0 mx-md-3 mb-5 p-3">
+                    <div className="col mx-auto mx-md-0">
+                        {
+                        gig.iRealCharts !== "" ?
+                        <img src={iRealLogo} className="w-50 h-auto" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
+                        :
+                        <h2 className="text-warning mb-5 mt-5 fs-6">iReal Pro charts coming soon</h2>
+                        }
+                    </div>
+                    <div className="col mx-auto mx-md-0">
+                        {
+                        gig.pdfCharts !== "" ?
+                        <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
+                        :
+                        <h2 className="text-warning mb-5 mt-5 fs-6 fs-md-5 fs-lg-2">PDF charts coming soon</h2>
+                        }
                     </div>
                 </div>
             </div>

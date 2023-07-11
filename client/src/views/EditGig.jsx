@@ -66,6 +66,7 @@ const EditGig = () => {
 return (
     <div style={{
         background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+        height: '100vh',
     }}>
         <div className='pt-3'>
             <NavBar/>
@@ -89,6 +90,7 @@ return (
                         initialIRealCharts={gig.iRealCharts}
                         initialPdfCharts={gig.pdfCharts}
                         initialTimeline={gig.timeline}
+                        gigId={gig._id}
                         />
                     }
                 </div>

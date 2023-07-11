@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const GigForm = (props) => {
     const {
@@ -38,6 +38,7 @@ const GigForm = (props) => {
 
     const [allMusicians, setAllMusicians] = useState([])
     const [image, setImage] = useState('')
+    const {id} = useParams();       
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/musicians/list')
@@ -255,7 +256,7 @@ const GigForm = (props) => {
                         {
                         gig.timeline === '' ?
                         null :
-                        <Link to={`/gigs/timeline/${gig.id}`} className='btn btn-warning mt-3'>View Existing Timeline</Link>
+                        <Link to={`/gigs/timeline/${id}`} className='btn btn-warning mt-3'>View Existing Timeline</Link>
                         }
                     </div>
                     <button input type="submit" className='btn btn-warning mt-4'>Submit</button>

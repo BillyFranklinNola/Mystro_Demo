@@ -31,7 +31,7 @@ const AdminMusicianList = (props) => {
 
 return (
     <div className='container-fluid'>
-        <div className='table-responsive border border-3 border-secondary rounded mx-auto p-5'>
+        <div className='table-responsive'>
             <table className='table table-striped border border-3 border-secondary rounded'>
                 <thead>
                     <tr>

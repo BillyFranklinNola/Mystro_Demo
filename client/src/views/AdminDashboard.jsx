@@ -19,6 +19,7 @@ const AdminDashboard = () => {
 return (
     <div style={{
         background: 'radial-gradient( circle farthest-corner at 10% 20%, rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+        minHeight: "100vh"
     }}>   
         <div className='pt-3'>
             <NavBar/>
