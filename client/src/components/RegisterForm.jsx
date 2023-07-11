@@ -70,8 +70,6 @@ const RegisterForm = (props) => {
             confirmPassword 
         }
         const response = await dispatch(register(musicianData))
-        console.log(response)
-        console.log(response.payload)
         if (response.payload) {
         } else if (response.payload) {
             const {errors} = response.payload

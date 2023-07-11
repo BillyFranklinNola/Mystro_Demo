@@ -8,10 +8,9 @@ import NavBar from "../components/NavBar";
 const TimelineView = (props) => {
     const {id} = useParams();
     const [gig, setGig] = useState(props);
-    const [timelineFile, setTimelineFile] = useState("");
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/gigs/oneGig/${id}`)
+        axios.get(`http://localhost:8000/api/gigs/${id}`)
         .then((res)=>{
             console.log(res);
             setGig(res.data.gig);
@@ -20,8 +19,6 @@ const TimelineView = (props) => {
             console.log(err);
         })
         }, [id])
-
-    console.log(gig.timeline);
 
     return (
         <div className="pt-3 h-100" style={{

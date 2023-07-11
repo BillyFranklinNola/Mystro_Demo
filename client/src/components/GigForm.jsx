@@ -41,7 +41,7 @@ const GigForm = (props) => {
     const {id} = useParams();       
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/musicians/list')
+        axios.get('http://localhost:8000/api/musicians')
         .then((res)=>{
             setAllMusicians(res.data);
         })
@@ -53,7 +53,6 @@ const GigForm = (props) => {
         const reader = new FileReader();
         reader.readAsDataURL(timelineFile);
         reader.onloadend = () => {
-            console.log(image);
             setImage(reader.result);
         };
     }

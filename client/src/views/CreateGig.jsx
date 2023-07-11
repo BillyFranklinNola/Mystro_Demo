@@ -16,26 +16,23 @@ const CreateGig = () => {
         const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = gig;
         const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians};
         try {
-            const newGig = await axios.post('http://localhost:8000/api/gigs/createGig', gigData)
-            console.log(newGig)
+            const newGig = await axios.post('http://localhost:8000/api/gigs/create', gigData)
             const formData = new FormData();
             formData.append('iRealCharts', gig.iRealCharts);
             formData.append('pdfCharts', gig.pdfCharts);
             formData.append('timeline', gig.timeline);
             formData.append('gigId', newGig.data._id);
 
-            axios.put(`http://localhost:8000/api/gigs/gigCharts/${newGig.data._id}`, formData, {
+            axios.put(`http://localhost:8000/api/gigs/uploadCharts/${newGig.data._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(newGig)
             setGig(newGig.data)
             setAllGigs([...allGigs, newGig.data]);
             navigate('/AdminDashboard')
         } catch (err) {
             console.log(err.response.data.error.errors)
-            console.log(err.response)
             const errorResponse = err.response.data.error.errors;
             const errorArray = [];
             for (const key of Object.keys(errorResponse)) {

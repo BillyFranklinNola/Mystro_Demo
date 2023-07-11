@@ -9,7 +9,7 @@ const GigWeather = (props) => {
 
     useEffect(() => {
         axios.get(
-            `http://localhost:8000/api/gigs/oneGig/${id}`
+            `http://localhost:8000/api/gigs/${id}`
             )
         .then((res)=>{
             console.log(res.data.gig);
@@ -23,7 +23,6 @@ const GigWeather = (props) => {
         async function gigForecast() {
             try {
             const res = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${gig.city}/${gig.date}/${gig.date}?unitGroup=us&include=days&key=BQY89VYXBUYJF8D9H678L8LQX&contentType=json`)
-            console.log(res.data.days[0])
             setGigWeather(res.data.days[0]);
             } catch (err) {
                 console.log(err);

@@ -7,7 +7,7 @@ const AdminGigList = (props) => {
     const [allGigs, setAllGigs] = useState([])
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get('http://localhost:8000/api/gigs/gigList', {withCredentials: true})
+        axios.get('http://localhost:8000/api/gigs', {withCredentials: true})
         .then((res)=>{
             console.log(res.data);
             setAllGigs(res.data);
@@ -17,7 +17,7 @@ const AdminGigList = (props) => {
         })}, [])
         
     const deleteGig = (id) => {
-        axios.delete(`http://localhost:8000/api/gigs/deleteGig/${id}`, {withCredentials: true})
+        axios.delete(`http://localhost:8000/api/gigs/delete/${id}`, {withCredentials: true})
         .then((res)=>{
             console.log(res);
             setAllGigs(allGigs.filter((gig) => gig._id !== id))

@@ -12,9 +12,8 @@ const EditMusician = (props) => {
     const{id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/musicians/oneMusician/${id}`)
+        axios.get(`http://localhost:8000/api/musicians/${id}`)
         .then((res)=>{
-            console.log(res.data.musician);
             setMusician(res.data.musician);
         })
         .catch((err)=>{
@@ -24,7 +23,7 @@ const EditMusician = (props) => {
 
     const updateMusician = async (musician) => {
         try {
-            const res = axios.patch(`http://localhost:8000/api/musicians/editMusician/${id}`, musician)
+            const res = axios.patch(`http://localhost:8000/api/musicians/edit/${id}`, musician)
             console.log(res);
             setMusician(res.data);
             navigate(`/AdminDashboard/`)

@@ -10,7 +10,7 @@ const MusicianGigList = (props) => {
     const {id} = useParams()
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/gigs/gigList')
+        axios.get('http://localhost:8000/api/gigs')
         .then((res)=>{
             setAllGigs(res.data);
         })
@@ -24,7 +24,6 @@ const MusicianGigList = (props) => {
             gig.musicians.some((musician) => musician._id === id)
         );
         setMusicianGigs(filteredGigs);
-        console.log(musicianGigs)
     }, [allGigs, id]);
 
 return (

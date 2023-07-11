@@ -13,7 +13,7 @@ const ChartsView = () => {
     const [gig, setGig] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/gigs/oneGig/${id}`)
+        axios.get(`http://localhost:8000/api/gig/${id}`)
             .then(res => {
                 setGig(res.data.gig);
                 console.log(res.data.gig);

@@ -7,7 +7,7 @@ const GigMusiciansList = (props) => {
     const {id} = useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/gigs/oneGig/${id}`)
+        axios.get(`http://localhost:8000/api/gigs/${id}`)
         .then((res)=>{
             console.log(res.data.gig.musicians);
             setGigMusicians(res.data.gig.musicians);

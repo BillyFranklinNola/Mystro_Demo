@@ -1,36 +1,9 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import React from 'react'
 import RegisterForm from '../components/RegisterForm'
 import LoginForm from '../components/LoginForm'
 import NavBar from '../components/NavBar'
 
-const LoginRegistration = (props) => {
-
-    // const createMusician = musician => {    
-    //     axios.post('http://localhost:8000/api/musicians/register', musician, {withCredentials: true})
-    //             .then(res=>{
-    //                 console.log(res);
-    //                 setMusician(res.data)
-    //                 setAllMusicians([...allMusicians, res.data]);
-    //                 navigate('/MusicianDashboard')
-    //             })
-    //             .catch(err=>{
-    //                 console.log(err)
-    //                 const errorResponse = err.response.data.message;
-    //                 setErrors(errorResponse);
-    //             });
-    // }
-    // const loginMusician = loginInfo => {
-    //     axios.post('http://localhost:8000/api/musicians/login', loginInfo, {withCredentials: true})
-    //     .then(res => {
-    //         console.log(res)
-    //         navigate('/MusicianDashboard')
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
-    // }
+const LoginRegistration = () => {
 
 return (
     <div style={{

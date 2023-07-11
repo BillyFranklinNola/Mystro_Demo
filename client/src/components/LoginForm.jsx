@@ -35,7 +35,6 @@ const LoginForm = (props) => {
         dispatch
     ])
 
-
     const logChangeHandler = (e) => {
         setLoginInfo((prevState) => ({
             ...prevState,

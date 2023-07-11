@@ -18,10 +18,6 @@ const MapOfGig = (props) => {
         .then(res => {
             const lat = (res.data.results[0].geometry.location.lat);
             const lng = (res.data.results[0].geometry.location.lng);
-            console.log(res.data.results[0].geometry.location.lat);
-            console.log(res.data.results[0].geometry.location.lng);
-            console.log(lat);
-            console.log(lng);
             setGigLatitude(lat);
             setGigLongitude(lng);
 
@@ -29,9 +25,6 @@ const MapOfGig = (props) => {
         .catch(err => console.log(err));
     }, [gig])
 
-    console.log(gigLatitude);
-    console.log(gigLongitude);
-    // const center = useMemo(() => ({lat: gigLattitude, lng: gigLongitude }), []);
     const center = useMemo(() => ({
         lat: gigLatitude,
         lng: gigLongitude
