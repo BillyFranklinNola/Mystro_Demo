@@ -29,7 +29,7 @@ const TimelineView = (props) => {
             <div className="container">
                 <div className="w-50 mx-auto">
                     {
-                    gig.timeline != '' ?
+                    gig.timeline !== '' ?
                     <div>
                         <h2 className="text-warning mb-5 mt-5">Full Timline</h2>
                         <img src={`http://localhost:8000/uploads/${gig.timeline}`} alt="Image of full timeline" className="img-fluid border border-dark border-3"/>

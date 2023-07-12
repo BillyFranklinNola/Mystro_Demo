@@ -21,7 +21,7 @@ return (
                             loginPassword=""/>
                     </div>
                     <div className='col-sm-6'>
-                        <h2 className="offset-md text-warning mx-auto">Register:</h2>
+                        <h2 className="text-warning mt-4 mt-sm-0 mx-auto">Register:</h2>
                         <RegisterForm 
                             initialFirstName="" 
                             initialLastName="" 

@@ -50,7 +50,7 @@ const ChartsView = () => {
                         gig.iRealCharts !== "" ?
                         <img src={iRealLogo} className="w-50 h-auto" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
                         :
-                        <h2 className="text-warning mb-5 mt-5 fs-6">iReal Pro charts coming soon</h2>
+                        <h2 className="text-warning mb-5 mt-5 ms-lg-5 fs-6">iReal Pro charts coming soon</h2>
                         }
                     </div>
                     <div className="col mx-auto mx-md-0">
@@ -58,7 +58,7 @@ const ChartsView = () => {
                         gig.pdfCharts !== "" ?
                         <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
                         :
-                        <h2 className="text-warning mb-5 mt-5 fs-6 fs-md-5 fs-lg-2">PDF charts coming soon</h2>
+                        <h2 className="text-warning mb-5 mt-5 me-lg-5 fs-6">PDF charts coming soon</h2>
                         }
                     </div>
                 </div>
