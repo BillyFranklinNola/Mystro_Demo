@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import '../styles/globals.css';
 
 const GigWeather = (props) => {
     const [gig, setGig] = useState({});
@@ -35,7 +36,7 @@ const GigWeather = (props) => {
         
 
     return (
-        <div className="border border-3 border-secondary rounded text-white p-3">
+        <div className="panelBackground border border-3 border-secondary rounded text-white p-3">
             <h3 className="mb-3 mt-2">Gig Forecast</h3>
             <p>High: {gigWeather.tempmax}º</p>
             <p>Low: {gigWeather.tempmin}º</p>

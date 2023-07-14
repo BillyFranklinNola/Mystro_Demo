@@ -3,6 +3,7 @@ import AdminMusicianList from '../components/AdminMusicianList';
 import AdminGigList from '../components/AdminGigList';
 import {Link} from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import image from '../images/backgroundimage.jpg'
 
 const AdminDashboard = () => {
     const [allMusicians, setAllMusicians] = useState([])
@@ -17,10 +18,15 @@ const AdminDashboard = () => {
     }
 
 return (
-    <div style={{
-        background: 'radial-gradient( circle farthest-corner at 10% 20%, rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
-        minHeight: "100vh"
-    }}>   
+    // <div style={{
+    //     background: 'radial-gradient( circle farthest-corner at 10% 20%, rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+    //     minHeight: "100vh"
+    // }}>   
+    <div className='bg-image' style={{
+        backgroundImage: `url(${image})`,
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+    }}>
         <div className='pt-3'>
             <NavBar/>
             <div className='container'>

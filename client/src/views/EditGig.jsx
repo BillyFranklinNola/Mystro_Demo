@@ -4,6 +4,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify'
+import image from '../images/backgroundimage.jpg'
 
 const EditGig = () => {
     const navigate = useNavigate();
@@ -62,11 +63,16 @@ const EditGig = () => {
 }
 
 return (
-    <div style={{
-        background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
-        height: '100vh',
+    // <div style={{
+    //     background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+    //     height: '100vh',
+    // }}>
+    <div className='bg-image' style={{
+        backgroundImage: `url(${image})`,
+        backgroundPosition: 'center',
+        minHeight: '100vh',
     }}>
-        <div className='pt-3'>
+        <div className="pt-3">
             <NavBar/>
             <div className='container-fluid'>
                 <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>

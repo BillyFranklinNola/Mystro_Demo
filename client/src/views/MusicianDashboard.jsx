@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
 import MusicianGigList from '../components/MusicianGigList'
 import NavBar from '../components/NavBar'
+import image from '../images/backgroundimage.jpg'
 
 const MusicianDashboard = () => {
     const [musicianGigs, setMusicianGigs] = useState([])
 
 return (
-    <div style={{
-        background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
-        minHeight: "100vh"
+    // <div style={{
+    //     background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+    //     minHeight: "100vh"
+    // }}>
+    <div className='bg-image' style={{
+        backgroundImage: `url(${image})`,
+        backgroundPosition: 'center',
+        minHeight: '100vh',
     }}>
-        <div className='pt-3'>
+            <div className="pt-3">
             <NavBar/>
             <div className='container-fluid'>
                 <h2 className="text-warning mx-auto mt-5">Your Gigs:</h2>

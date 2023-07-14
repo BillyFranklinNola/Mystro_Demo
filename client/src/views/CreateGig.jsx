@@ -4,6 +4,8 @@ import {useNavigate} from 'react-router-dom'
 import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify';
+import image from '../images/backgroundimage.jpg'
+
 
 const CreateGig = () => {
     const navigate = useNavigate();
@@ -44,9 +46,14 @@ const CreateGig = () => {
     };
 
 return (
-    <div style={{
-        background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
-        minHeight: "100vh"
+    // <div style={{
+    //     background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
+    //     minHeight: "100vh"
+    // }}>
+    <div className='bg-image' style={{
+        backgroundImage: `url(${image})`,
+        backgroundPosition: 'center',
+        minHeight: '100vh',
     }}>
         <div className='pt-3 pb-5'>
             <NavBar/>
