@@ -3,6 +3,7 @@ import RegisterForm from '../components/RegisterForm'
 import LoginForm from '../components/LoginForm'
 import NavBar from '../components/NavBar'
 import image from '../images/backgroundimage.jpg'
+import '../styles/globals.css'
 
 const LoginRegistration = () => {
 
@@ -22,15 +23,15 @@ return (
         <div className="pt-3">
             <NavBar/>
             <div className='container'>
-                <div className='row p-5'>
+                <div className='row'>
                     <div className='col-sm-6'>
-                        <h2 className="text-warning mx-auto">Login:</h2>
+                        <h2 className="subNav text-warning my-4 my-lg-5 mx-auto">Login:</h2>
                         <LoginForm 
                             loginEmail="" 
                             loginPassword=""/>
                     </div>
                     <div className='col-sm-6'>
-                        <h2 className="text-warning mt-4 mt-sm-0 mx-auto">Register:</h2>
+                        <h2 className="subNav text-warning my-4 my-lg-5 mx-auto">Register:</h2>
                         <RegisterForm 
                             initialFirstName="" 
                             initialLastName="" 

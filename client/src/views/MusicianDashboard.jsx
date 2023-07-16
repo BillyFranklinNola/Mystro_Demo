@@ -18,8 +18,8 @@ return (
     }}>
             <div className="pt-3">
             <NavBar/>
-            <div className='container-fluid'>
-                <h2 className="text-warning mx-auto mt-5">Your Gigs:</h2>
+            <div className='container-fluid px-3'>
+                <h2 className="subNav text-warning mx-auto my-4 my-lg-5">Upcoming Gigs:</h2>
                 <div className='col-sm-8 mx-auto'>
                     <MusicianGigList musicianGigs={musicianGigs}/>
                 </div>

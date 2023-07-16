@@ -30,16 +30,16 @@ return (
         <div className='pt-3'>
             <NavBar/>
             <div className='container'>
-                <div className='row p-5'>
-                    <div className='col-sm-6'>
-                        <h2 className="text-warning mx-auto mt-5 mb-5">All Gigs:</h2>
+                <div className='row'>
+                    <div className='col-sm-7'>
+                        <h2 className="subNav text-warning mx-auto my-4 my-lg-5">All Gigs:</h2>
                         <AdminGigList 
                             setAllGigs={allGigs} 
                             gigDeleteHandler={gigDeleteHandler}/>
-                        <Link className='btn btn-warning mt-3' to ='/gigs/createGig'>Create New Gig</Link>
+                        <Link className='btn btn-warning my-1 mt-lg-3' to ='/gigs/createGig'>Create New Gig</Link>
                     </div>
-                    <div className='col-sm-6'>
-                        <h2 className="text-warning mx-auto mt-5 mb-5">All Musicians:</h2>
+                    <div className='col-sm-5'>
+                        <h2 className="subNav text-warning mx-auto my-4 my-lg-5">All Musicians:</h2>
                         <AdminMusicianList 
                             setAllMusicians={allMusicians} 
                             musicianDeleteHandler={musicianDeleteHandler}/>

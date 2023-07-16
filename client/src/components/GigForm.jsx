@@ -123,11 +123,11 @@ const GigForm = (props) => {
 
     return (
         <div className="container-fluid">
-            <div className="col-12 col-lg-10 bg-secondary mx-auto p-2 p-lg-5 border border-3 border-dark rounded m-5">
+            <div className="col-12 col-lg-10 panelBackground text-white mx-auto p-2 p-lg-5 border border-2 border-secondary rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
                     <div className='row mx-auto'>
                         <div className='col-12 col-lg-7'>
-                            <div className='row form-group align-items-center'>
+                            <div className='row form-group align-items-center mt-3 mt-lg-0'>
                                 <label htmlFor='venue' className='col-3 col-lg-2 col-form-label me-2'>Venue:</label>
                                 <div className='col-8 col-lg-9'>
                                     <input type="text" name="venue" id="venue" className="form-control" value={gig.venue} onChange = {changeHandler}/>

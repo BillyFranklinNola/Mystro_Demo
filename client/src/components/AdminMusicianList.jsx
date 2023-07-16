@@ -30,36 +30,34 @@ const AdminMusicianList = (props) => {
     }
 
 return (
-    <div className='container-fluid'>
-        <div className='table-responsive panelBackground'>
-            <table className='table table-striped border border-3 border-secondary rounded'>
-                <thead>
-                    <tr>
-                        <th scope='col' className='text-start text-white'>Name</th>
-                        <th scope='col' className='text-start text-white'>Instrument</th>
-                        <th scope='col' className='text-white'>Actions</th>
+    <div className='table-responsive' style={{'borderRadius': '5px'}}>
+        <table className='table panelBackground border border-2 border-secondary rounded'>
+            <thead>
+                <tr>
+                    <th scope='col' className='text-start text-white'>Name</th>
+                    <th scope='col' className='text-start text-white'>Instrument</th>
+                    <th scope='col' className='text-white'>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                allMusicians.map((musician)=>{
+                return(
+                    <tr key={musician._id}>
+                        <td className='text-start text-white'>{musician.firstName} {musician.lastName}</td>
+                        <td className='text-start text-white'>{musician.instrument}</td>
+                        <td>
+                            <div className='d-flex flex-column flex-lg-row justify-content-around mx-auto'>
+                                <Link className='btn btn-warning me-lg-1 mb-1 mb-lg-0' to={`/musicians/editMusician/${musician._id}`}>Edit</Link>
+                                <MusicianDeleteButton className='btn btn-secondary' id={musician._id} successCallback={()=>deleteMusician(musician._id)}/>
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    {
-                    allMusicians.map((musician)=>{
-                    return(
-                        <tr key={musician._id}>
-                            <td className='text-start text-white'>{musician.firstName} {musician.lastName}</td>
-                            <td className='text-start text-white'>{musician.instrument}</td>
-                            <td>
-                                <div className='d-flex justify-content-around mx-auto'>
-                                    <Link className='btn btn-warning me-1' to={`/musicians/editMusician/${musician._id}`}>Edit</Link>
-                                    <MusicianDeleteButton className='btn btn-secondary' id={musician._id} successCallback={()=>deleteMusician(musician._id)}/>
-                                </div>
-                            </td>
-                        </tr>
-                        )
-                    })
-                    }
-                </tbody>
-            </table>
-        </div>
+                    )
+                })
+                }
+            </tbody>
+        </table>
     </div>
 )}
 

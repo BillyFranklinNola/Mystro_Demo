@@ -5,6 +5,7 @@ import GigForm from '../components/GigForm'
 import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify'
 import image from '../images/backgroundimage.jpg'
+import '../styles/globals.css'
 
 const EditGig = () => {
     const navigate = useNavigate();
@@ -75,7 +76,7 @@ return (
         <div className="pt-3">
             <NavBar/>
             <div className='container-fluid'>
-                <h2 className="text-warning mx-auto mt-5">Edit Gig:</h2>
+                <h2 className="subNav text-warning mx-auto my-5 my-lg-4">Edit Gig:</h2>
                 <div>
                     {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                     {

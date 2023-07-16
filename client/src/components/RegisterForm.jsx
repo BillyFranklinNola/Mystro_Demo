@@ -83,8 +83,8 @@ const RegisterForm = (props) => {
 
 
     return (
-        <div>
-            <div className="bg-secondary mx-auto p-3 border border-3 border-dark rounded mt-5">
+        <div className='container-fluid'>
+            <div className="bg-secondary mx-auto p-3 border border-3 border-dark rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
                     <div className='form-group m-3'>
                         <label htmlFor='firstName'>First Name:</label>
