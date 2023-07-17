@@ -73,7 +73,7 @@ return (
         backgroundPosition: 'center',
         minHeight: '100vh',
     }}>
-        <div className="pt-3">
+        <div className="py-3">
             <NavBar/>
             <div className='container-fluid'>
                 <h2 className="subNav text-warning mx-auto my-5 my-lg-4">Edit Gig:</h2>

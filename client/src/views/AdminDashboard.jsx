@@ -27,7 +27,7 @@ return (
         backgroundPosition: 'center',
         minHeight: '100vh',
     }}>
-        <div className='pt-3'>
+        <div className='py-3'>
             <NavBar/>
             <div className='container'>
                 <div className='row'>

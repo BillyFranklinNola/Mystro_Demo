@@ -58,7 +58,7 @@ return (
         <div className='pt-3 pb-5'>
             <NavBar/>
             <div className='container-fluid'>
-                <h2 className="text-warning mx-auto mt-5">Create a new gig:</h2>
+                <h2 className="subNav text-warning my-4">Create a new gig:</h2>
                 <div>
                     {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                     <GigForm

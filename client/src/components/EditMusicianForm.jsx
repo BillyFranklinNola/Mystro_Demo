@@ -27,26 +27,34 @@ const EditMusicianForm = (props) => {
     }
 
     return (
-        <div className='container-fluid'>
-            <div className="col-10 col-md-8 col-lg-5 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
+        <div className='container pb-5'>
+            <div className="col-12 col-md-8 col-lg-6 panelBackground text-white mx-auto p-3 border border-2 border-secondary rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
-                    <div className='form-group m-3'>
-                        <label htmlFor='firstName'>First Name:</label>
-                        <input type="text" name="firstName" id="firstName" className="form-control" value={musician.firstName} onChange = {changeHandler}/>
+                    <div className='row form-group align-items-center mt-3'>
+                        <label htmlFor='firstName' className='col-4 col-lg-3 col-form-label me-2'>First Name:</label>
+                        <div className='col-7 col-lg-8'>
+                            <input type="text" name="firstName" id="firstName" className="form-control" value={musician.firstName} onChange = {changeHandler}/>
+                        </div>
                     </div>
-                    <div className='form-group m-3'>
-                        <label htmlFor='lastName'>Last Name:</label>
-                        <input type="text" name="lastName" id="lastName" className="form-control" value={musician.lastName} onChange = {changeHandler}/>
+                    <div className='row form-group align-items-center mt-4'>
+                        <label htmlFor='lastName' className='col-4 col-lg-3 col-form-label me-2'>Last Name:</label>
+                        <div className='col-7 col-lg-8'>
+                            <input type="text" name="lastName" id="lastName" className="form-control" value={musician.lastName} onChange = {changeHandler}/>
+                        </div>
                     </div>
-                    <div className='form-group m-3'>
-                        <label htmlFor='email'>Email:</label>
-                        <input type="text" name="email" id="email" className="form-control" value={musician.email} onChange = {changeHandler}/>
+                    <div className='row form-group align-items-center mt-4'>
+                        <label htmlFor='email' className='col-4 col-lg-3 col-form-label me-2'>Email:</label>
+                        <div className='col-7 col-lg-8'>
+                            <input type="text" name="email" id="email" className="form-control" value={musician.email} onChange = {changeHandler}/>
+                        </div>
                     </div>
-                    <div className='form-group m-3'>
-                        <label htmlFor='instrument'>Instrument:</label>
-                        <input type="text" name="instrument" id="instrument" className="form-control" value={musician.instrument} onChange = {changeHandler}/>
+                    <div className='row form-group align-items-center mt-4'>
+                        <label htmlFor='instrument' className='col-4 col-lg-3 col-form-label me-2'>Instrument:</label>
+                        <div className='col-7 col-lg-8'>
+                            <input type="text" name="instrument" id="instrument" className="form-control" value={musician.instrument} onChange = {changeHandler}/>
+                        </div>
                     </div>
-                    <button input type="submit" className='btn btn-warning'>Submit</button>
+                    <button input type="submit" className='btn btn-warning mt-4'>Submit</button>
                 </form>
             </div>
         </div>

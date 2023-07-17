@@ -5,6 +5,7 @@ import EditMusicianForm from '../components/EditMusicianForm'
 import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify'
 import image from '../images/backgroundimage.jpg'
+import '../styles/globals.css'
 
 const EditMusician = (props) => {
     const [musician, setMusician] = useState(props);
@@ -54,7 +55,7 @@ return (
         <div className="pt-3">
             <NavBar/>
             <div className='container-fluid'>
-                <h2 className="text-warning mx-auto mt-5">Edit Musician:</h2>
+                <h2 className="subNav text-warning mx-auto my-4 my-lg-5">Edit Musician:</h2>
                 <div>
                     <EditMusicianForm
                         onSubmitProp={updateMusician}

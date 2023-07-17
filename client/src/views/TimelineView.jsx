@@ -41,7 +41,7 @@ const TimelineView = (props) => {
                             <h2 className="text-warning mb-5 mt-5">Full Timline</h2>
                             <img src={`http://localhost:8000/uploads/${gig.timeline}`} alt="Image of full timeline" className="img-fluid border border-dark border-3"/>
                         </div> : 
-                        <h2 className="text-warning mb-5 mt-5 fs-6 fs-md-5 fs-lg-2">Timeline coming soon</h2>
+                        <h2 className="subNav text-warning fs-5 mt-5">Timeline coming soon</h2>
                         }
                     </div>
                 </div>

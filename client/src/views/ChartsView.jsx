@@ -41,12 +41,12 @@ const ChartsView = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
         }}>
-            <div className="pt-3">
+            <div className="pt-3 pb-2">
                 <NavBar/>
                 <div>
                 {
                     gig.iRealCharts !== "" || gig.pdfCharts !== "" ?
-                <h2 className="text-white my-5">Click to Download:</h2>
+                <h2 className="subNav mt-4 text-warning">Click to Download:</h2>
                 :
                 null
                 }    
@@ -59,7 +59,7 @@ const ChartsView = () => {
                             <h2 className="text-warning mb-5 mt-5 ms-lg-5 fs-6">iReal Pro charts coming soon</h2>
                             }
                         </div>
-                        <div className="col mx-auto mx-md-0">
+                        <div className="col mx-auto mx-md-0 mt-4 mt-lg-0">
                             {
                             gig.pdfCharts !== "" ?
                             <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
