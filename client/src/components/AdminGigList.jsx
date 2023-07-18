@@ -28,6 +28,24 @@ const AdminGigList = (props) => {
         })
     }
 
+    const formatDate = (date) => {
+        if (date) {
+            const [year, month, day] = date.split("-");
+            const formattedDate = new Date();
+            formattedDate.setFullYear(year);
+            formattedDate.setMonth(month - 1);
+            formattedDate.setDate(day);
+
+            return formattedDate.toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+            });
+        }
+        return "";
+    }; 
+
+
 return (
     <div className='table-responsive' style={{'borderRadius': '5px'}}>
         <table className='table panelBackground border border-2 border-secondary rounded'>
@@ -45,7 +63,7 @@ return (
                 return(
                     <tr key={gig._id}>
                         <td className='text-start text-white'>{gig.venue}</td>
-                        <td className='text-start text-white'>{gig.date}</td>
+                        <td className='text-start text-white'>{formatDate(gig.date)}</td>
                         <td className='text-start text-white'>{gig.city}, {gig.state}</td>
                         <td>
                             <div className='d-flex flex-column flex-lg-row justify-content-around mx-auto'>
