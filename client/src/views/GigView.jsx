@@ -7,7 +7,7 @@ import GigWeather from "../components/GigWeather";
 import '../styles/globals.css';
 
 
-const GigView = (props) => {
+const GigView = () => {
     const [gig, setGig] = useState({});
     const [gigMusicians, setGigMusicians] = useState([]);
     const [gigLattitude, setGigLattitude] = useState("");
@@ -65,7 +65,7 @@ const GigView = (props) => {
     const dayOfWeek = dayName[new Date(gig.date).getDay()];
 
     return (
-        <div className="container-fluid p-3 p-lg-5">
+        <div className="viewport container-fluid p-3 p-lg-5">
             <h2 className="subNav text-warning my-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city},{gig.state} </h2>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">

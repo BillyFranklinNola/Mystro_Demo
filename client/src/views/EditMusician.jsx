@@ -43,7 +43,7 @@ const EditMusician = (props) => {
     }
 
     return (
-        <div className='container-fluid pt-3'>
+        <div className='viewport container-fluid pt-3'>
             <h2 className="subNav text-warning mx-auto my-4 my-lg-5">Edit Musician:</h2>
             <div>
                 <EditMusicianForm

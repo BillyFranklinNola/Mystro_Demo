@@ -31,7 +31,7 @@ const ChartsView = () => {
     }
 
     return (
-        <div className="container-fluid pt-3 pb-2">
+        <div className="viewport container-fluid pt-3 pb-2">
             <div>
             {
                 gig.iRealCharts !== "" || gig.pdfCharts !== "" ?
