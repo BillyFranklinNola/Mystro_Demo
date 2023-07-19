@@ -35,6 +35,8 @@ function App() {
       backgroundPosition: 'center',
       minHeight: '100vh',
       backgroundSize: 'cover',
+      display: 'flex',
+      flexDirection: 'column',
   }}>
       <div className='text-center' style={{fontFamily: 'Rowdies'}}>
         <BrowserRouter>

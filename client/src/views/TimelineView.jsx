@@ -20,7 +20,7 @@ const TimelineView = (props) => {
         }, [id])
 
     return (
-        <div className="container-fluis pt-3">
+        <div className="viewport container-fluis pt-3">
             <div className="w-50 mx-auto">
                 {
                 gig.timeline !== '' ?
