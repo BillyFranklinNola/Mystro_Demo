@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import GigForm from '../components/GigForm'
-import NavBar from '../components/NavBar'
 import { toast } from 'react-toastify';
-import image from '../images/backgroundimage.jpg'
 
 
 const CreateGig = () => {
@@ -45,41 +43,29 @@ const CreateGig = () => {
         }
     };
 
-return (
-    // <div style={{
-    //     background: 'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,107,141,1) 0%, rgba(0,69,91,1) 90%)',
-    //     minHeight: "100vh"
-    // }}>
-    <div className='bg-image' style={{
-        backgroundImage: `url(${image})`,
-        backgroundPosition: 'center',
-        minHeight: '100vh',
-    }}>
-        <div className='pt-3 pb-5'>
-            <NavBar/>
-            <div className='container-fluid'>
-                <h2 className="subNav text-warning my-4">Create a new gig:</h2>
-                <div>
-                    {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-                    <GigForm
-                        onSubmitProp={newGig} 
-                        initialVenue="" 
-                        initialDate="" 
-                        initialStreetAddress="" 
-                        initialCity="" 
-                        initialState=""  
-                        initialZipCode="" 
-                        initialSetUpBy="" 
-                        initialStartTime="" 
-                        initialEndTime=""  
-                        initialMusicians={[]}
-                        initialIRealCharts="" 
-                        initialPdfCharts=""
-                        initialTimeline=""/>
-                </div>
+    return (
+        <div className='container-fluid pt-3 pb-5'>
+            <h2 className="subNav text-warning my-4">Create a new gig:</h2>
+            <div>
+                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
+                <GigForm
+                    onSubmitProp={newGig} 
+                    initialVenue="" 
+                    initialDate="" 
+                    initialStreetAddress="" 
+                    initialCity="" 
+                    initialState=""  
+                    initialZipCode="" 
+                    initialSetUpBy="" 
+                    initialStartTime="" 
+                    initialEndTime=""  
+                    initialNotes=""
+                    initialMusicians={[]}
+                    initialIRealCharts="" 
+                    initialPdfCharts=""
+                    initialTimeline=""/>
             </div>
         </div>
-    </div>
     )
 }   
 

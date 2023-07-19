@@ -20,7 +20,9 @@ const NavBar = () => {
     }
 
     return (
-        <div className="row navbar navbar-expand-xxl bg-secondary p-4 rounded border border-2 border-black mx-3">
+        <div className="row navbar navbar-expand-xxl p-4 rounded border border-2 border-black" style={{
+            backgroundColor: "rgba(45, 45, 45, 0.75)"
+        }}>
             <div className="container-fluid d-flex flex-column flex-lg-row align-items-center">
                 <div className="d-flex align-items-center">
                     <a className="navbar-brand text-warning fs-2 me-3">

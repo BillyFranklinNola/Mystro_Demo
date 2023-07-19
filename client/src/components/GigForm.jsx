@@ -13,6 +13,7 @@ const GigForm = (props) => {
         initialSetUpBy, 
         initialStartTime, 
         initialEndTime, 
+        initialNotes,
         initialMusicians, 
         initialIRealCharts, 
         initialPdfCharts,
@@ -30,6 +31,7 @@ const GigForm = (props) => {
         setUpBy: initialSetUpBy,
         startTime: initialStartTime,
         endTime: initialEndTime,
+        notes: initialNotes,
         musicians: initialMusicians,
         iRealCharts: initialIRealCharts,
         pdfCharts: initialPdfCharts,
@@ -231,6 +233,12 @@ const GigForm = (props) => {
                                 <label htmlFor='endTime' className='col-4 col-lg-3 col-form-label me-2'>End Time:</label>
                                 <div className='col-7 col-lg-8'>
                                     <input type="time" name="endTime" id="endTime" className="form-control" value={gig.endTime} onChange = {changeHandler}/>
+                                </div>
+                            </div>
+                            <div className='row form-group align-items-center mt-4'>
+                                <label htmlFor='notes' className='col-4 col-lg-3 col-form-label me-2'>Additional Info:</label>
+                                <div className='col-7 col-lg-8'>
+                                    <textarea name="notes" id="notes" className="form-control" value={gig.notes} onChange = {changeHandler}></textarea>
                                 </div>
                             </div>
                         </div>

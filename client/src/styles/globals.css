@@ -17,3 +17,10 @@
     background-color: rgba(45, 45, 45, 0.50);
     color: white;
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

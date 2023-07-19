@@ -45,6 +45,9 @@ const GigSchema = new mongoose.Schema({
         type: String,
         required:[true, "End time is required"],
     },
+    notes: {
+        type: String,
+    },
     musicians: {
         type: Array,
         required:[true, "You must select at least one musician"],
