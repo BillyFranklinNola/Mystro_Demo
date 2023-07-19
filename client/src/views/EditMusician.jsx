@@ -23,8 +23,9 @@ const EditMusician = (props) => {
         }, [])
 
     const updateMusician = async (musician) => {
+        console.log(musician);
         try {
-            const res = axios.patch(`http://localhost:8000/api/musicians/edit/${id}`, musician)
+            const res = await axios.put(`http://localhost:8000/api/musicians/edit/${id}`, musician)
             console.log(res);
             setMusician(res.data);
             navigate(`/AdminDashboard/`)

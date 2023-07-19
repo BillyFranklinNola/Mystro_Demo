@@ -9,7 +9,6 @@ module.exports = app => {
     app.get('/api/gigs/:id', GigController.oneGig);
     app.get('/api/gigs/download/:fileName', GigController.downloadGigCharts);
     app.delete('/api/gigs/delete/:id', GigController.deleteGig);    
-
     app.put('/api/gigs/edit/:id', GigController.updateGig);
         upload.fields([
             {name: 'iRealCharts', maxCount: 1}, 

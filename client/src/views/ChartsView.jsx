@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import '../styles/globals.css';
 
 
 const ChartsView = () => {
@@ -11,7 +12,7 @@ const ChartsView = () => {
     const [gig, setGig] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/gig/${id}`)
+        axios.get(`http://localhost:8000/api/gigs/${id}`)
             .then(res => {
                 setGig(res.data.gig);
                 console.log(res.data.gig);
@@ -34,7 +35,7 @@ const ChartsView = () => {
             <div>
             {
                 gig.iRealCharts !== "" || gig.pdfCharts !== "" ?
-            <h2 className="subNav mt-4 my-sm-5 text-warning">Click to Download:</h2>
+            <h2 className="subNav mt-4 my-sm-5 text-warning">Click Icon to Download:</h2>
             :
             null
             }    
@@ -44,7 +45,7 @@ const ChartsView = () => {
                         gig.iRealCharts !== ""?
                         <img src={iRealLogo} className="w-50 h-auto" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
                         :
-                        <h2 className="text-warning mb-5 mt-5 ms-lg-5 fs-6">iReal Pro charts coming soon</h2>
+                        <h2 className="subNav text-warning mb-5 mt-5 ms-lg-5 fs-6">iReal Pro charts coming soon</h2>
                         }
                     </div>
                     <div className="col mx-auto mx-md-0 mt-4 mt-sm-0">
@@ -52,7 +53,7 @@ const ChartsView = () => {
                         gig.pdfCharts !== ""?
                         <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
                         :
-                        <h2 className="text-warning mb-5 mt-5 me-lg-5 fs-6">PDF charts coming soon</h2>
+                        <h2 className="subNav text-warning mb-5 mt-5 me-lg-5 fs-6">PDF charts coming soon</h2>
                         }
                     </div>
                 </div>

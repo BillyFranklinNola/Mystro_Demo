@@ -29,10 +29,10 @@ const EditGig = () => {
 
     const updateGig = async (gig) => {
         console.log(gig)
-        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = gig;
-        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians};
+        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians};
         try {
-            const updatedGig = await axios.put(`http://localhost:8000/api/gigs/${id}`, gigData) 
+            const updatedGig = await axios.put(`http://localhost:8000/api/gigs/edit/${id}`, gigData) 
             const formData = new FormData();
             const gigId = updatedGig.data.gig._id;
             formData.append('iRealCharts', gig.iRealCharts);
@@ -40,18 +40,16 @@ const EditGig = () => {
             formData.append('timeline', gig.timeline);
             formData.append('gigId', gigId);
             
-
             axios.put(`http://localhost:8000/api/gigs/uploadCharts/${gigId}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log(updatedGig)
             setGig(updatedGig.data)
             setAllGigs([...allGigs, updatedGig.data]);
             navigate('/AdminDashboard')
         } catch (err) {      
-            console.log(err.response.data.error.errors);
+            console.log(err.response);
             const errorResponse = err.response.data.error;
             const errorArray = [];
             for (const key of Object.keys(errorResponse)) {

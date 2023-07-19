@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const EditMusicianForm = (props) => {
+    const [musician, setMusician] = useState({});
+
     const {
         initialFirstName, 
         initialLastName, 
@@ -8,15 +10,16 @@ const EditMusicianForm = (props) => {
         initialInstrument, 
         onSubmitProp
     } = props;
-    
-    const [musician, setMusician] = useState({
-        firstName: initialFirstName,
-        lastName: initialLastName,
-        email: initialEmail,
-        instrument: initialInstrument,
-    })
 
-    const changeHandler = (e) => {
+    useEffect(() => {
+        setMusician({
+            firstName: initialFirstName,
+            lastName: initialLastName,
+            email: initialEmail,
+            instrument: initialInstrument,
+    })}, [initialFirstName, initialLastName, initialEmail, initialInstrument])
+
+    const changeHandler = async (e) => {
         setMusician({...musician, [e.target.name]:e.target.value})
         console.log(musician)
     }
@@ -60,4 +63,5 @@ const EditMusicianForm = (props) => {
         </div>
     )
 }
+
 export default EditMusicianForm

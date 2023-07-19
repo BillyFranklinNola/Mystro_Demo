@@ -40,7 +40,6 @@ const GigForm = (props) => {
 
     const [allMusicians, setAllMusicians] = useState([])
     const [image, setImage] = useState('')
-    const {id} = useParams();       
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/musicians')
@@ -81,7 +80,7 @@ const GigForm = (props) => {
                 } else { 
                     try {
                         const res = await axios.get(
-                            `http://localhost:8000/api/musicians/oneMusician/${musicianId}`
+                            `http://localhost:8000/api/musicians/${musicianId}`
                         );
                         const musicianData = res.data;
                         setGig((prevGig) => ({
@@ -281,13 +280,13 @@ const GigForm = (props) => {
                                 <img src={image} className='h-75 w-75 mt-4 border border-3 rounded p-3' alt="Preview of uploaded file." />
                                 }
                             </div>
-                            <div>
+                            {/* <div>
                                 {
                                 gig.timeline === '' ?
                                 null :
                                 <Link to={`/gigs/timeline/${id}`} className='btn btn-warning mt-3'>View Existing Timeline</Link>
                                 }
-                            </div>
+                            </div> */}
                         </div>    
                     </div>
                     <button input type="submit" className='btn btn-warning mt-4'>Submit</button>

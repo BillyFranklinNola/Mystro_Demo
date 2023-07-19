@@ -17,6 +17,7 @@ import ChartsView from './views/ChartsView';
 import Footer from './components/Footer';
 import image from "./images/backgroundimage.jpg";
 import NavBar from './components/NavBar';
+import CreateMusician from './views/CreateMusician';
 
 
 function App() {
@@ -108,9 +109,16 @@ function App() {
             <Route
                 path='/gigs/charts/:id'
                 element={
-                <ProtectedRoute>
-                  <ChartsView/>
-                </ProtectedRoute>
+                  <ProtectedRoute>
+                    <ChartsView/>
+                  </ProtectedRoute>
+                }/>
+            <Route
+                path='/musicians/create'
+                element={
+                  <AdminRoute>
+                    <CreateMusician/>
+                  </AdminRoute>
                 }/>
           </Routes>
         </BrowserRouter>

@@ -13,8 +13,8 @@ const CreateGig = () => {
 
     const newGig = async (gig) => {   
         console.log(gig)
-        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians} = gig;
-        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, musicians};
+        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians};
         try {
             const newGig = await axios.post('http://localhost:8000/api/gigs/create', gigData)
             const formData = new FormData();
