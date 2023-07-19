@@ -7,7 +7,7 @@ import '../styles/globals.css'
 const LoginRegistration = () => {
 
     return (
-        <div className='container pt-3'>
+        <div className='viewport container-fluid pt-3'>
             <div className='row'>
                 <div className='col-sm-6'>
                     <h2 className="subNav text-warning my-4 my-lg-5 mx-auto">Login:</h2>

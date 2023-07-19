@@ -17,7 +17,7 @@ const AdminDashboard = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='viewport container-fluid'>
             <div className='row'>
                 <div className='col-lg-7'>
                     <h2 className="subNav text-warning mx-auto my-4 my-lg-5">All Gigs:</h2>
