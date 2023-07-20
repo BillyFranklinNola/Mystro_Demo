@@ -123,12 +123,12 @@ const GigForm = (props) => {
             console.log(gig.musicians.length)
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             <div className="col-12 col-lg-10 panelBackground text-white mx-auto p-2 p-lg-5 border border-2 border-secondary rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
                     <div className='row mx-auto'>
                         <div className='col-12 col-lg-7'>
-                            <div className='row form-group align-items-center mt-3 mt-lg-0'>
+                            <div className='row form-group align-items-center mt-5 mt-lg-0'>
                                 <label htmlFor='venue' className='col-3 col-lg-2 col-form-label me-2'>Venue:</label>
                                 <div className='col-8 col-lg-9'>
                                     <input type="text" name="venue" id="venue" className="form-control" value={gig.venue} onChange = {changeHandler}/>
@@ -289,7 +289,7 @@ const GigForm = (props) => {
                             </div> */}
                         </div>    
                     </div>
-                    <button input type="submit" className='btn btn-warning mt-4'>Submit</button>
+                    <button input type="submit" className='btn btn-warning mt-5 mb-5 mb-lg-0'>Submit</button>
                 </form>
             </div>
         </div>
