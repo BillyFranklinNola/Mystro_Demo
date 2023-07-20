@@ -65,8 +65,8 @@ const GigView = () => {
     const dayOfWeek = dayName[new Date(gig.date).getDay()];
 
     return (
-        <div className="viewport container-fluid p-3 p-lg-5">
-            <h2 className="subNav text-warning my-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city},{gig.state} </h2>
+        <div className="viewport container-fluid p-3 p-lg-4">
+            <h2 className="subNav text-warning mb-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city},{gig.state} </h2>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
                     <div className="panelBackground border border-3 border-secondary rounded mb-3 p-3">

@@ -57,7 +57,7 @@ const EditMusicianForm = (props) => {
                             <input type="text" name="instrument" id="instrument" className="form-control" value={musician.instrument} onChange = {changeHandler}/>
                         </div>
                     </div>
-                    <button input type="submit" className='btn btn-warning mt-5 mb-3'>Submit</button>
+                    <button input type="submit" className='btn btn-warning mt-5 mb-4'>Submit</button>
                 </form>
             </div>
         </div>
