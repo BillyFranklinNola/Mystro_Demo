@@ -31,7 +31,7 @@ const AdminDashboard = () => {
                     <AdminMusicianList 
                         setAllMusicians={allMusicians} 
                         musicianDeleteHandler={musicianDeleteHandler}/>
-                    <Link className='btn btn-warning mt-3' to ='/musicians/create'>Add New Musician</Link>
+                    <Link className='btn btn-warning mt-3' to ='/'>Add New Musician</Link>
                 </div>
             </div>
         </div>
