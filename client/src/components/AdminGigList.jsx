@@ -48,7 +48,7 @@ const AdminGigList = (props) => {
 
 return (
     <div className='table-responsive' style={{'borderRadius': '5px'}}>
-        <table className='table panelBackground border border-2 border-secondary rounded'>
+        <table className='table panelBackground border border-2 border-dark rounded'>
             <thead>
                 <tr>
                     <th scope='col' className='text-start text-white'>Venue</th>

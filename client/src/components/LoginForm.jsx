@@ -56,7 +56,7 @@ const LoginForm = (props) => {
 
     return (
         <div className='container'>
-            <div className="panelBackground text-white mx-auto p-3 border border-3 border-dark rounded">
+            <div className="panelBackground text-white mx-auto p-3 border border-2 border-dark rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
                     <div className='row form-group align-items-center mt-4'>
                         <label htmlFor='email' className='col-4 col-lg-3 col-form-label me-2'>Email:</label>

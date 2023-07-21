@@ -4,17 +4,17 @@
 }
 
 .panelBackground {
-    background-color: rgba(45, 45, 45, 0.50);
+    background-color: rgba(45, 45, 45, 0.75);
 }
 
 .subNav {
     display: inline-block;
     border-style: solid;
-    border-width: 2px;  
-    border-color: gray;
+    border-width: 1px;  
+    border-color: #212529;
     border-radius: 5px;
     padding: 10px;
-    background-color: rgba(45, 45, 45, 0.50);
+    background-color: rgba(45, 45, 45, 0.75);
     color: white;
 }
 

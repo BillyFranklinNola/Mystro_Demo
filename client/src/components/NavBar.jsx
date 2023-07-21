@@ -20,7 +20,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className="row navbar navbar-expand-xxl p-4 rounded border border-2 border-black" style={{
+        <div className="row navbar navbar-expand-xxl p-4 rounded border border-2 border-dark" style={{
             backgroundColor: "rgba(45, 45, 45, 0.75)"
         }}>
             <div className="container-fluid d-flex flex-column flex-lg-row align-items-center">

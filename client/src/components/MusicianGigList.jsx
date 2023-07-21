@@ -47,7 +47,7 @@ const MusicianGigList = (props) => {
 
 return (
     <div className='table-responsive' style={{'borderRadius':'5px'}}>
-        <table className='table panelBackground border border-2 border-secondary text-white mx-auto'>
+        <table className='table panelBackground border border-2 border-dark text-white mx-auto'>
             <thead>
                 <tr>
                     <th scope='col' className='col-4 text-start text-white'>Venue</th>

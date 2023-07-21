@@ -124,7 +124,7 @@ const GigForm = (props) => {
 
     return (
         <div className="container">
-            <div className="col-12 col-lg-10 panelBackground text-white mx-auto p-2 p-lg-5 border border-2 border-secondary rounded">
+            <div className="col-12 col-lg-10 panelBackground text-white mx-auto p-2 p-lg-5 border border-2 border-dark rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
                     <div className='row mx-auto'>
                         <div className='col-12 col-lg-7'>
