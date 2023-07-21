@@ -4,7 +4,7 @@ const Footer = () => {
     
     return (
         <footer className="footer text-center text-secondary mt-5">
-            <section className="d-flex justify-content-center p-4 border-top border border-black" style={{
+            <section className="d-flex justify-content-center p-4 border-top border border-dark" style={{
                     backgroundColor: "rgba(45, 45, 45, .75)"
             }}>
             <span>© 2023 Copyright:  Nola Live Productions LLC</span>

@@ -69,7 +69,7 @@ const GigView = () => {
             <h2 className="subNav text-warning mb-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city},{gig.state} </h2>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
-                    <div className="panelBackground border border-3 border-secondary rounded mb-3 p-3">
+                    <div className="panelBackground border border-2 border-dark rounded mb-3 p-3">
                         <MapOfGig
                             gig={gig} 
                             setGig={setGig} 
@@ -78,20 +78,20 @@ const GigView = () => {
                             gigLongitude={gigLongitude} 
                             setGigLongitude={setGigLongitude}/>
                     </div>
-                    <div className="panelBackground border border-3 border-secondary rounded p-2 text-center text-white"> 
+                    <div className="panelBackground border border-2 border-dark rounded p-2 text-center text-white"> 
                         <p className="mt-3">{gig.venue}</p>
                         <p>{gig.streetAddress}</p>
                         <p>{gig.city}, {gig.state} {gig.zipCode}</p>
                     </div>
                 </div>
                 <div className="col-12 col-lg-3 mx-auto mx-lg-0 mb-3 mb-lg-0">
-                    <div className="panelBackground border border-3 border-secondary rounded p-2 text-white">
+                    <div className="panelBackground border border-2 border-dark rounded p-2 text-white">
                         <h6 className="text-warning mt-3">{dayOfWeek}, {gigDate}</h6>
                         <p className="mt-3">Set up by: {setUpBy}</p>
                         <p>Start: {startTime}</p>
                         <p>End: {endTime}</p>                
                     </div>
-                    <div className="panelBackground border border-3 border-secondary rounded p-3 text-white text-center mt-3">
+                    <div className="panelBackground border border-2 border-dark rounded p-3 text-white text-center mt-3">
                         <h3>Notes</h3>
                         {
                             gig.notes ?
@@ -106,7 +106,7 @@ const GigView = () => {
                 </div>
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
                     <GigMusiciansList gigMusicians={gigMusicians} setGigMusicians={setGigMusicians} id={id}/> 
-                    <div className="mt-lg-3">
+                    <div>
                         <GigWeather
                             gig={gig} 
                             setGig={setGig} 
