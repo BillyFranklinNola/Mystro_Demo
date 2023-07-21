@@ -25,8 +25,8 @@ const TimelineView = (props) => {
                 {
                 gig.timeline !== '' ?
                 <div>
-                    <h2 className="subNav text-warning mb-5 mt-3">Full Timline</h2>
-                    <img src={`http://localhost:8000/uploads/${gig.timeline}`} alt="Image of full timeline" className="img-fluid border border-dark border-3"/>
+                    <h2 className="subNav text-warning mb-5 mt-3">Timeline</h2>
+                    <img src={`http://localhost:8000/uploads/${gig.timeline}`} alt="timeline" className="img-fluid border border-dark border-3"/>
                 </div> : 
                 <h2 className="subNav text-white fs-5 mt-5">Timeline coming soon</h2>
                 }

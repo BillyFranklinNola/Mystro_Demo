@@ -7,8 +7,8 @@ const MusicianDashboard = () => {
 
     return (
         <div className='viewport container-fluid px-3'>
-            <h2 className="subNav text-warning mx-auto mt-3 mb-4 my-lg-4">Upcoming Gigs:</h2>
-            <div className='col-sm-8 mt-2 mt-lg-3 mx-auto'>
+            <h2 className="subNav text-warning mx-auto my-4">Upcoming Gigs:</h2>
+            <div className='col-sm-8 mt-3 mx-auto'>
                 <MusicianGigList musicianGigs={musicianGigs}/>
             </div>
         </div>

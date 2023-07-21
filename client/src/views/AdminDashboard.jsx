@@ -21,7 +21,7 @@ const AdminDashboard = () => {
             <div className='row d-flex justify-content-around'>
                 <div className='col-lg-7'>
                     <h2 className="subNav text-warning mx-auto my-4">All Gigs:</h2>
-                    <div className='mt-lg-3'>
+                    <div className='mt-3'>
                         <AdminGigList 
                             setAllGigs={allGigs} 
                             gigDeleteHandler={gigDeleteHandler}/>
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className='col-lg-5 col-xl-4'>
                     <h2 className="subNav text-warning mx-auto my-4">All Musicians:</h2>
-                    <div className='mt-lg-3'>
+                    <div className='mt-3'>
                         <AdminMusicianList 
                             setAllMusicians={allMusicians} 
                             musicianDeleteHandler={musicianDeleteHandler}/>

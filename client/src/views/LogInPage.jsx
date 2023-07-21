@@ -9,7 +9,7 @@ const LoginView = () => {
         <div className='viewport container-fluid col-10'>
             <div className='col-lg-6 mb-3 mb-lg-0 mx-auto'>
                 <h2 className="subNav text-warning my-4 mx-auto">Login:</h2>
-                <div className="mt-lg-3">
+                <div className="mt-3">
                     <LoginForm 
                         loginEmail="" 
                         loginPassword=""/>

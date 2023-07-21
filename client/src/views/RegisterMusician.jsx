@@ -9,7 +9,7 @@ const RegisterMusician = () => {
         <div className='viewport container-fluid col-10'>
             <div className='col-lg-6 mx-auto'>
                 <h2 className="subNav text-warning my-4 mx-auto">New Musician:</h2>
-                <div className="mt-lg-3">
+                <div className="mt-3">
                     <RegisterForm 
                         initialFirstName="" 
                         initialLastName="" 

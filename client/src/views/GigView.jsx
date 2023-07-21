@@ -69,7 +69,7 @@ const GigView = () => {
             <h2 className="subNav text-warning mb-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city},{gig.state} </h2>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
-                    <div className="panelBackground border border-2 border-dark rounded mb-3 p-3">
+                    <div className="panelBackground border border-2 border-dark rounded mb-3 mt-2 mt-lg-0 p-3">
                         <MapOfGig
                             gig={gig} 
                             setGig={setGig} 
