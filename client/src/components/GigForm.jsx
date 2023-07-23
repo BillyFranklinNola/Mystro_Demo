@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
 
 const GigForm = (props) => {
     const {
@@ -257,27 +256,22 @@ const GigForm = (props) => {
                                         </div>
                                     ))
                                 }
-                                {/* {
-                                    errors.musicians?
-                                    <p>{errors.musicians.message}</p>:
-                                    null
-                                } */}
                             </div>
                             <div className='form-group mt-5 mt-lg-4 '>
                                 <label htmlFor='iRealCharts'>iRealpro Charts:</label>
                                 <input type="file" accept=".html" name="iRealCharts" id="iRealCharts" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
                             </div>
-                            <div className='form-group mt-3'>
+                            <div className='form-group mt-4'>
                                 <label htmlFor='pdfCharts'>PDF Charts:</label>
                                 <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
                             </div>
-                            <div className='form-group mt-3'>
+                            <div className='form-group mt-4'>
                                 <label htmlFor='timeline'>Timeline:</label>
                                 <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
                                 {
                                 image === '' ? 
                                 null : 
-                                <img src={image} className='h-75 w-75 mt-4 border border-3 rounded p-3' alt="Preview of uploaded file." />
+                                <img src={image} className='h-75 w-75 mt-4 border border-2 rounded p-3' alt="Preview of uploaded file." />
                                 }
                             </div>
                             {/* <div>

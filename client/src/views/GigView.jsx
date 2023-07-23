@@ -66,7 +66,7 @@ const GigView = () => {
 
     return (
         <div className="viewport container-fluid p-3 p-lg-4">
-            <h2 className="subNav text-warning mb-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city},{gig.state} </h2>
+            <h3 className="subNav mb-4 mt-lg-2 mb-lg-5">{gig.venue} - {gig.city}, {gig.state} </h3>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
                     <div className="panelBackground border border-2 border-dark rounded mb-3 mt-2 mt-lg-0 p-3">
@@ -86,7 +86,7 @@ const GigView = () => {
                 </div>
                 <div className="col-12 col-lg-3 mx-auto mx-lg-0 mb-3 mb-lg-0">
                     <div className="panelBackground border border-2 border-dark rounded p-2 text-white">
-                        <h6 className="text-warning mt-3">{dayOfWeek}, {gigDate}</h6>
+                        <h6 className="text-light mt-3">- {dayOfWeek}, {gigDate} -</h6>
                         <p className="mt-3">Set up by: {setUpBy}</p>
                         <p>Start: {startTime}</p>
                         <p>End: {endTime}</p>                

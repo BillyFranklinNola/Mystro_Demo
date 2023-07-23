@@ -3,7 +3,7 @@ import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
 import '../styles/globals.css';
 
-const MusicianGigList = (props) => {
+const MusicianGigList = () => {
     const [allGigs, setAllGigs] = useState([])
     const [musicianGigs, setMusicianGigs] = useState([])
     const {id} = useParams()

@@ -62,7 +62,7 @@ const EditGig = () => {
 
     return (
         <div className='viewport container-fluid'>
-            <h2 className="subNav text-warning mx-auto my-4">Edit Gig:</h2>
+            <h3 className="subNav mx-auto my-4">Edit Gig:</h3>
             <div className='mt-3'>
                 {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 {

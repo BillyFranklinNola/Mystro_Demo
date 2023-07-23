@@ -1,6 +1,7 @@
 import './App.css';
+import './styles/globals.css'
 import React, {useState} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateGig from './views/CreateGig';
@@ -14,7 +15,6 @@ import AdminRoute from './components/AdminRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 import ChartsView from './views/ChartsView';
 import Footer from './components/Footer';
-import image from "./images/backgroundimage.jpg";
 import NavBar from './components/NavBar';
 import LoginPage from './views/LogInPage';
 import RegisterMusician from './views/RegisterMusician';
@@ -26,18 +26,14 @@ function App() {
   const [musician, setMusician] = useState({})
   const [allGigs, setAllGigs] = useState([])
   const [gigMusicians, setGigMusicians] = useState([])
+  // const location = useLocation();
+  // const changeBackground = !location.pathname.includes('AdminDashboard');
+
 
 
   return (
-    <div className='bg-image'style={{
-      backgroundImage: `url(${image})`,
-      backgroundPosition: 'center',
-      minHeight: '100vh',
-      backgroundSize: 'cover',
-      display: 'flex',
-      flexDirection: 'column',
-  }}>
-      <div className='text-center' style={{fontFamily: 'Rowdies'}}>
+    <div className={'bg-imageScale'}>
+      <div className='text-center' style={{fontFamily: 'Tektur'}}>
         <BrowserRouter>
           <div className='py-3 mx-4'>
             <NavBar/>

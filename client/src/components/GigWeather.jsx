@@ -23,8 +23,12 @@ const GigWeather = (props) => {
     useEffect(() =>  {
         async function gigForecast() {
             try {
-            const res = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${gig.city}/${gig.date}/${gig.date}?unitGroup=us&include=days&key=BQY89VYXBUYJF8D9H678L8LQX&contentType=json`)
+                if (gig.date) {
+            const formattedDate = new Date(gig.date).toISOString().split('T')[0];
+            console.log(formattedDate);
+            const res = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${gig.city}/${formattedDate}/${formattedDate}?unitGroup=us&include=days&key=BQY89VYXBUYJF8D9H678L8LQX&contentType=json`)
             setGigWeather(res.data.days[0]);
+                }
             } catch (err) {
                 console.log(err);
             }

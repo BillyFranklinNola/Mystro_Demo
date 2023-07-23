@@ -70,7 +70,7 @@ const LoginForm = (props) => {
                             <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
                         </div>
                     </div>
-                    <button type="submit" className='btn btn-warning mt-4 mb-3'>Submit</button>
+                    <button type="submit" className='btn btn-warning mt-4 mb-3 mx-auto'>Submit</button>
                 </form>
             </div>
         </div>

@@ -20,7 +20,7 @@ const AdminDashboard = () => {
         <div className='viewport container'>
             <div className='row d-flex justify-content-around'>
                 <div className='col-lg-7'>
-                    <h2 className="subNav text-warning mx-auto my-4">All Gigs:</h2>
+                    <h3 className="subNav mx-auto my-4">All Gigs:</h3>
                     <div className='mt-3'>
                         <AdminGigList 
                             setAllGigs={allGigs} 
@@ -28,8 +28,8 @@ const AdminDashboard = () => {
                     </div>
                     <Link className='btn btn-warning my-1 mt-lg-3 mb-4 mb-lg-0' to ='/gigs/createGig'>Add New Gig</Link>
                 </div>
-                <div className='col-lg-5 col-xl-4'>
-                    <h2 className="subNav text-warning mx-auto my-4">All Musicians:</h2>
+                <div className='col-lg-5'>
+                    <h3 className="subNav mx-auto my-4">All Musicians:</h3>
                     <div className='mt-3'>
                         <AdminMusicianList 
                             setAllMusicians={allMusicians} 

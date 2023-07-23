@@ -15,28 +15,31 @@ const MapOfGig = (props) => {
 
     useEffect(() => {
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${gig.streetAddress},+${gig.city}s,+${gig.state},+${gig.zipCode}&key=${MAPS_API_KEY}`)
-        .then(res => {
-            const lat = (res.data.results[0].geometry.location.lat);
-            const lng = (res.data.results[0].geometry.location.lng);
-            setGigLatitude(lat);
-            setGigLongitude(lng);
-
+        .then((res) => {
+            if (res.data.results && res.data.results[0] && res.data.results[0].geometry && res.data.results[0].geometry.location) {
+                const { lat, lng } = res.data.results[0].geometry.location;
+                console.log(res.data.results[0].geometry.location);
+                console.log('lat:', lat);
+                console.log('lng:', lng);
+                setGigLatitude(lat);
+                setGigLongitude(lng);
+            } else {
+                console.log('Invalid API response:', res.data);
+            }
         })
-        .catch(err => console.log(err));
-    }, [gig])
+            .catch((err) => console.log(err));
+        }, [gig, MAPS_API_KEY]);
 
-    const center = useMemo(() => ({
+    if (!isLoaded || gigLatitude === null || gigLongitude === null) return (
+        <div>"Loading...";</div>
+    );
+
+    
+
+    const center = {
         lat: gigLatitude,
         lng: gigLongitude
-    }), [
-        gigLatitude,
-        gigLongitude
-    ]);
-
-    if (!isLoaded) return <div>"Loading...";</div>
-
-    if (gigLatitude === null || gigLongitude === null) return null;
-
+    };
 
     return (
         <div>

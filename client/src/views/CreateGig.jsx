@@ -45,7 +45,7 @@ const CreateGig = () => {
 
     return (
         <div className='viewport container-fluid pb-5'>
-            <h2 className="subNav text-warning my-4">Create a new gig:</h2>
+            <h3 className="subNav my-4">Create a new gig:</h3>
             <div className='mt-3'>
                 {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 <GigForm

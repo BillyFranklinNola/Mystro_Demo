@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../styles/globals.css';
 
-
 const ChartsView = () => {
 
     const iRealLogo = require("../images/iRealproLogo.png");
@@ -31,29 +30,29 @@ const ChartsView = () => {
     }
 
     return (
-        <div className="viewport container pt-3 pb-2">
+        <div className="viewport container pb-2">
             <div>
             {
                 gig.iRealCharts !== "" || gig.pdfCharts !== "" ?
-            <h2 className="subNav mt-3 mt-lg-4 my-sm-5 text-warning">Click Icon to Download:</h2>
+            <h5 className="subNav my-4">Click Icon to Download:</h5>
             :
             null
             }    
-                <div className="container-fluid d-flex flex-column flex-sm-row mx-0 mx-md-3 p-3">
+                <div className="panelBackground container-fluid d-flex flex-column flex-sm-row border border-2 border-dark rounded mt-3 mx-auto py-sm-5 px-3">
                     <div className="col mx-auto mx-md-0">
                         {
                         gig.iRealCharts !== ""?
-                        <img src={iRealLogo} className="w-50 h-auto mt-4 mt-lg-0" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
+                        <img src={iRealLogo} className="w-50 h-auto mt-5 mt-sm-0" alt="Logo for iReal Pro" onClick={() => handleDownload(gig.iRealCharts)}/>
                         :
-                        <h3 className="subNav text-white mt-5 ms-lg-5 fs-6">iReal Pro charts coming soon</h3>
+                        <h6 className="subNav text-white mt-5 ms-lg-5">iReal Pro charts coming soon</h6>
                         }
                     </div>
                     <div className="col mx-auto mx-md-0 mt-4 mt-sm-0">
                         {
                         gig.pdfCharts !== ""?
-                        <img src={pdfLogo} className="w-50 h-auto" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
+                        <img src={pdfLogo} className="w-50 h-auto mb-5 mb-lg-0" alt="Logo for PDF" onClick={() => handleDownload(gig.pdfCharts)}/>
                         :
-                        <h3 className="subNav text-white mt-5 me-lg-5 fs-6">PDF charts coming soon</h3>
+                        <h6 className="subNav text-white mt-4 mt-md-5 mb-5 mb-lg-0 me-lg-5">PDF charts coming soon</h6>
                         }
                     </div>
                 </div>

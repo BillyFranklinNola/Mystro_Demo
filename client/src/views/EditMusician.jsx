@@ -44,7 +44,7 @@ const EditMusician = (props) => {
 
     return (
         <div className='viewport container-fluid'>
-            <h2 className="subNav text-warning mx-auto my-4">Edit Musician:</h2>
+            <h3 className="subNav mx-auto my-4">Edit Musician:</h3>
             <div className='mt-3'>
                 <EditMusicianForm
                     onSubmitProp={updateMusician}
