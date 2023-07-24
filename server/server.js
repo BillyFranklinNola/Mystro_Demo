@@ -7,15 +7,22 @@ const path = require('path');
 const app = express();
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 require("./config/mongoose.config");
 
 app.use(cookieParser())
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(bodyParser.json());
-// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build', )));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+}
+
 
 
 require('./routes/musician.routes')(app);
