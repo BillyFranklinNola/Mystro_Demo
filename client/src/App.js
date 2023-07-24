@@ -1,7 +1,7 @@
 import './App.css';
 import './styles/globals.css'
-import React, {useState} from 'react';
-import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Routes, Route, useLocation} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CreateGig from './views/CreateGig';
@@ -26,17 +26,22 @@ function App() {
   const [musician, setMusician] = useState({})
   const [allGigs, setAllGigs] = useState([])
   const [gigMusicians, setGigMusicians] = useState([])
-  // const location = useLocation();
-  // const changeBackground = !location.pathname.includes('AdminDashboard');
+  const location = useLocation();
+  const [changeBackground, setChangeBackground] = useState(false);
 
-
+    useEffect(() => {
+      const changeBackground = location.pathname.includes('AdminDashboard') || location.pathname.includes('gigs/viewGig');
+      setChangeBackground(changeBackground);
+    }, [location]);
 
   return (
-    <div className={'bg-imageScale'}>
+    <div className= {changeBackground ? 
+      'bg-imageScale'
+      : 'bg-imageFixed'
+    }>
       <div className='text-center' style={{fontFamily: 'Tektur'}}>
-        <BrowserRouter>
-          <div className='py-3 mx-4'>
-            <NavBar/>
+        <div className='py-3 mx-4'>
+          <NavBar/>
           </div>
           <Routes>
             <Route 
@@ -116,7 +121,6 @@ function App() {
                 </ProtectedRoute>
               }/>
           </Routes>
-        </BrowserRouter>
         <Footer/>
         <ToastContainer/>
       </div>
