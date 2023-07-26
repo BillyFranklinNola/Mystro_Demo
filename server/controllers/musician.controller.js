@@ -24,6 +24,36 @@ module.exports = {
         }
     },
 
+    // login: async (req, res) => {
+    //     try {
+    //         let musician = await Musician.findOne({email: req.body.email});
+    //         console.log(musician)
+    //         console.log(req.body.password)
+    //         console.log(musician.password)
+    //         if(musician){
+    //             const passwordMatch = await bcrypt.compare(req.body.password, musician.password)
+    //             if(passwordMatch){
+    //                 console.log(passwordMatch)
+    //                 const musicianID = musician._id.toString()
+    //                 console.log(musicianID)
+    //                 const token = jwt.sign({id: musicianID}, secret, {expiresIn: '2h'})
+    //                 console.log(token)
+    //                 console.log(musician)
+    //                 res.cookie('usertoken', token, {httpOnly:true}).json({message: "success", musician: musician});
+    //             }
+    //             else{
+    //                 res.status(400).json({message: "Invalid email or password"})
+    //             }
+    //         }
+    //         else{
+    //             res.status(400).json({message: "Invalid email or password"})
+    //         }
+    //     }
+    //     catch(err){
+    //         return res.json({error:err});
+    //     }
+    // },
+
     login: async (req, res) => {
         try {
             let musician = await Musician.findOne({email: req.body.email});

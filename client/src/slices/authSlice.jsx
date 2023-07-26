@@ -39,8 +39,10 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const login = createAsyncThunk('auth/login', async (musician, thunkAPI) => {
         try {
+            console.log(musician);
             const response = await authService.login(musician);
             toast.success('Login Successful');
+            console.log(response);
             return response
         } catch (error) {
             const errorResponse = (error.response && error.response.data.message)
