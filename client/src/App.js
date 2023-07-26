@@ -57,13 +57,13 @@ function App() {
             <Route 
               path='/AdminDashboard' 
               element={
-                <AdminRoute>
+                // <AdminRoute>
                   <AdminDashboard
                     allMusicians={allMusicians} 
                     setAllMusicians={setAllMusicians} 
                     allGigs={allGigs} 
                     setAllGigs={setAllGigs}/>
-                </AdminRoute>
+                // </AdminRoute>
               }/>
             <Route 
               path='/MusicianDashboard' 
