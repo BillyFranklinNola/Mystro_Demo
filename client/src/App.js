@@ -30,11 +30,7 @@ function App() {
   const [changeBackground, setChangeBackground] = useState(false);
 
     useEffect(() => {
-      const changeBackground = location.pathname.includes('AdminDashboard') 
-        || location.pathname.includes('gigs/viewGig')
-        || location.pathname.includes('gigs/createGig')
-        || location.pathname.includes('gigs/editGig')
-
+      const changeBackground = location.pathname.includes('AdminDashboard') || location.pathname.includes('gigs/viewGig');
       setChangeBackground(changeBackground);
     }, [location]);
 
