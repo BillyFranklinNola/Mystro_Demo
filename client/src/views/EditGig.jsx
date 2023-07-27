@@ -15,8 +15,7 @@ const EditGig = () => {
     const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/gigs/${id}`)
-        .then((res)=>{
+cd         .then((res)=>{
             console.log(res);
             setGig(res.data.gig);
             setLoaded(true);
