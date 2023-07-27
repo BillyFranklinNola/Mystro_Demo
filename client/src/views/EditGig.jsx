@@ -15,11 +15,11 @@ const EditGig = () => {
     const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
-            then((res)=>{
+        axios.get(`http://localhost:8000/api/gigs/${id}`)
+        .then((res)=>{
             console.log(res);
             setGig(res.data.gig);
             setLoaded(true);
-
         })
         .catch((err)=>{
             console.log(err);
