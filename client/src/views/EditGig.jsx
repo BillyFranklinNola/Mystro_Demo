@@ -15,7 +15,7 @@ const EditGig = () => {
     const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
-cd         .then((res)=>{
+            then((res)=>{
             console.log(res);
             setGig(res.data.gig);
             setLoaded(true);
