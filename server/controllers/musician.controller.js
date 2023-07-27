@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
     register: async (req,res) => {
+        console.log(secret)
         try{
             const potentialMusician = await Musician.findOne({email: req.body.email});
             if(potentialMusician){
@@ -55,6 +56,7 @@ module.exports = {
     // },
 
     login: async (req, res) => {
+        console.log(secret)
         try {
             let musician = await Musician.findOne({email: req.body.email});
             if(musician){
