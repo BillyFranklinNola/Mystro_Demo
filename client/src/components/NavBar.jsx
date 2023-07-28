@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useNavigate, Link,} from "react-router-dom";
 import axios from "axios";
 import {useDispatch, useSelector} from 'react-redux';
@@ -22,6 +22,18 @@ const NavBar = () => {
             console.error('Error logging out', err);
             }
     }
+
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+            logoutHandler();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     return (
         <div className="row navbar navbar-expand-xxl p-4 rounded border border-2 border-dark" style={{
