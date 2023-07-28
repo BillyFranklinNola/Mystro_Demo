@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
     console.log('Running in development environment.');
 }
 
-require("./config/mongoose.config");
+require("./server/config/mongoose.config");
 
 app.use(cookieParser())
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
-require('./routes/musician.routes')(app);
-require('./routes/gig.routes')(app);
+require('./server/routes/musician.routes')(app);
+require('./server/routes/gig.routes')(app);
 
 app.listen(port, () => console.log(`Listening on port: ${port}`) );
