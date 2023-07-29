@@ -8,6 +8,8 @@ const app = express();
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const port = 8000;
+const fetchEnvironmentVariables = require('./config/aws.config');
+
 
 console.log(process.env.NODE_ENV);
 
@@ -28,4 +30,15 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 require('./routes/musician.routes')(app);
 require('./routes/gig.routes')(app);
 
-app.listen(port, () => console.log(`Listening on port: ${port}`) );
+async function startServer() {
+    try {
+        await fetchEnvironmentVariables();
+        app.listen(port, () => console.log(`Listening on port: ${port}`));
+    } catch (error) {
+        console.error('Error fetching environment variables:', error);
+    }
+}
+
+startServer();
+
+// app.listen(port, () => console.log(`Listening on port: ${port}`) );
