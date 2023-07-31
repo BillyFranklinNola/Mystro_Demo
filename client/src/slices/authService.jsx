@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const REG_URL = "http://localhost:8000/api/musicians/register";
-const LOGIN_URL = "http://localhost:8000/api/musicians/login";
+const REG_URL = "/api/musicians/register";
+const LOGIN_URL = "/api/musicians/login";
 
 const register = async (musicianData) => {
     const response = await axios.post(REG_URL, musicianData);
