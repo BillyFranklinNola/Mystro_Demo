@@ -10,9 +10,6 @@ const bodyParser = require('body-parser');
 const port = 8000;
 const fetchEnvironmentVariables = require('./config/aws.config');
 
-
-console.log(process.env.NODE_ENV);
-
 if (process.env.NODE_ENV === 'production') {
     console.log('Running in production environment.');
     }  else {
@@ -30,15 +27,20 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 require('./routes/musician.routes')(app);
 require('./routes/gig.routes')(app);
 
-async function startServer() {
-    try {
-        await fetchEnvironmentVariables();
-        app.listen(port, () => console.log(`Listening on port: ${port}`));
-    } catch (error) {
-        console.error('Error fetching environment variables:', error);
-    }
-}
+// async function startServer() {
+//     try {
+//         await fetchEnvironmentVariables();
+//         if (process.env.NODE_ENV === 'production') {
+//             console.log('Running in production environment.');
+//             } else {
+//             console.log('Running in development environment.');
+//         }
+//         app.listen(port, () => console.log(`Listening on port: ${port}`));
+//     } catch (error) {
+//         console.error('Error fetching environment variables:', error);
+//     }
+// }
 
-startServer();
+// startServer();
 
-// app.listen(port, () => console.log(`Listening on port: ${port}`) );
+app.listen(port, () => console.log(`Listening on port: ${port}`) );
