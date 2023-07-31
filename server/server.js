@@ -10,12 +10,6 @@ const bodyParser = require('body-parser');
 const port = 8000;
 const fetchEnvironmentVariables = require('./config/aws.config');
 
-if (process.env.NODE_ENV === 'production') {
-    console.log('Running in production environment.');
-    }  else {
-    console.log('Running in development environment.');
-}
-
 require("./config/mongoose.config");
 
 app.use(cookieParser())
@@ -26,6 +20,18 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 require('./routes/musician.routes')(app);
 require('./routes/gig.routes')(app);
+
+// -----------------------deployment-----------------------
+
+__dirname = path.resolve();
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html')));
+}
+
+// -----------------------deployment-----------------------
+
+
 
 // async function startServer() {
 //     try {
