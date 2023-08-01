@@ -11,7 +11,7 @@ const ChartsView = () => {
     const [gig, setGig] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/gigs/${id}`)
+        axios.get(`/api/gigs/${id}`)
             .then(res => {
                 setGig(res.data.gig);
                 console.log(res.data.gig);
@@ -22,7 +22,7 @@ const ChartsView = () => {
 
     const handleDownload = (fileName) => {
         console.log(fileName);
-        const downloadURL = `http://localhost:8000/api/gigs/download/${fileName}`
+        const downloadURL = `/api/gigs/download/${fileName}`
         const link = document.createElement('a');
         link.href = downloadURL;
         link.download = fileName;

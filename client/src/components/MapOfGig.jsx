@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {GoogleMap, useLoadScript, Marker} from '@react-google-maps/api';
 import '../styles/globals.css';
 import axios from 'axios';
-import {useMemo} from 'react';
 
 const MapOfGig = (props) => {
     const {gig} = props;

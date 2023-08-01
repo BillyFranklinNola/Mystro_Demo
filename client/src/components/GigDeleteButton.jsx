@@ -5,7 +5,7 @@ const DeleteButton = (props) => {
     const { id, successCallback } = props;
     const deleteGig = () => {
         
-        axios.delete(`http://localhost:8000/api/gigs/delete/${id}`)
+        axios.delete(`api/gigs/delete/${id}`)
             .then(res=>{
                 successCallback();
             })

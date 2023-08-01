@@ -16,14 +16,14 @@ const CreateGig = () => {
         const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians} = gig;
         const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians};
         try {
-            const newGig = await axios.post('http://localhost:8000/api/gigs/create', gigData)
+            const newGig = await axios.post('/api/gigs/create', gigData)
             const formData = new FormData();
             formData.append('iRealCharts', gig.iRealCharts);
             formData.append('pdfCharts', gig.pdfCharts);
             formData.append('timeline', gig.timeline);
             formData.append('gigId', newGig.data._id);
 
-            axios.put(`http://localhost:8000/api/gigs/uploadCharts/${newGig.data._id}`, formData, {
+            axios.put(`/api/gigs/uploadCharts/${newGig.data._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

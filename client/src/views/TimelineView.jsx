@@ -9,7 +9,7 @@ const TimelineView = (props) => {
     const [gig, setGig] = useState(props);
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/gigs/${id}`)
+        axios.get(`/api/gigs/${id}`)
         .then((res)=>{
             console.log(res);
             setGig(res.data.gig);
@@ -26,7 +26,7 @@ const TimelineView = (props) => {
                 gig.timeline !== '' ?
                 <div>
                     <h3 className="subNav mb-5 mt-3">Timeline</h3>
-                    <img src={`http://localhost:8000/uploads/${gig.timeline}`} alt="timeline" className="img-fluid border border-dark border-3"/>
+                    <img src={`/uploads/${gig.timeline}`} alt="timeline" className="img-fluid border border-dark border-3"/>
                 </div> : 
                 <h2 className="subNav text-white fs-5 mt-5">Timeline coming soon</h2>
                 }

@@ -15,7 +15,7 @@ const EditGig = () => {
     const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/gigs/${id}`)
+        axios.get(`/api/gigs/${id}`)
         .then((res)=>{
             console.log(res);
             setGig(res.data.gig);
@@ -31,7 +31,7 @@ const EditGig = () => {
         const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians} = gig;
         const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians};
         try {
-            const updatedGig = await axios.put(`http://localhost:8000/api/gigs/edit/${id}`, gigData) 
+            const updatedGig = await axios.put(`/api/gigs/edit/${id}`, gigData) 
             const formData = new FormData();
             const gigId = updatedGig.data.gig._id;
             formData.append('iRealCharts', gig.iRealCharts);
@@ -39,7 +39,7 @@ const EditGig = () => {
             formData.append('timeline', gig.timeline);
             formData.append('gigId', gigId);
             
-            axios.put(`http://localhost:8000/api/gigs/uploadCharts/${gigId}`, formData, {
+            axios.put(`/api/gigs/uploadCharts/${gigId}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

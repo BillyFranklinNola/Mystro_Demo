@@ -8,7 +8,7 @@ const AdminMusicianList = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/musicians')
+        axios.get('/api/musicians')
         .then((res)=>{
             console.log(res.data);
             setAllMusicians(res.data);
@@ -18,7 +18,7 @@ const AdminMusicianList = (props) => {
         })}, [])
         
     const deleteMusician = (id) => {
-        axios.delete(`http://localhost:8000/api/musicians/delete/${id}`)
+        axios.delete(`/api/musicians/delete/${id}`)
         .then((res)=>{
             console.log(res);
             setAllMusicians(allMusicians.filter((musician) => musician._id !== id))

@@ -15,7 +15,7 @@ const GigView = () => {
     const {id} = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/gigs/${id}`)
+        axios.get(`/api/gigs/${id}`)
             .then(res => {
                 setGig(res.data.gig);
                 console.log(res.data.gig);

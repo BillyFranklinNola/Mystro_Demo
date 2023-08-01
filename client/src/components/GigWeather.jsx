@@ -10,7 +10,7 @@ const GigWeather = (props) => {
 
     useEffect(() => {
         axios.get(
-            `http://localhost:8000/api/gigs/${id}`
+            `/api/gigs/${id}`
             )
         .then((res)=>{
             console.log(res.data.gig);

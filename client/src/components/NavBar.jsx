@@ -14,7 +14,7 @@ const NavBar = () => {
 
     const logoutHandler = () => {
         try {
-            axios.post('http://localhost:8000/api/musicians/logout', {}, {withCredentials: true});
+            axios.post('/api/musicians/logout', {}, {withCredentials: true});
             dispatch(logout());
             dispatch(reset());
             navigate('/');
