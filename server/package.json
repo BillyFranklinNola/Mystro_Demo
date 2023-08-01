@@ -4,8 +4,6 @@
 
     "@react-google-maps/api": "^2.18.1",
 
-    "aws-sdk": "^2.1425.0",
-
     "bcrypt": "^5.1.0",
 
     "cloudinary": "^1.37.1",

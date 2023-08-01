@@ -41,9 +41,9 @@ const NavBar = () => {
         }}>
             <div className="container d-flex flex-column flex-lg-row align-items-center">
                 <div className="d-flex align-items-center">
-                    <a className="navbar-brand text-warning fs-2 mx-auto me-lg-3">
+                    <h2 className="text-warning mx-auto me-lg-3">
                         NOLA Live Productions
-                    </a>
+                    </h2>
                 </div>
                 <div className="d-flex flex-column flex-sm-row mt-3 mt-lg-0 mx-auto mx-lg-0">
                     {
@@ -51,10 +51,10 @@ const NavBar = () => {
                     <Link className="btn btn-warning me-sm-2" to='/AdminDashboard'>Admin Dashboard</Link>
                     : null
                     }
-                    <Link className="btn btn-warning me-sm-2 mt-2 mt-sm-0" to='/MusicianDashboard'>Dashboard</Link>
+                    <Link className="btn btn-warning mt-2 mt-sm-0" to='/MusicianDashboard'>Dashboard</Link>
                     {
                     loggedInMusician? (
-                    <div className="btn btn-warning mt-2 mt-sm-0" onClick={logoutHandler}>
+                    <div className="btn btn-warning mt-2 mt-sm-0 ms-sm-2" onClick={logoutHandler}>
                         Logout
                     </div>
                     ) : (
