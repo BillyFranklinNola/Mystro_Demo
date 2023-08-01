@@ -241,7 +241,7 @@ const GigForm = (props) => {
                             </div>
                         </div>
                         <div className='col-12 col-lg-5'>
-                            <div className='form-group mt-5 mt-lg-0 ms-3 ms-lg-0'>
+                            <div className='form-group mt-5 mt-lg-0 ms-lg-0'>
                                 <p className='mb-4'>Musicians:</p>
                                 {
                                 allMusicians.map((musician,idx) => (
