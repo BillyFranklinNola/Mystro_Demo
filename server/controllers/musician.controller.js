@@ -50,7 +50,7 @@ module.exports = {
     },
 
     logout: (req,res) => {
-        res.clearCookie('token')
+        res.clearCookie('token').json({message: "You have succesfully logged out"})
     },
 
 

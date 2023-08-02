@@ -5,8 +5,8 @@ import '../styles/globals.css';
 
 const ChartsView = () => {
 
-    const iRealLogo = require("../images/iRealproLogo.png");
-    const pdfLogo = require("../images/pdfLogo.png");
+    const iRealLogo = require("../assets/images/iRealproLogo.png");
+    const pdfLogo = require("../assets/images/pdfLogo.png");
     const {id} = useParams();
     const [gig, setGig] = useState({});
 
