@@ -34,7 +34,6 @@ export const register = createAsyncThunk('auth/register', async (musician, thunk
 
 export const logout = createAsyncThunk('auth/logout', async () => {
     await authService.logout();
-    toast.success('Logout Successful');
 })
 
 export const login = createAsyncThunk('auth/login', async (musician, thunkAPI) => {
