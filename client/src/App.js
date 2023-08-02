@@ -52,18 +52,20 @@ function App() {
             <Route 
               path='/musicians/register' 
               element={
-                <RegisterMusician/>
+                <ProtectedRoute>
+                  <RegisterMusician/>
+                </ProtectedRoute>
               }/>
             <Route 
               path='/AdminDashboard' 
               element={
-                // <AdminRoute>
+                <AdminRoute>
                   <AdminDashboard
                     allMusicians={allMusicians} 
                     setAllMusicians={setAllMusicians} 
                     allGigs={allGigs} 
                     setAllGigs={setAllGigs}/>
-                // </AdminRoute>
+                </AdminRoute>
               }/>
             <Route 
               path='/MusicianDashboard' 
