@@ -18,7 +18,7 @@ const ChartsView = () => {
             })
             
             .catch(err => console.log(err));
-        }, [])
+        }, [id])
 
     const handleDownload = (fileName) => {
         console.log(fileName);

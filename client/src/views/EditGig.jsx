@@ -12,7 +12,7 @@ const EditGig = () => {
     const [gig, setGig] = useState({});
     const [allGigs, setAllGigs] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
         axios.get(`/api/gigs/${id}`)
@@ -24,7 +24,7 @@ const EditGig = () => {
         .catch((err)=>{
             console.log(err);
         })
-        }, [])
+        }, [id])
 
     const updateGig = async (gig) => {
         console.log(gig)
@@ -50,12 +50,9 @@ const EditGig = () => {
         } catch (err) {      
             console.log(err.response);
             const errorResponse = err.response.data.error;
-            const errorArray = [];
             for (const key of Object.keys(errorResponse)) {
-                {errorArray.push(errorResponse[key].message)}
                 toast.error(errorResponse[key].message)
             }
-            setErrors(errorArray);
         };
 }
 
@@ -63,7 +60,6 @@ const EditGig = () => {
         <div className='viewport container-fluid'>
             <h3 className="subNav mx-auto my-4">Edit Gig:</h3>
             <div className='mt-3'>
-                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 {
                 loaded && <GigForm 
                     onSubmitProp={updateGig}

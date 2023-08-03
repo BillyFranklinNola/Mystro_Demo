@@ -8,7 +8,7 @@ import '../styles/globals.css'
 
 const EditMusician = (props) => {
     const [musician, setMusician] = useState(props);
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const{id} = useParams();
 
@@ -20,7 +20,7 @@ const EditMusician = (props) => {
         .catch((err)=>{
             console.log(err);
         })
-        }, [])
+        }, [id])
 
     const updateMusician = async (musician) => {
         console.log(musician);
@@ -30,15 +30,14 @@ const EditMusician = (props) => {
             setMusician(res.data);
             navigate(`/AdminDashboard/`)
         } catch (err) {
-            console.log(err.response.data.err.errors);
-            const errorResponse = err.response.data.err.errors;
-            const errorArray = [];
-            console.log(errorArray);
+            console.log(err.response);
+            const errorResponse = err.response.data.errors;
+            // const errorArray = [];
             for (const key of Object.keys(errorResponse)) {
-                {errorArray.push(errorResponse[key].message)}
+                // {errorArray.push(errorResponse[key].message)}
                 toast.error(errorResponse[key].message)
             }
-            setErrors(errorArray);
+            // setErrors(errorArray);
         }   
     }
 

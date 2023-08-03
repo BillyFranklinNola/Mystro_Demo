@@ -8,7 +8,6 @@ const app = express();
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
-const fetchEnvironmentVariables = require('./config/aws.config');
 
 require("./config/mongoose.config");
 

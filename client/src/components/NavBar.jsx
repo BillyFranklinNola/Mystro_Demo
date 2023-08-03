@@ -8,7 +8,6 @@ const NavBar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const loggedInMusician = useSelector((state) => state.auth.musician);
-    console.log(loggedInMusician);
     const isAdmin = loggedInMusician? loggedInMusician.musician.isAdmin
     : false;
 

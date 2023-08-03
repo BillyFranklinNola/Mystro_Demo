@@ -12,7 +12,6 @@ const register = async (musicianData) => {
 };
 
 const login = async (musicianData) => {
-    console.log(musicianData);
     const response = await axios.post(LOGIN_URL, musicianData, {withCredentials: true});
     if (response.data) {
         localStorage.setItem("musician", JSON.stringify(response.data));

@@ -19,18 +19,14 @@ export const register = createAsyncThunk('auth/register', async (musician, thunk
             toast.success('Registration Successful');
             return response;
         } catch (error) {
-            const errorResposne = (error.response && error.response.data.err.errors)
+            const errorResponse = (error.response.data.err.errors)
             console.log(error.response);
-            console.log(error.response.data.err.errors);
-            const errorFields = Object.keys(errorResposne);
-            const errors = {};
-            console.log(errorFields);
-            errorFields.forEach(field => {
-                errors[field] = errorResposne[field].message;
-            });
-            return thunkAPI.rejectWithValue(errors);
-        }
-    })
+        //     for (const key of Object.keys(errorResposne)) {
+        //         toast.error(errorResponse[key].message);
+        // }
+            return errorResponse;
+    }
+})
 
 export const logout = createAsyncThunk('auth/logout', async () => {
     await authService.logout();
@@ -38,10 +34,8 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const login = createAsyncThunk('auth/login', async (musician, thunkAPI) => {
         try {
-            console.log(musician);
             const response = await authService.login(musician);
             toast.success('Login Successful');
-            console.log(response);
             return response
         } catch (error) {
             const errorResponse = (error.response && error.response.data.message)
@@ -71,30 +65,18 @@ export const authSlice = createSlice({
         .addCase(register.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.musician = action.payload;
         })
         .addCase(register.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
-            state.musician = action.payload || {};
-
-            if (action.payload && typeof action.payload === 'object') {
-                console.log(action.payload);
-                Object.entries(action.payload).forEach(([fieldName, errorMessage]) => {
-                state.errors[fieldName] = errorMessage;
-                });
-            }
         })
         .addCase(login.pending, (state) => {
             state.isLoading = true;
         })
         .addCase(login.fulfilled, (state, action) => {
-            console.log('login.fulfilled payload:', action.payload);
-            console.log('state before:', state);
             state.isLoading = false;
             state.isSuccess = true;
             state.musician = action.payload;
-            console.log('state after:', state);
         })
         .addCase(login.rejected, (state, action) => {
             state.isLoading = false;

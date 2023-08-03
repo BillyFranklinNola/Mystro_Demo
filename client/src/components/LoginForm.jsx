@@ -41,7 +41,6 @@ const LoginForm = (props) => {
             ...prevState,
             [e.target.name]:e.target.value
         }))
-        console.log(loginInfo)
     }
 
     const onSubmitHandler = (e) => {

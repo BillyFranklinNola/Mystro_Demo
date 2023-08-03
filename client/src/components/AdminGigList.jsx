@@ -9,7 +9,6 @@ const AdminGigList = (props) => {
     useEffect(() => {
         axios.get('/api/gigs', {withCredentials: true})
         .then((res)=>{
-            console.log(res.data);
             setAllGigs(res.data);
         })
         .catch((err)=>{
@@ -18,8 +17,7 @@ const AdminGigList = (props) => {
         
     const deleteGig = (id) => {
         axios.delete(`/api/gigs/delete/${id}`, {withCredentials: true})
-        .then((res)=>{
-            console.log(res);
+        .then(()=>{
             setAllGigs(allGigs.filter((gig) => gig._id !== id))
             navigate('/AdminDashboard')
         })

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register } from '../slices/authSlice';
 
 const RegisterForm = (props) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const {
         initialFirstName,
         initialLastName, 
@@ -24,9 +26,6 @@ const RegisterForm = (props) => {
         isSubmitted: false,
     })
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const {errors} = useSelector((state) => state.auth)
     const {
         firstName,
         lastName,
@@ -37,29 +36,16 @@ const RegisterForm = (props) => {
         isSubmitted
     } = formState;
 
-    const {musician, 
+    const {
         isLoading, 
-        isSuccess, 
-        message
+        isSuccess
     } = useSelector((state) => state.auth)
-
-    useEffect(() => {
-        if (isSuccess && isSubmitted) {
-            navigate('/AdminDashboard')
-        }
-        if (errors) {
-            Object.keys(errors).map((key) => {
-                toast.error(errors[key])
-            })
-        }
-    }, [musician, errors, isSuccess, message, navigate, dispatch])
 
     const changeHandler = (e) => {
         setFormState((prevState) => ({
             ...prevState, 
             [e.target.name]:e.target.value
         }))
-        console.log(formState)
     }
 
     const onSubmitHandler = async (e) => {
@@ -73,16 +59,19 @@ const RegisterForm = (props) => {
             confirmPassword 
         }
         const response = await dispatch(register(musicianData))
-        if (response.payload) {
+        if (isSuccess) {
+            console.log(response.payload)
             setFormState((prevState) => ({
                 ...prevState,
                 isSubmitted: true,
             }))
-        } else if (response.payload) {
-            const {errors} = response.payload
-            Object.keys(errors).forEach((key) => {
-                toast.error(errors[key])
-            })}
+            navigate('/AdminDashboard')
+        } else {
+            const errorResponse = response.payload
+            console.log(errorResponse)
+            for (const key of Object.keys(errorResponse)) {
+                toast.error(errorResponse[key].message)
+            }}
     }
     if (isLoading) {
         return <h1>Loading...</h1>

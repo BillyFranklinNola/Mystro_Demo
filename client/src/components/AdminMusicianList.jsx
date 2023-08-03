@@ -10,7 +10,6 @@ const AdminMusicianList = (props) => {
     useEffect(() => {
         axios.get('/api/musicians')
         .then((res)=>{
-            console.log(res.data);
             setAllMusicians(res.data);
         })
         .catch((err)=>{

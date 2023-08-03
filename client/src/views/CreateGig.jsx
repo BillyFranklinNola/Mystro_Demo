@@ -9,10 +9,8 @@ const CreateGig = () => {
     const navigate = useNavigate();
     const [gig, setGig] = useState({});
     const [allGigs, setAllGigs] = useState([]);
-    const [errors, setErrors] = useState([]);
 
     const newGig = async (gig) => {   
-        console.log(gig)
         const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians} = gig;
         const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians};
         try {
@@ -34,20 +32,16 @@ const CreateGig = () => {
         } catch (err) {
             console.log(err.response.data.error.errors)
             const errorResponse = err.response.data.error.errors;
-            const errorArray = [];
             for (const key of Object.keys(errorResponse)) {
-                {errorArray.push(errorResponse[key].message)}
                 toast.error(errorResponse[key].message)
         }
-            setErrors(errorArray);
-        }
-    };
+    }
+}
 
     return (
         <div className='viewport container-fluid pb-5'>
             <h3 className="subNav my-4">Create a new gig:</h3>
             <div className='mt-3'>
-                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 <GigForm
                     onSubmitProp={newGig} 
                     initialVenue="" 

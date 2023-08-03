@@ -115,11 +115,8 @@ const GigForm = (props) => {
 
             const onSubmitHandler = (e) => {
                 e.preventDefault();
-                console.log(gig);
                 onSubmitProp(gig)
             }
-
-            console.log(gig.musicians.length)
 
     return (
         <div className="container">
