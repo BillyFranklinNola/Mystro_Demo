@@ -18,7 +18,6 @@ const GigView = () => {
         axios.get(`/api/gigs/${id}`)
             .then(res => {
                 setGig(res.data.gig);
-                console.log(res.data.gig);
             })
             .catch(err => console.log(err));
         }, [])

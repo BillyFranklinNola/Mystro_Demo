@@ -22,18 +22,6 @@ const NavBar = () => {
             }
     }
 
-    useEffect(() => {
-        const handleBeforeUnload = (event) => {
-            logoutHandler();
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-    }, []);
-
     return (
         <div className="row navbar navbar-expand-xxl px-2 px-sm-4 py-4 rounded border border-2 border-dark" style={{
             backgroundColor: "rgba(45, 45, 45, 0.75)"

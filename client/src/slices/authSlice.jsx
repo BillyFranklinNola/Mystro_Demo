@@ -21,9 +21,6 @@ export const register = createAsyncThunk('auth/register', async (musician, thunk
         } catch (error) {
             const errorResponse = (error.response.data.err.errors)
             console.log(error.response);
-        //     for (const key of Object.keys(errorResposne)) {
-        //         toast.error(errorResponse[key].message);
-        // }
             return errorResponse;
     }
 })

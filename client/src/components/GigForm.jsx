@@ -57,14 +57,6 @@ const GigForm = (props) => {
         };
     }
 
-    // function listFiles(chartsFiles) {
-    //     const reader = new FileReader();
-    //     reader.readAsDataURL(chartsFiles);
-    //     reader.onloadend = () => {
-    //         console.log(reader.result);
-    //     };
-    // }
-
     const changeHandler = async (e) => {
         try{
             if (e.target.type === "checkbox"){
