@@ -12,7 +12,12 @@ const MapOfGig = (props) => {
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
     });
 
+    console.log('gig:', gig);
+    
     useEffect(() => {
+        console.log(MAPS_API_KEY)
+        const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${gig.streetAddress},+${gig.city}s,+${gig.state},+${gig.zipCode}&key=${MAPS_API_KEY}`;
+        console.log(geocodeURL);
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${gig.streetAddress},+${gig.city}s,+${gig.state},+${gig.zipCode}&key=${MAPS_API_KEY}`)
         .then((res) => {
             if (res.data.results && res.data.results[0] && res.data.results[0].geometry && res.data.results[0].geometry.location) {

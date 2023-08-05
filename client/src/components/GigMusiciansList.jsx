@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 
-const GigMusiciansList = (props) => {
+const GigMusiciansList = () => {
     const [gigMusicians, setGigMusicians] = useState([])
     const {id} = useParams()
 
     useEffect(() => {
-        axios.get(`api/gigs/${id}`)
+        console.log(id)
+        axios.get(`/api/gigs/${id}`)
         .then((res)=>{
+            console.log(res)
             console.log(res.data.gig.musicians);
             setGigMusicians(res.data.gig.musicians);
         })
