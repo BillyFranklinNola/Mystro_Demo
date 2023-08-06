@@ -1,5 +1,4 @@
 const multer = require('multer');
-const multerS3 = require('multer-s3');
 const path = require('path');
 
 // const storage = multer.diskStorage({

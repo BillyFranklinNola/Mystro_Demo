@@ -53,15 +53,18 @@ module.exports = app => {
             if (req.files) {
                 if (req.files.timeline) {
                     // timeline = req.files.timeline[0].filename;
-                    timeline = await s3upload(req.files.timeline[0]);
+                    const timelineFile = await s3upload(req.files.timeline[0]);
+                    timeline = timelineFile.Key;
                 }
                 if (req.files.iRealCharts) {
                     // iRealCharts = req.files.iRealCharts[0].filename;
-                    iRealCharts = await s3upload(req.files.iRealCharts[0]);
+                    const iRealChartsFile = await s3upload(req.files.iRealCharts[0]);
+                    iRealCharts = iRealChartsFile.Key;
                 }
                 if (req.files.pdfCharts) {
                     // pdfCharts = req.files.pdfCharts[0].filename;
-                    pdfCharts = await s3upload(req.files.pdfCharts[0]);
+                    const pdfChartsFile = await s3upload(req.files.pdfCharts[0]);
+                    pdfCharts = pdfChartsFile.Key;
                 }
             }
                 console.log('timeline:', timeline);
