@@ -64,6 +64,9 @@ module.exports = app => {
                     pdfCharts = await s3upload(req.files.pdfCharts[0]);
                 }
             }
+                console.log('timeline:', timeline);
+                console.log('iRealCharts:', iRealCharts);
+                console.log('pdfCharts:', pdfCharts);
                 const gigCharts = {
                     iRealCharts,
                     pdfCharts,
