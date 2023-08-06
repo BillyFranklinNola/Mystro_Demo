@@ -74,7 +74,6 @@ module.exports = app => {
                     gigId
                 };
 
-                console.log(gigCharts, "gig.routes.js 29");
                 GigController.createGigCharts(gigCharts, res);
             } catch (err) {
                 console.log(err);
