@@ -1,15 +1,17 @@
 const multer = require('multer');
+const multerS3 = require('multer-s3');
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-            cb(null, 'server/public/uploads/');
-        },
-    filename: (req, file, cb) => {
-            cb(null, uuidv4() + '-' + Date.now().toString() + path.extname(file.originalname));
-        }
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//             cb(null, 'server/public/uploads/');
+//         },
+//     filename: (req, file, cb) => {
+//             cb(null, uuidv4() + '-' + Date.now().toString() + path.extname(file.originalname));
+//         }
+// });
+const storage = multer.memoryStorage()
+
 const fileFilter = (req, file, cb) => {
     const allowedFileTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf', 'application/x-zip', 'application/x-zip-compressed', 'application/zip', 'text/html'];
     if (allowedFileTypes.includes(file.mimetype)) {
