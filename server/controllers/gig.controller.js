@@ -15,8 +15,6 @@ module.exports = {
     },
 
     createGigCharts: async (req, res) => {
-        console.log(req, "gig.controller.js 18");
-        console.log(req.gigId, "gig.controller.js 19");
         Gig.findOneAndUpdate({ _id: req.gigId }, req, { new: true, runValidators: true })
             .then(updatedGig => res.json({ gig: updatedGig }))
             .catch(err => res.status(400).json(err))

@@ -1,6 +1,8 @@
 require('dotenv').config({ path: '../.env' });
+const { S3 } = require('aws-sdk');
 const GigController = require('../controllers/gig.controller');
 const {upload} = require('../middleware/fileUpload');
+const {s3upload} = require('../middleware/AWS-s3');
 
 
 module.exports = app => {
@@ -21,9 +23,6 @@ module.exports = app => {
                 const timeline = req.files.timeline? req.files.timeline[0].filename : '';
                 const iRealCharts = req.files.iRealCharts? req.files.iRealCharts[0].filename: '';
                 const pdfCharts = req.files.pdfCharts? req.files.pdfCharts[0].filename: '';
-                console.log(timeline, "gig.routes.js 71");
-                console.log(iRealCharts, "gig.routes.js 72");
-                console.log(pdfCharts, "gig.routes.js 73");
                 const gigCharts = {
                     iRealCharts,
                     pdfCharts,
@@ -51,22 +50,20 @@ module.exports = app => {
             let iRealCharts = '';
             let pdfCharts = '';
 
-            console.log(req.files)
-
             if (req.files) {
                 if (req.files.timeline) {
-                    timeline = req.files.timeline[0].filename;
+                    // timeline = req.files.timeline[0].filename;
+                    timeline = await s3upload(req.files.timeline[0]);
                 }
                 if (req.files.iRealCharts) {
-                    iRealCharts = req.files.iRealCharts[0].filename;
+                    // iRealCharts = req.files.iRealCharts[0].filename;
+                    iRealCharts = await s3upload(req.files.iRealCharts[0]);
                 }
                 if (req.files.pdfCharts) {
-                    pdfCharts = req.files.pdfCharts[0].filename;
+                    // pdfCharts = req.files.pdfCharts[0].filename;
+                    pdfCharts = await s3upload(req.files.pdfCharts[0]);
                 }
             }
-                console.log(timeline, "gig.routes.js 71");
-                console.log(iRealCharts, "gig.routes.js 72");
-                console.log(pdfCharts, "gig.routes.js 73");
                 const gigCharts = {
                     iRealCharts,
                     pdfCharts,
