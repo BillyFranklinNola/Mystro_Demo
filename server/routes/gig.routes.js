@@ -9,7 +9,7 @@ module.exports = app => {
     app.get('/api/gigs', GigController.allGigs);
     app.post('/api/gigs/create', GigController.createGig);
     app.get('/api/gigs/:id', GigController.oneGig);
-    app.get('/api/gigs/download/:fileName', GigController.downloadGigCharts);
+    // app.get('/api/gigs/download/:fileName', GigController.downloadGigCharts);
     app.delete('/api/gigs/delete/:id', GigController.deleteGig);    
     app.put('/api/gigs/edit/:id', GigController.updateGig);
         upload.fields([
@@ -61,6 +61,7 @@ module.exports = app => {
                     const iRealChartsFile = await s3upload(req.files.iRealCharts[0]);
                     iRealCharts = iRealChartsFile.Key;
                 }
+
                 if (req.files.pdfCharts) {
                     // pdfCharts = req.files.pdfCharts[0].filename;
                     const pdfChartsFile = await s3upload(req.files.pdfCharts[0]);

@@ -38,13 +38,11 @@ module.exports = {
             .catch(err => res.json({ message: 'Could not delete Gig', error: err}))
     },
 
-    downloadGigCharts: (req, res) => {
-        console.log(req.params, "gig.controller.js  40");
-        console.log(req.params.fileName, "gig.controller.js  41");
-        const fileName = req.params.fileName;
-        console.log(fileName);
-        const file = `../server/public/uploads/${fileName}`;
-        console.log(file);
-        res.download(file);
-    }
+    // downloadGigCharts: (req, res) => {
+    //     const fileName = req.params.fileName;
+    //     console.log(fileName);
+    //     const file = `../server/public/uploads/${fileName}`;
+    //     console.log(file);
+    //     res.download(file);
+    // }
 }
