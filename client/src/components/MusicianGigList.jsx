@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import '../styles/globals.css';
+import { useSelector } from 'react-redux';
 
 const MusicianGigList = () => {
     const [allGigs, setAllGigs] = useState([])
     const [musicianGigs, setMusicianGigs] = useState([])
-    const {id} = useParams()
+    const loggedInMusician = useSelector((state) => state.auth.musician);
+    const id = loggedInMusician.musician._id;
 
     useEffect(() => {
         axios.get('/api/gigs')
@@ -17,11 +19,13 @@ const MusicianGigList = () => {
             console.log(err);
         })}, []);
 
+console.log(allGigs);
 
     useEffect(() => {
         const filteredGigs = allGigs.filter((gig) =>
-            gig.musicians.some((musician) => musician._id === id)
+            gig.musicians.some((musician) => musician.musician._id === id)
         );
+        console.log(filteredGigs);
         setMusicianGigs(filteredGigs);
     }, [allGigs, id]);
 
