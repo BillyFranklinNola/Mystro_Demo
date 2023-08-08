@@ -24,7 +24,7 @@ const NavBar = () => {
 
     return (
         <div className="row navbar navbar-expand-xxl px-2 px-sm-4 py-4 rounded border border-2 border-dark" style={{
-            backgroundColor: "rgba(45, 45, 45, 0.75)"
+            backgroundColor: "rgba(45, 45, 45, 0.85)"
         }}>
             <div className="container d-flex flex-column flex-lg-row align-items-center">
                 <div className="d-flex align-items-center">

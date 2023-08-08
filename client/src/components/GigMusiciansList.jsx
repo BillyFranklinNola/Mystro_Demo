@@ -18,12 +18,12 @@ const GigMusiciansList = () => {
 return(
     <div className='table-responsive' style={{'borderRadius':'5px'}}>
         <table className='table panelBackground border border-2 border-dark text-white'>
-            <thead>
+            {/* <thead>
                 <tr>
                     <th scope='col' className='col-6 text-center text-lg-start'>Musician</th>
                     <th scope='col' className='col-6 text-center text-lg-start'>Instrument</th>
                 </tr>
-            </thead>
+            </thead> */}
             <tbody>
                 {
                 gigMusicians.map((gig)=>{
