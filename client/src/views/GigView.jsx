@@ -97,11 +97,16 @@ const GigView = () => {
                     </div>
                     <div className="panelBackground border border-2 border-dark rounded p-3 text-white text-center mt-3">
                         <h3>Notes</h3>
-                        {
+                        {/* {
                             gig.notes ?
                             <p>{gig.notes}</p> :
                             <p>No notes for this gig</p>
-                        }
+                        } */}
+                        <h3>{gig.notes1}</h3>
+                        <h3>{gig.notes2}</h3>
+                        <h3>{gig.notes3}</h3>
+                        <h3>{gig.notes4}</h3>
+                        <h3>{gig.notes5}</h3>
                     </div>
                     <div className="d-flex flex-row flex-lg-column mt-3">
                         <Link to={`/gigs/charts/${id}`} className="btn btn-warning w-100">Charts</Link>

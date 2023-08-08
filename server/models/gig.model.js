@@ -50,7 +50,19 @@ const GigSchema = new mongoose.Schema({
     endTime: {
         type: String,
     },
-    notes: {
+    note1: {
+        type: String,
+    },
+    note2: {
+        type: String,
+    },
+    note3: {
+        type: String,
+    },
+    note4: {
+        type: String,
+    },
+    note5: {
         type: String,
     },
     musicians: {
