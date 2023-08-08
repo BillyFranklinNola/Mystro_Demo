@@ -13,7 +13,11 @@ const GigForm = (props) => {
         initialSetUpBy, 
         initialStartTime, 
         initialEndTime, 
-        initialNotes,
+        initialNote1,
+        initialNote2,
+        initialNote3,
+        initialNote4,
+        initialNote5,
         initialMusicians, 
         initialIRealCharts, 
         initialPdfCharts,
@@ -32,7 +36,11 @@ const GigForm = (props) => {
         setUpBy: initialSetUpBy,
         startTime: initialStartTime,
         endTime: initialEndTime,
-        notes: initialNotes,
+        note1: initialNote1,
+        note2: initialNote2,
+        note3: initialNote3,
+        note4: initialNote4,
+        note5: initialNote5,
         musicians: initialMusicians,
         iRealCharts: initialIRealCharts,
         pdfCharts: initialPdfCharts,
@@ -117,7 +125,7 @@ const GigForm = (props) => {
             <div className="col-12 col-lg-10 panelBackground text-white mx-auto p-2 p-lg-5 border border-2 border-dark rounded">
                 <form className='mx-auto' onSubmit={onSubmitHandler}>
                     <div className='row mx-auto'>
-                        <div className='col-12 col-lg-7'>
+                        <div className='col-12 col-lg-7 text-start'>
                             <div className='row form-group align-items-center mt-5 mt-lg-0'>
                                 <label htmlFor='venue' className='col-3 col-lg-2 col-form-label me-2'>Venue:</label>
                                 <div className='col-8 col-lg-9'>
@@ -231,9 +239,33 @@ const GigForm = (props) => {
                                 </div>
                             </div>
                             <div className='row form-group align-items-center mt-4'>
-                                <label htmlFor='notes' className='col-4 col-lg-3 col-form-label me-2'>Additional Info:</label>
-                                <div className='col-7 col-lg-8'>
-                                    <textarea name="notes" id="notes" className="form-control" value={gig.notes} onChange = {changeHandler}></textarea>
+                                <label htmlFor='note1' className='col-3 col-lg-2 col-form-label me-2'>Note 1:</label>
+                                <div className='col-8 col-lg-9'>
+                                    <input type="text" name="note1" id="note1" className="form-control" value={gig.note1} onChange = {changeHandler}/>
+                                </div>
+                            </div>
+                            <div className='row form-group align-items-center mt-4'>
+                                <label htmlFor='note2' className='col-3 col-lg-2 col-form-label me-2'>Note 2:</label>
+                                <div className='col-8 col-lg-9'>
+                                    <input type="text" name="note2" id="note2" className="form-control" value={gig.note2} onChange = {changeHandler}/>
+                                </div>
+                            </div>
+                            <div className='row form-group align-items-center mt-4'>
+                                <label htmlFor='note3' className='col-3 col-lg-2 col-form-label me-2'>Note 3:</label>
+                                <div className='col-8 col-lg-9'>
+                                    <input type="text" name="note3" id="note3" className="form-control" value={gig.note3} onChange = {changeHandler}/>
+                                </div>
+                            </div>
+                            <div className='row form-group align-items-center mt-4'>
+                                <label htmlFor='note4' className='col-3 col-lg-2 col-form-label me-2'>Note 4:</label>
+                                <div className='col-8 col-lg-9'>
+                                    <input type="text" name="note4" id="note4" className="form-control" value={gig.note4} onChange = {changeHandler}/>
+                                </div>
+                            </div>
+                            <div className='row form-group align-items-center mt-4'>
+                                <label htmlFor='note5' className='col-3 col-lg-2 col-form-label me-2'>Note 5:</label>
+                                <div className='col-8 col-lg-9'>
+                                    <input type="text" name="note5" id="note5" className="form-control" value={gig.note5} onChange = {changeHandler}/>
                                 </div>
                             </div>
                         </div>
