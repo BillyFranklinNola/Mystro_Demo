@@ -12,7 +12,6 @@ const EditGig = () => {
     const [gig, setGig] = useState({});
     const [allGigs, setAllGigs] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    // const [errors, setErrors] = useState([]);
 
     useEffect(()=>{
         axios.get(`/api/gigs/${id}`)
@@ -28,8 +27,8 @@ const EditGig = () => {
 
     const updateGig = async (gig) => {
         console.log(gig)
-        const {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, notes, musicians} = gig;
-        const gigData = {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, notes, musicians};
+        const {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, note1, note2, note3, note4, note5, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, note1, note2, note3, note4, note5, musicians};
         try {
             const updatedGig = await axios.put(`/api/gigs/edit/${id}`, gigData) 
             const formData = new FormData();
@@ -73,6 +72,11 @@ const EditGig = () => {
                     initialSetUpBy={gig.setUpBy}
                     initialStartTime={gig.startTime}
                     initialEndTime={gig.endTime}
+                    initialNote1={gig.note1}
+                    initialNote2={gig.note2}
+                    initialNote3={gig.note3}
+                    initialNote4={gig.note4}
+                    initialNote5={gig.note5}
                     initialMusicians={gig.musicians} 
                     initialIRealCharts={gig.iRealCharts}
                     initialPdfCharts={gig.pdfCharts}
