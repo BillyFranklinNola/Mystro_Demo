@@ -22,6 +22,9 @@ const GigView = () => {
             .catch(err => console.log(err));
         }, [])
 
+    console.log(gig);
+    console.log(gig.note1);
+
     const formatTime = (time) => {
         if (time) {
             const [hours, minutes] = time.split(":");
@@ -66,10 +69,11 @@ const GigView = () => {
     return (
         <div className="viewport container-fluid p-3 p-lg-4">
             <div>
-                <h3 className="subNav mb-3 mt-lg-2">{gig.bandName} - {gig.venue}</h3>
+                <h3 className="subNav mb-3 mt-lg-2">{gig.bandName}</h3>
             </div>
-            <div>
-                <h5 className="subNav mb-4 mt-lg-2 mb-lg-5">{gig.city}, {gig.state}</h5>
+            <div className="subNav mb-3 mb-lg-4 mt-lg-2">
+                <h4>{gig.venue}</h4>
+                <h6>{gig.city}, {gig.state}</h6>
             </div>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
@@ -96,17 +100,17 @@ const GigView = () => {
                         <p>End: {endTime}</p>                
                     </div>
                     <div className="panelBackground border border-2 border-dark rounded p-3 text-white text-center mt-3">
-                        <h3>Notes</h3>
+                        <h3 className="mb-3">Notes</h3>
                         {/* {
                             gig.notes ?
                             <p>{gig.notes}</p> :
                             <p>No notes for this gig</p>
                         } */}
-                        <h3>{gig.notes1}</h3>
-                        <h3>{gig.notes2}</h3>
-                        <h3>{gig.notes3}</h3>
-                        <h3>{gig.notes4}</h3>
-                        <h3>{gig.notes5}</h3>
+                        <p>{gig.note1}</p>
+                        <p>{gig.note2}</p>
+                        <p>{gig.note3}</p>
+                        <p>{gig.note4}</p>
+                        <p>{gig.note5}</p>
                     </div>
                     <div className="d-flex flex-row flex-lg-column mt-3">
                         <Link to={`/gigs/charts/${id}`} className="btn btn-warning w-100">Charts</Link>
