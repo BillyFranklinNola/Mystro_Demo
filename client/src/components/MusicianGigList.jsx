@@ -61,7 +61,7 @@ return (
                 musicianGigs.map((gig)=>{
                 return(
                     <tr key={gig._id}>
-                        <td className='text-start text-white'>{gig.band}</td>
+                        <td className='text-start text-white'>{gig.bandName}</td>
                         <td className='text-start text-white'>{gig.venue}</td>
                         <td className='text-start text-white'>{formatDate(gig.date)}</td>
                         <td>

@@ -34,7 +34,7 @@ const ChartsView = () => {
             <div>
             {
                 gig.iRealCharts !== "" || gig.pdfCharts !== "" ?
-            <h5 className="subNav my-4">Press to Download:</h5>
+            <h5 className="subNav my-4">Click to Download:</h5>
             :
             null
             }    

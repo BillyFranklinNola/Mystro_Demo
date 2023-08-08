@@ -49,7 +49,6 @@ const GigSchema = new mongoose.Schema({
     },
     endTime: {
         type: String,
-        required:[true, "End time is required"],
     },
     notes: {
         type: String,

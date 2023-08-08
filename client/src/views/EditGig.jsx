@@ -28,8 +28,8 @@ const EditGig = () => {
 
     const updateGig = async (gig) => {
         console.log(gig)
-        const {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians} = gig;
-        const gigData = {venue, date, streetAddress, city, state, zipCode, setUpBy, startTime, endTime, notes, musicians};
+        const {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, notes, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, notes, musicians};
         try {
             const updatedGig = await axios.put(`/api/gigs/edit/${id}`, gigData) 
             const formData = new FormData();
@@ -69,6 +69,7 @@ const EditGig = () => {
                     initialCity={gig.city}
                     initialState={gig.state}
                     initialZipCode={gig.zipCode}
+                    initialBandName={gig.bandName}
                     initialSetUpBy={gig.setUpBy}
                     initialStartTime={gig.startTime}
                     initialEndTime={gig.endTime}
