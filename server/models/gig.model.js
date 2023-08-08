@@ -33,6 +33,12 @@ const GigSchema = new mongoose.Schema({
         minLength:[5, "Zip Code must be 5 characters"],
         maxLength:[5, "Zip Code must be 5 characters"]
     },
+    bandName: {
+        type: String,
+        required:[true, "Band name is required"],
+        minLength:[3, "Band name must be 3 or more characters"],
+        maxLength:[50, "Band name cannot be more than 50 characters"]
+    },
     setUpBy: {
         type: String,
         required:[true, "Set up by time is required"],

@@ -49,9 +49,9 @@ return (
         <table className='table panelBackground border border-2 border-dark rounded'>
             <thead>
                 <tr>
+                    <th scope='col' className='text-start text-white'>Band</th>
                     <th scope='col' className='text-start text-white'>Venue</th>
                     <th scope='col' className='text-start text-white'>Date</th>
-                    <th scope='col' className='text-start text-white'>Location</th>
                     <th scope='col'className='text-white'>Actions</th>
                 </tr>
             </thead>
@@ -60,9 +60,9 @@ return (
                 allGigs.map((gig)=>{
                 return(
                     <tr key={gig._id}>
+                        <td className='text-start text-white'>{gig.bandName}</td>
                         <td className='text-start text-white'>{gig.venue}</td>
                         <td className='text-start text-white'>{formatDate(gig.date)}</td>
-                        <td className='text-start text-white'>{gig.city}, {gig.state}</td>
                         <td>
                             <div className='d-flex flex-column flex-lg-row justify-content-around mx-auto'>
                                 <Link className='btn btn-warning me-lg-1' to={`/gigs/viewGig/${gig._id}`}>View</Link>

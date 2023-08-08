@@ -52,18 +52,15 @@ module.exports = app => {
 
             if (req.files) {
                 if (req.files.timeline) {
-                    // timeline = req.files.timeline[0].filename;
                     const timelineFile = await s3upload(req.files.timeline[0]);
                     timeline = timelineFile.Key;
                 }
                 if (req.files.iRealCharts) {
-                    // iRealCharts = req.files.iRealCharts[0].filename;
                     const iRealChartsFile = await s3upload(req.files.iRealCharts[0]);
                     iRealCharts = iRealChartsFile.Key;
                 }
 
                 if (req.files.pdfCharts) {
-                    // pdfCharts = req.files.pdfCharts[0].filename;
                     const pdfChartsFile = await s3upload(req.files.pdfCharts[0]);
                     pdfCharts = pdfChartsFile.Key;
                 }

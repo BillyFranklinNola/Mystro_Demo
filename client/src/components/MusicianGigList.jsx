@@ -50,9 +50,9 @@ return (
         <table className='table panelBackground border border-2 border-dark text-white mx-auto'>
             <thead>
                 <tr>
+                    <th scope='col' className='text-start text-white'>Band</th>
                     <th scope='col' className='col-4 text-start text-white'>Venue</th>
                     <th scope='col' className='text-start text-white'>Date</th>
-                    <th scope='col' className='text-start text-white'>Location</th>
                     <th scope='col' className='text-white'>Actions</th>
                 </tr>
             </thead>
@@ -61,9 +61,9 @@ return (
                 musicianGigs.map((gig)=>{
                 return(
                     <tr key={gig._id}>
+                        <td className='text-start text-white'>{gig.band}</td>
                         <td className='text-start text-white'>{gig.venue}</td>
                         <td className='text-start text-white'>{formatDate(gig.date)}</td>
-                        <td className='text-start text-white'>{gig.city}, {gig.state}</td>
                         <td>
                             <div className='d-flex justify-content-around mx-auto'>
                                 <Link className='btn btn-warning' to={`/gigs/viewGig/${gig._id}`}>View</Link>

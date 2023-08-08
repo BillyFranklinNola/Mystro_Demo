@@ -9,6 +9,7 @@ const GigForm = (props) => {
         initialCity, 
         initialState , 
         initialZipCode, 
+        initialBandName,
         initialSetUpBy, 
         initialStartTime, 
         initialEndTime, 
@@ -27,6 +28,7 @@ const GigForm = (props) => {
         city: initialCity,
         state: initialState,
         zipCode: initialZipCode,
+        bandName: initialBandName,
         setUpBy: initialSetUpBy,
         startTime: initialStartTime,
         endTime: initialEndTime,
@@ -199,6 +201,12 @@ const GigForm = (props) => {
                                 </div>
                             </div>
                             <div className='row form-group align-items-center mt-4'>
+                                <label htmlFor='bandName' className='col-3 col-lg-2 col-form-label me-2'>Band:</label>
+                                <div className='col-8 col-lg-9'>
+                                    <input type="text" name="bandName" id="bandName" className="form-control" value={gig.bandName} onChange = {changeHandler}/>
+                                </div>
+                            </div>
+                            <div className='row form-group align-items-center mt-4'>
                                 <label htmlFor='date' className='col-3 col-lg-2 col-form-label me-2'>Date:</label>
                                 <div className='col-8 col-lg-9'>
                                     <input type="date" name="date" id="date" className="form-control" value={gig.date} onChange = {changeHandler}/>
@@ -252,11 +260,11 @@ const GigForm = (props) => {
                             </div>
                             <div className='form-group mt-4'>
                                 <label htmlFor='pdfCharts'>PDF Charts:</label>
-                                <input type="file" accept=".zip" name="pdfCharts" id="pdfCharts" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
+                                <input type="file" accept=".zip, .pdf" name="pdfCharts" id="pdfCharts" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
                             </div>
                             <div className='form-group mt-4'>
                                 <label htmlFor='timeline'>Timeline:</label>
-                                <input type="file" accept=".png, .jpg, .jpeg .pdf" name="timeline" id="timeline" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
+                                <input type="file" accept=".png, .jpg, .jpeg, .pdf" name="timeline" id="timeline" className="form-control mt-3 mt-lg-2" onChange = {changeHandler}/>
                                 {
                                 image === '' ? 
                                 null : 
