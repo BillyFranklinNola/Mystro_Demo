@@ -23,6 +23,7 @@ const LoginForm = (props) => {
 
     useEffect(() => {
         if (isSuccess || musician) {
+            musician.isAdmin ? navigate('/AdminDashboard') :
             navigate('/MusicianDashboard')
         }
         if (message) {
