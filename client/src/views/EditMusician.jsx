@@ -8,7 +8,6 @@ import '../styles/globals.css'
 
 const EditMusician = (props) => {
     const [musician, setMusician] = useState(props);
-    // const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const{id} = useParams();
 
@@ -32,12 +31,9 @@ const EditMusician = (props) => {
         } catch (err) {
             console.log(err.response);
             const errorResponse = err.response.data.errors;
-            // const errorArray = [];
             for (const key of Object.keys(errorResponse)) {
-                // {errorArray.push(errorResponse[key].message)}
                 toast.error(errorResponse[key].message)
             }
-            // setErrors(errorArray);
         }   
     }
 

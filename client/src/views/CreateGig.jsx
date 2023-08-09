@@ -11,8 +11,8 @@ const CreateGig = () => {
     const [allGigs, setAllGigs] = useState([]);
 
     const newGig = async (gig) => {   
-        const {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, note1, note2, note3, note4, note5, musicians} = gig;
-        const gigData = {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, note1, note2, note3, note4, note5, musicians};
+        const {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, notes, musicians} = gig;
+        const gigData = {venue, date, streetAddress, city, state, zipCode, bandName, setUpBy, startTime, endTime, notes, musicians};
         try {
             const newGig = await axios.post('/api/gigs/create', gigData)
             const formData = new FormData();
@@ -54,11 +54,7 @@ const CreateGig = () => {
                     initialSetUpBy="" 
                     initialStartTime="" 
                     initialEndTime=""  
-                    initialNote1=""
-                    initialNote2=""
-                    initialNote3=""
-                    initialNote4=""
-                    initialNote5=""
+                    initialNotes=""
                     initialMusicians={[]}
                     initialIRealCharts="" 
                     initialPdfCharts=""

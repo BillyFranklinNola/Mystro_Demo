@@ -32,6 +32,7 @@ function App() {
     useEffect(() => {
       const changeBackground = location.pathname.includes('AdminDashboard') || location.pathname.includes('gigs/viewGig');
       setChangeBackground(changeBackground);
+      window.scrollTo(0, 0);
     }, [location]);
 
   return (
