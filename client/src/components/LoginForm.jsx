@@ -60,13 +60,13 @@ const LoginForm = (props) => {
                     <div className='row form-group align-items-center mt-4'>
                         <label htmlFor='email' className='col-4 col-lg-3 col-form-label me-2'>Email:</label>
                         <div className='col-7 col-lg-8'>
-                            <input type="text" name="email" id="email" className="form-control" onChange = {logChangeHandler}/>
+                            <input type="text" name="email" id="email" className="form-control" value="musician@musician.com" onChange = {logChangeHandler}/>
                         </div>
                     </div>
                     <div className='row form-group align-items-center mt-4 mb-3'>
                         <label htmlFor='password' className='col-4 col-lg-3 col-form-label me-2'>Password:</label>
                         <div className='col-7 col-lg-8'>
-                            <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
+                            <input type="password" name="password" id="password" className="form-control" value="Musician1!" onChange = {logChangeHandler}/>
                         </div>
                     </div>
                     <button type="submit" className='btn btn-warning mt-4 mb-4 mx-auto'>Submit</button>
