@@ -55,19 +55,22 @@ const LoginForm = (props) => {
         <div className='container'>
             <div className="panelBackground text-white mx-auto p-3 border border-2 border-dark rounded">
                 <h4 className='my-3'>Welcome to the Mystro-Musician Demo Site!</h4>
-                <p className='mx-5 text-primary'>To access full (admin) functionality, log-in with the pre-populated credentials:</p>
+                <p className='mx-5 text-primary'>To access full (admin) functionality, sign-in with these credentials:</p>
+                <p>musician@musician.com</p>
+                <p>Musician1!</p>
                 <form className='mx-auto mt-3' onSubmit={onSubmitHandler}>
                     <div className='row form-group align-items-center mt-4'>
                         <label htmlFor='email' className='col-4 col-lg-3 col-form-label me-2'>Email:</label>
                         <div className='col-7 col-lg-8'>
-                            <input type="text" name="email" id="email" className="form-control" value="musician@musician.com" onChange = {logChangeHandler}/>
+                            <input type="text" name="email" id="email" className="form-control" onChange = {logChangeHandler}/>
                         </div>
                     </div>
                     <div className='row form-group align-items-center mt-4 mb-3'>
                         <label htmlFor='password' className='col-4 col-lg-3 col-form-label me-2'>Password:</label>
                         <div className='col-7 col-lg-8'>
-                            <input type="password" name="password" id="password" className="form-control" value="Musician1!" onChange = {logChangeHandler}/>
+                            <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
                         </div>
+
                     </div>
                     <button type="submit" className='btn btn-warning mt-4 mb-4 mx-auto'>Submit</button>
                 </form>
