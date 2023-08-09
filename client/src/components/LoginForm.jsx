@@ -21,22 +21,6 @@ const LoginForm = (props) => {
         message
     } = useSelector((state) => state.auth)
 
-    useEffect(() => {
-        if (isSuccess || musician) {
-            musician.isAdmin ? navigate('/AdminDashboard') :
-            navigate('/MusicianDashboard')
-        }
-        if (message) {
-            toast.error(message)
-        }
-    }, [
-        musician, 
-        isSuccess, 
-        message, 
-        navigate, 
-        dispatch
-    ])
-
     const logChangeHandler = (e) => {
         setLoginInfo((prevState) => ({
             ...prevState,
@@ -44,15 +28,28 @@ const LoginForm = (props) => {
         }))
     }
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         const { email, password } = loginInfo
         const loginData = { email, password }
-        dispatch(login(loginData))
-    }
+        try {
+            const musicianData = await dispatch(login(loginData));
+            console.log(musicianData);
+            const isAdmin = musicianData.payload.musician.isAdmin;
+            console.log(isAdmin);
+            {
+                isAdmin?
+                navigate('/AdminDashboard') :
+                navigate('/MusicianDashboard')
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error('Login failed');
+        }
     if (isLoading) {
         return <h1>Loading...</h1>
     }
+}
 
     return (
         <div className='container'>
