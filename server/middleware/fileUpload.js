@@ -1,14 +1,6 @@
 const multer = require('multer');
 const path = require('path');
 
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//             cb(null, 'server/public/uploads/');
-//         },
-//     filename: (req, file, cb) => {
-//             cb(null, uuidv4() + '-' + Date.now().toString() + path.extname(file.originalname));
-//         }
-// });
 const storage = multer.memoryStorage()
 
 const fileFilter = (req, file, cb) => {
