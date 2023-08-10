@@ -10,10 +10,10 @@ const MapOfGig = (props) => {
     const MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-    });
-    
+    })    
     useEffect(() => {
         const location = async () => {
+            console.log(MAPS_API_KEY)
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${gig.streetAddress},+${gig.city}s,+${gig.state},+${gig.zipCode}&key=${MAPS_API_KEY}`)
         .then((res) => {
             if (res.data.results && res.data.results[0] && res.data.results[0].geometry && res.data.results[0].geometry.location) {
