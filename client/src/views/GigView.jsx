@@ -68,9 +68,9 @@ const GigView = () => {
 
     return (
         <div className="viewport container-fluid p-3 p-lg-4">
-            <div>
+            {/* <div>
                 <h3 className="subNav mb-3 mt-lg-2">{gig.bandName}</h3>
-            </div>
+            </div> */}
             <div className="subNav mb-3 mb-lg-4 mt-lg-2">
                 <h4>{gig.venue}</h4>
                 <h6>{gig.city}, {gig.state}</h6>
