@@ -71,10 +71,7 @@ const GigView = () => {
             {/* <div>
                 <h3 className="subNav mb-3 mt-lg-2">{gig.bandName}</h3>
             </div> */}
-            <div className="subNav mb-3 mb-lg-4 mt-lg-2">
-                <h4>{gig.venue}</h4>
-                <h6>{gig.city}, {gig.state}</h6>
-            </div>
+            <h4 className="subNav mb-3 mb-lg-5 mt-lg-2">{gig.venue} - {gig.city}, {gig.state}</h4>
             <div className="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between">
                 <div className="col-12 col-lg-4 mx-auto mx-lg-0 mb-3 mb-lg-0">
                     <div className="panelBackground border border-2 border-dark rounded mb-3 mt-2 mt-lg-0 p-3">
